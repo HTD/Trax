@@ -1,0 +1,54 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ScnEdit.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Consolas, 11.25pt</Value>
+    </Setting>
+    <Setting Name="ColorScheme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dark_Original</Value>
+    </Setting>
+    <Setting Name="StyleScheme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Default</Value>
+    </Setting>
+    <Setting Name="FileSizeLimitKb" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">32768</Value>
+    </Setting>
+    <Setting Name="AutoBackup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SimExe" Type="System.String" Scope="User">
+      <Value Profile="(Default)">eu07.exe</Value>
+    </Setting>
+    <Setting Name="StvPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files (x86)\Szopa Track Viewer\STV.exe</Value>
+    </Setting>
+    <Setting Name="RainstedPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\MaSzyna\Rainsted.exe</Value>
+    </Setting>
+    <Setting Name="AutoDecoding" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SceneryMainExtension" Type="System.String" Scope="User">
+      <Value Profile="(Default)">scn</Value>
+    </Setting>
+    <Setting Name="SceneryPartsExtensions" Type="System.String" Scope="User">
+      <Value Profile="(Default)">scm;inc;ctr</Value>
+    </Setting>
+    <Setting Name="SceneryDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">scenery</Value>
+    </Setting>
+    <Setting Name="WordWrap" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="EncodingDefault" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1250</Value>
+    </Setting>
+    <Setting Name="LastOpenFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HtmlEncodingDefault" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">65001</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

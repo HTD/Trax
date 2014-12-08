@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ScnEdit.StyleSchemes" GeneratedClassName="Styles_Default">
+  <Profiles />
+  <Settings>
+    <Setting Name="Identifier" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
+    <Setting Name="Comment" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
+    <Setting Name="Keyword" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Bold</Value>
+    </Setting>
+    <Setting Name="Keyword1" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
+    <Setting Name="Keyword2" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
+    <Setting Name="Keyword3" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
+    <Setting Name="Keyword4" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
+    <Setting Name="Path" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Underline</Value>
+    </Setting>
+    <Setting Name="Number" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
+    <Setting Name="Time" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Bold</Value>
+    </Setting>
+    <Setting Name="Command" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Bold</Value>
+    </Setting>
+    <Setting Name="Special" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
+    <Setting Name="SameWord" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Underline</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

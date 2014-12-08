@@ -1,0 +1,75 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ScnEdit.ColorSchemes" GeneratedClassName="Colors_Gray_Zenburn">
+  <Profiles />
+  <Settings>
+    <Setting Name="Background" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">63, 63, 63</Value>
+    </Setting>
+    <Setting Name="Text" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">215, 215, 200</Value>
+    </Setting>
+    <Setting Name="Comment" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Gray</Value>
+    </Setting>
+    <Setting Name="Identifier" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">215, 215, 200</Value>
+    </Setting>
+    <Setting Name="Keyword" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">218, 198, 165</Value>
+    </Setting>
+    <Setting Name="Keyword1" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">140, 208, 211</Value>
+    </Setting>
+    <Setting Name="Keyword2" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">140, 208, 211</Value>
+    </Setting>
+    <Setting Name="Keyword3" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">43, 145, 175</Value>
+    </Setting>
+    <Setting Name="Keyword4" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">220, 163, 163</Value>
+    </Setting>
+    <Setting Name="Number" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">126, 182, 184</Value>
+    </Setting>
+    <Setting Name="Time" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">125, 155, 125</Value>
+    </Setting>
+    <Setting Name="Special" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">208, 208, 129</Value>
+    </Setting>
+    <Setting Name="LineNumber" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">43, 145, 175</Value>
+    </Setting>
+    <Setting Name="ServiceLine" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">47, 47, 47</Value>
+    </Setting>
+    <Setting Name="Carret" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">143, 175, 159</Value>
+    </Setting>
+    <Setting Name="Command" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">176, 109, 137</Value>
+    </Setting>
+    <Setting Name="Path" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">204, 147, 147</Value>
+    </Setting>
+    <Setting Name="Selection" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Silver</Value>
+    </Setting>
+    <Setting Name="SameWord" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 96, 64</Value>
+    </Setting>
+    <Setting Name="SameWordText" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="ProjectText" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">215, 215, 200</Value>
+    </Setting>
+    <Setting Name="ProjectSelection" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 96, 64</Value>
+    </Setting>
+    <Setting Name="ProjectIcon" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">125, 155, 125</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

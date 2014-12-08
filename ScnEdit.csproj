@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E1EF129F-D93B-48EF-B0AE-FAAD88AD516E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ScnEdit</RootNamespace>
+    <AssemblyName>ScnEdit</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IconBlue128.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ScnSyntax">
+      <HintPath>ScnEditSyntax\ScnSyntax.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorSchemes\Colors_Bright_Original.cs" />
+    <Compile Include="ColorSchemes\Colors_Dark_Oblivion.cs" />
+    <Compile Include="ColorSchemes\Colors_Dark_Oblivion.Designer.cs">
+      <DependentUpon>Colors_Dark_Oblivion.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ColorSchemes\Colors_Gray_Zenburn.Designer.cs">
+      <DependentUpon>Colors_Gray_Zenburn.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ColorSchemes\Colors_Dark_Original.cs" />
+    <Compile Include="ColorSchemes\Colors_Gray_Zenburn.cs" />
+    <Compile Include="Editor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditorContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IColorScheme.cs" />
+    <Compile Include="ColorSchemes\Colors_Bright_Original.Designer.cs">
+      <DependentUpon>Colors_Bright_Original.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ColorSchemes\Colors_Dark_Original.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Colors_Dark_Original.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages.pl-PL.Designer.cs">
+      <DependentUpon>Messages.pl-PL.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="EditorFile.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Refactor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refactor.Designer.cs">
+      <DependentUpon>Refactor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IStyleScheme.cs" />
+    <Compile Include="ProjectFile.cs" />
+    <Compile Include="ProjectPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchResultsPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="StyleSchemes\Styles_Default.cs" />
+    <Compile Include="StyleSchemes\Styles_Default.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Styles_Default.settings</DependentUpon>
+    </Compile>
+    <Compile Include="EditorSyntax.cs" />
+    <Compile Include="VS2012ColorTable.cs" />
+    <Compile Include="VS2012ToolStripExtender.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VS2012ToolStripExtender.Designer.cs">
+      <DependentUpon>VS2012ToolStripExtender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VS2012ToolStripRenderer.cs" />
+    <EmbeddedResource Include="EditorContainer.resx">
+      <DependentUpon>EditorContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.pl-PL.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages.pl-PL.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.pl-PL.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refactor.resx">
+      <DependentUpon>Refactor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectPanel.resx">
+      <DependentUpon>ProjectPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ColorSchemes\Colors_Bright_Original.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Colors_Bright_Original.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ColorSchemes\Colors_Dark_Oblivion.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Colors_Dark_Oblivion.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ColorSchemes\Colors_Gray_Zenburn.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Colors_Gray_Zenburn.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ColorSchemes\Colors_Dark_Original.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Colors_Dark_Original.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="StyleSchemes\Styles_Default.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Styles_Default.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IconBlue128.ico" />
+    <Content Include="license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="ExternalCustomPackages\DPS\WinFormsUI\WinFormsUI.csproj">
+      <Project>{c75532c4-765b-418e-b09b-46d36b2abdb1}</Project>
+      <Name>WinFormsUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="ExternalCustomPackages\FCTB\FastColoredTextBox.csproj">
+      <Project>{6dd14a85-ccfc-4774-bd26-0f5772512319}</Project>
+      <Name>FastColoredTextBox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

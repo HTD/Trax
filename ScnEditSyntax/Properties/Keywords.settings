@@ -1,0 +1,120 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ScnSyntax.Properties" GeneratedClassName="Keywords">
+  <Profiles />
+  <Settings>
+    <Setting Name="Set1" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;addvalues&lt;/string&gt;
+  &lt;string&gt;animation&lt;/string&gt;
+  &lt;string&gt;atmo&lt;/string&gt;
+  &lt;string&gt;camera&lt;/string&gt;
+  &lt;string&gt;condition&lt;/string&gt;
+  &lt;string&gt;config&lt;/string&gt;
+  &lt;string&gt;copyvalues&lt;/string&gt;
+  &lt;string&gt;description&lt;/string&gt;
+  &lt;string&gt;dynamic&lt;/string&gt;
+  &lt;string&gt;else&lt;/string&gt;
+  &lt;string&gt;end[a-z]*&lt;/string&gt;
+  &lt;string&gt;event&lt;/string&gt;
+  &lt;string&gt;event0&lt;/string&gt;
+  &lt;string&gt;event1&lt;/string&gt;
+  &lt;string&gt;event2&lt;/string&gt;
+  &lt;string&gt;eventall0&lt;/string&gt;
+  &lt;string&gt;eventall1&lt;/string&gt;
+  &lt;string&gt;eventall2&lt;/string&gt;
+  &lt;string&gt;eventlauncher&lt;/string&gt;
+  &lt;string&gt;FirstInit&lt;/string&gt;
+  &lt;string&gt;getvalues&lt;/string&gt;
+  &lt;string&gt;include&lt;/string&gt;
+  &lt;string&gt;light&lt;/string&gt;
+  &lt;string&gt;lights&lt;/string&gt;
+  &lt;string&gt;line_loop&lt;/string&gt;
+  &lt;string&gt;line_strip&lt;/string&gt;
+  &lt;string&gt;lines&lt;/string&gt;
+  &lt;string&gt;material&lt;/string&gt;
+  &lt;string&gt;memcell&lt;/string&gt;
+  &lt;string&gt;memcompare&lt;/string&gt;
+  &lt;string&gt;model&lt;/string&gt;
+  &lt;string&gt;multiple&lt;/string&gt;
+  &lt;string&gt;node&lt;/string&gt;
+  &lt;string&gt;origin&lt;/string&gt;
+  &lt;string&gt;propability&lt;/string&gt;
+  &lt;string&gt;putvalues&lt;/string&gt;
+  &lt;string&gt;rotate&lt;/string&gt;
+  &lt;string&gt;setvalues&lt;/string&gt;
+  &lt;string&gt;sky&lt;/string&gt;
+  &lt;string&gt;sound&lt;/string&gt;
+  &lt;string&gt;test&lt;/string&gt;
+  &lt;string&gt;time&lt;/string&gt;
+  &lt;string&gt;track&lt;/string&gt;
+  &lt;string&gt;traction&lt;/string&gt;
+  &lt;string&gt;trainset&lt;/string&gt;
+  &lt;string&gt;triangle_fan&lt;/string&gt;
+  &lt;string&gt;triangle_strip&lt;/string&gt;
+  &lt;string&gt;triangles&lt;/string&gt;
+  &lt;string&gt;updatevalues&lt;/string&gt;
+  &lt;string&gt;velocity&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Set2" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;SetVelocity&lt;/string&gt;
+  &lt;string&gt;ShuntVelocity&lt;/string&gt;
+  &lt;string&gt;PassengerStopPoint&lt;/string&gt;
+  &lt;string&gt;FoulingPoint&lt;/string&gt;
+  &lt;string&gt;SetProximityVelocity&lt;/string&gt;
+  &lt;string&gt;OutsideStation&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Set3" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Wait_for_orders&lt;/string&gt;
+  &lt;string&gt;Prepare_engine&lt;/string&gt;
+  &lt;string&gt;Change_direction&lt;/string&gt;
+  &lt;string&gt;Obey_train&lt;/string&gt;
+  &lt;string&gt;Shunt&lt;/string&gt;
+  &lt;string&gt;WarningSignal&lt;/string&gt;
+  &lt;string&gt;CabSignal&lt;/string&gt;
+  &lt;string&gt;Jump_to_order&lt;/string&gt;
+  &lt;string&gt;Jump_to_first_order&lt;/string&gt;
+  &lt;string&gt;Timetable&lt;/string&gt;
+  &lt;string&gt;Emergency_brake&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Set4" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ambient&lt;/string&gt;
+  &lt;string&gt;canyon&lt;/string&gt;
+  &lt;string&gt;conductor&lt;/string&gt;
+  &lt;string&gt;connected&lt;/string&gt;
+  &lt;string&gt;cross&lt;/string&gt;
+  &lt;string&gt;diffuse&lt;/string&gt;
+  &lt;string&gt;flat&lt;/string&gt;
+  &lt;string&gt;headdriver&lt;/string&gt;
+  &lt;string&gt;mountains&lt;/string&gt;
+  &lt;string&gt;nobody&lt;/string&gt;
+  &lt;string&gt;normal&lt;/string&gt;
+  &lt;string&gt;passenger&lt;/string&gt;
+  &lt;string&gt;passengers&lt;/string&gt;
+  &lt;string&gt;reardriver&lt;/string&gt;
+  &lt;string&gt;river&lt;/string&gt;
+  &lt;string&gt;road&lt;/string&gt;
+  &lt;string&gt;specular&lt;/string&gt;
+  &lt;string&gt;switch&lt;/string&gt;
+  &lt;string&gt;tunnel&lt;/string&gt;
+  &lt;string&gt;unvis&lt;/string&gt;
+  &lt;string&gt;vis&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Set5" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;none&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
