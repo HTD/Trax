@@ -31,6 +31,8 @@ namespace ScnEdit {
             public static TextStyle Command;
             public static TextStyle Path;
             public static TextStyle SameWord;
+            public static TargetStyle SearchResult;
+            public static TargetStyle ReplaceResult;
 
             internal static IEnumerable<TypeInfo> ConfiguredColorSchemes {
                 get {
@@ -92,6 +94,8 @@ namespace ScnEdit {
                 Special = new TextStyle(new SolidBrush(ColorScheme.Special), null, StyleScheme.Special);
                 Command = new TextStyle(new SolidBrush(ColorScheme.Command), null, StyleScheme.Command);
                 Path = new TextStyle(new SolidBrush(ColorScheme.Path), null, StyleScheme.Path);
+                SearchResult = new TargetStyle(ColorScheme.SearchResultBack, ColorScheme.SearchResultFrame);
+                ReplaceResult = new TargetStyle(ColorScheme.ReplaceResultBack, ColorScheme.ReplaceResultFrame);
             }
 
         }
@@ -109,6 +113,8 @@ namespace ScnEdit {
             public const StyleIndex Time = StyleIndex.Style9;
             public const StyleIndex Path = StyleIndex.Style10;
             public const StyleIndex Number = StyleIndex.Style11;
+            public const StyleIndex SearchResult = StyleIndex.Style12;
+            public const StyleIndex ReplaceResult = StyleIndex.Style13;
         }
 
         private Editor E;
@@ -163,6 +169,8 @@ namespace ScnEdit {
                 E.AddStyle(Styles.Time);
                 E.AddStyle(Styles.Path);
                 E.AddStyle(Styles.Number);
+                E.AddStyle(Styles.SearchResult);
+                E.AddStyle(Styles.ReplaceResult);
             }
         }
 
@@ -172,7 +180,11 @@ namespace ScnEdit {
             switch (type) {
                 case ScnEdit.EditorFile.Types.SceneryMain:
                 case ScnEdit.EditorFile.Types.SceneryPart:
-                    range.ClearStyle(StyleIndex.All);
+                    range.ClearStyle(
+                        StyleIndex.Style0 | StyleIndex.Style1 | StyleIndex.Style2 | StyleIndex.Style3 |
+                        StyleIndex.Style4 | StyleIndex.Style5 | StyleIndex.Style6 | StyleIndex.Style7 |
+                        StyleIndex.Style8 | StyleIndex.Style9 | StyleIndex.Style10 | StyleIndex.Style11
+                    );
                     range.SetStyle(StyleMap.Special, new ScnSyntax.Special());
                     range.SetStyle(StyleMap.Command, new ScnSyntax.Command());
                     range.SetStyle(StyleMap.Comment, new ScnSyntax.Comment());
@@ -186,7 +198,7 @@ namespace ScnEdit {
                     range.SetStyle(StyleMap.Number, new ScnSyntax.Number());
                     break;
                 case ScnEdit.EditorFile.Types.Timetable:
-                    range.ClearStyle(StyleIndex.All);
+                    range.ClearStyle(StyleMap.Comment | StyleMap.Time);
                     range.SetStyle(StyleMap.Comment, new ScnSyntax.TimetableFrame());
                     range.SetStyle(StyleMap.Time, new ScnSyntax.TimetableTime());
                     break;

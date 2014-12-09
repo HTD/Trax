@@ -189,7 +189,7 @@
   <data name="NormalizeMenuItem.Text" xml:space="preserve">
     <value>&amp;Normalize</value>
   </data>
-  <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="s2.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 6</value>
   </data>
   <data name="CommentSelectedMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
@@ -222,7 +222,7 @@
   <data name="WordWrapMenuItem.Text" xml:space="preserve">
     <value>&amp;Word wrap</value>
   </data>
-  <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="s3.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 6</value>
   </data>
   <data name="ColorSchemeMenu.Size" type="System.Drawing.Size, System.Drawing">
@@ -230,6 +230,18 @@
   </data>
   <data name="ColorSchemeMenu.Text" xml:space="preserve">
     <value>&amp;Color scheme...</value>
+  </data>
+  <data name="s4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 6</value>
+  </data>
+  <data name="ClearMarkersMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Esc</value>
+  </data>
+  <data name="ClearMarkersMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
+  </data>
+  <data name="ClearMarkersMenuItem.Text" xml:space="preserve">
+    <value>Clear markers</value>
   </data>
   <data name="ViewMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 20</value>
@@ -264,7 +276,7 @@
   <data name="FindReferencesMenuItem.Text" xml:space="preserve">
     <value>Find reference&amp;s</value>
   </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="s5.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 6</value>
   </data>
   <data name="RefactorMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
@@ -276,7 +288,7 @@
   <data name="RefactorMenuItem.Text" xml:space="preserve">
     <value>&amp;Refactor...</value>
   </data>
-  <data name="s3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="s6.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 6</value>
   </data>
   <data name="SceneryUndoMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
@@ -297,7 +309,7 @@
   <data name="SceneryRedoMenuItem.Text" xml:space="preserve">
     <value>R&amp;edo</value>
   </data>
-  <data name="s4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="s7.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 6</value>
   </data>
   <data name="SceneryNormalizeMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
@@ -2319,10 +2331,10 @@
   <data name="&gt;&gt;NormalizeMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem4.Name" xml:space="preserve">
-    <value>toolStripMenuItem4</value>
+  <data name="&gt;&gt;s2.Name" xml:space="preserve">
+    <value>s2</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem4.Type" xml:space="preserve">
+  <data name="&gt;&gt;s2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CommentSelectedMenuItem.Name" xml:space="preserve">
@@ -2343,16 +2355,28 @@
   <data name="&gt;&gt;WordWrapMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem3.Name" xml:space="preserve">
-    <value>toolStripMenuItem3</value>
+  <data name="&gt;&gt;s3.Name" xml:space="preserve">
+    <value>s3</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem3.Type" xml:space="preserve">
+  <data name="&gt;&gt;s3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColorSchemeMenu.Name" xml:space="preserve">
     <value>ColorSchemeMenu</value>
   </data>
   <data name="&gt;&gt;ColorSchemeMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s4.Name" xml:space="preserve">
+    <value>s4</value>
+  </data>
+  <data name="&gt;&gt;s4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ClearMarkersMenuItem.Name" xml:space="preserve">
+    <value>ClearMarkersMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ClearMarkersMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;SceneryMenu.Name" xml:space="preserve">
@@ -2379,10 +2403,10 @@
   <data name="&gt;&gt;FindReferencesMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
+  <data name="&gt;&gt;s5.Name" xml:space="preserve">
+    <value>s5</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
+  <data name="&gt;&gt;s5.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;RefactorMenuItem.Name" xml:space="preserve">
@@ -2391,10 +2415,10 @@
   <data name="&gt;&gt;RefactorMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;s3.Name" xml:space="preserve">
-    <value>s3</value>
+  <data name="&gt;&gt;s6.Name" xml:space="preserve">
+    <value>s6</value>
   </data>
-  <data name="&gt;&gt;s3.Type" xml:space="preserve">
+  <data name="&gt;&gt;s6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;SceneryUndoMenuItem.Name" xml:space="preserve">
@@ -2409,10 +2433,10 @@
   <data name="&gt;&gt;SceneryRedoMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;s4.Name" xml:space="preserve">
-    <value>s4</value>
+  <data name="&gt;&gt;s7.Name" xml:space="preserve">
+    <value>s7</value>
   </data>
-  <data name="&gt;&gt;s4.Type" xml:space="preserve">
+  <data name="&gt;&gt;s7.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;SceneryNormalizeMenuItem.Name" xml:space="preserve">

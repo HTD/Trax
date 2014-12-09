@@ -194,13 +194,12 @@ namespace ScnEdit {
         private void FindReferencesMenuItem_Click(object sender, EventArgs e) {
             if (CurrentEditor != null) {
                 var symbol = CurrentEditor.SelectWord();
-                var pattern = @"(?<=^|[ :;\r\n]+)" + Regex.Escape(symbol) + "(?=[ ;\r\n]+|$)";
+                var pattern = @"(?<=^|[ :;\r\n]+)" + Regex.Escape(symbol) + "(?=[_ ;\r\n]+|$)";
                 var regex = new Regex(pattern, RegexOptions.Compiled);
-                Place p;
                 SearchResultsPanel.Reset();
                 ProjectFile.All.ForEach(i => {
                     foreach (Match m in regex.Matches(i.Text)) {
-                        p = i.Editor.PositionToPlace(m.Index);
+                        var p = i.Editor.MarkSearchResult(m.Index, m.Length);
                         SearchResultsPanel.Add(new SearchResult {
                             Path = i.Path, File = i.FileName, Fragment = m.Value, Line = p.iLine + 1, Column = p.iChar + 1
                         });
@@ -208,6 +207,10 @@ namespace ScnEdit {
                 });
                 SearchResultsPanel.CloseIfEmpty();
             }
+        }
+
+        private void ClearMarkersMenuItem_Click(object sender, EventArgs e) {
+            CurrentEditor.ClearMarkers();
         }
 
     }

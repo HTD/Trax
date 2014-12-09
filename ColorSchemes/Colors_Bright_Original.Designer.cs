@@ -298,5 +298,53 @@ namespace ScnEdit.ColorSchemes {
                 this["ProjectIcon"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192, 255, 192")]
+        public global::System.Drawing.Color SearchResultBack {
+            get {
+                return ((global::System.Drawing.Color)(this["SearchResultBack"]));
+            }
+            set {
+                this["SearchResultBack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 192, 0")]
+        public global::System.Drawing.Color SearchResultFrame {
+            get {
+                return ((global::System.Drawing.Color)(this["SearchResultFrame"]));
+            }
+            set {
+                this["SearchResultFrame"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("255, 192, 192")]
+        public global::System.Drawing.Color ReplaceResultBack {
+            get {
+                return ((global::System.Drawing.Color)(this["ReplaceResultBack"]));
+            }
+            set {
+                this["ReplaceResultBack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        public global::System.Drawing.Color ReplaceResultFrame {
+            get {
+                return ((global::System.Drawing.Color)(this["ReplaceResultFrame"]));
+            }
+            set {
+                this["ReplaceResultFrame"] = value;
+            }
+        }
     }
 }

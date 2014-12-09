@@ -34,22 +34,24 @@
             this.EditMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.AlignMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NormalizeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.s2 = new System.Windows.Forms.ToolStripSeparator();
             this.CommentSelectedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.WordWrapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.s3 = new System.Windows.Forms.ToolStripSeparator();
             this.ColorSchemeMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.s4 = new System.Windows.Forms.ToolStripSeparator();
+            this.ClearMarkersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SceneryMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FindObjectMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FindReferencesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.s5 = new System.Windows.Forms.ToolStripSeparator();
             this.RefactorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.s3 = new System.Windows.Forms.ToolStripSeparator();
+            this.s6 = new System.Windows.Forms.ToolStripSeparator();
             this.SceneryUndoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SceneryRedoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.s4 = new System.Windows.Forms.ToolStripSeparator();
+            this.s7 = new System.Windows.Forms.ToolStripSeparator();
             this.SceneryNormalizeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NameTracksMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SortTracksMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,7 +132,7 @@
             this.EditMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AlignMenuItem,
             this.NormalizeMenuItem,
-            this.toolStripMenuItem4,
+            this.s2,
             this.CommentSelectedMenuItem});
             resources.ApplyResources(this.EditMenu, "EditMenu");
             this.EditMenu.Name = "EditMenu";
@@ -146,10 +148,10 @@
             resources.ApplyResources(this.NormalizeMenuItem, "NormalizeMenuItem");
             this.NormalizeMenuItem.Click += new System.EventHandler(this.NormalizeMenuItem_Click);
             // 
-            // toolStripMenuItem4
+            // s2
             // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+            this.s2.Name = "s2";
+            resources.ApplyResources(this.s2, "s2");
             // 
             // CommentSelectedMenuItem
             // 
@@ -161,8 +163,10 @@
             // 
             this.ViewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.WordWrapMenuItem,
-            this.toolStripMenuItem3,
-            this.ColorSchemeMenu});
+            this.s3,
+            this.ColorSchemeMenu,
+            this.s4,
+            this.ClearMarkersMenuItem});
             this.ViewMenu.Name = "ViewMenu";
             resources.ApplyResources(this.ViewMenu, "ViewMenu");
             // 
@@ -172,15 +176,26 @@
             resources.ApplyResources(this.WordWrapMenuItem, "WordWrapMenuItem");
             this.WordWrapMenuItem.Click += new System.EventHandler(this.WordWrapMenuItem_Click);
             // 
-            // toolStripMenuItem3
+            // s3
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            this.s3.Name = "s3";
+            resources.ApplyResources(this.s3, "s3");
             // 
             // ColorSchemeMenu
             // 
             this.ColorSchemeMenu.Name = "ColorSchemeMenu";
             resources.ApplyResources(this.ColorSchemeMenu, "ColorSchemeMenu");
+            // 
+            // s4
+            // 
+            this.s4.Name = "s4";
+            resources.ApplyResources(this.s4, "s4");
+            // 
+            // ClearMarkersMenuItem
+            // 
+            this.ClearMarkersMenuItem.Name = "ClearMarkersMenuItem";
+            resources.ApplyResources(this.ClearMarkersMenuItem, "ClearMarkersMenuItem");
+            this.ClearMarkersMenuItem.Click += new System.EventHandler(this.ClearMarkersMenuItem_Click);
             // 
             // SceneryMenu
             // 
@@ -188,12 +203,12 @@
             this.findToolStripMenuItem,
             this.FindObjectMenuItem,
             this.FindReferencesMenuItem,
-            this.toolStripMenuItem1,
+            this.s5,
             this.RefactorMenuItem,
-            this.s3,
+            this.s6,
             this.SceneryUndoMenuItem,
             this.SceneryRedoMenuItem,
-            this.s4,
+            this.s7,
             this.SceneryNormalizeMenuItem,
             this.NameTracksMenuItem,
             this.SortTracksMenuItem});
@@ -216,10 +231,10 @@
             resources.ApplyResources(this.FindReferencesMenuItem, "FindReferencesMenuItem");
             this.FindReferencesMenuItem.Click += new System.EventHandler(this.FindReferencesMenuItem_Click);
             // 
-            // toolStripMenuItem1
+            // s5
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            this.s5.Name = "s5";
+            resources.ApplyResources(this.s5, "s5");
             // 
             // RefactorMenuItem
             // 
@@ -227,10 +242,10 @@
             resources.ApplyResources(this.RefactorMenuItem, "RefactorMenuItem");
             this.RefactorMenuItem.Click += new System.EventHandler(this.RefactorMenuItem_Click);
             // 
-            // s3
+            // s6
             // 
-            this.s3.Name = "s3";
-            resources.ApplyResources(this.s3, "s3");
+            this.s6.Name = "s6";
+            resources.ApplyResources(this.s6, "s6");
             // 
             // SceneryUndoMenuItem
             // 
@@ -244,10 +259,10 @@
             resources.ApplyResources(this.SceneryRedoMenuItem, "SceneryRedoMenuItem");
             this.SceneryRedoMenuItem.Click += new System.EventHandler(this.SceneryRedoMenuItem_Click);
             // 
-            // s4
+            // s7
             // 
-            this.s4.Name = "s4";
-            resources.ApplyResources(this.s4, "s4");
+            this.s7.Name = "s7";
+            resources.ApplyResources(this.s7, "s7");
             // 
             // SceneryNormalizeMenuItem
             // 
@@ -406,9 +421,9 @@
         private System.Windows.Forms.ToolStripMenuItem AlignMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SceneryMenu;
         private System.Windows.Forms.ToolStripMenuItem RefactorMenuItem;
-        private System.Windows.Forms.ToolStripSeparator s3;
+        private System.Windows.Forms.ToolStripSeparator s6;
         private System.Windows.Forms.ToolStripMenuItem SceneryUndoMenuItem;
-        private System.Windows.Forms.ToolStripSeparator s4;
+        private System.Windows.Forms.ToolStripSeparator s7;
         private System.Windows.Forms.ToolStripMenuItem SceneryNormalizeMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SortTracksMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NameTracksMenuItem;
@@ -416,7 +431,7 @@
         private System.Windows.Forms.ToolStripMenuItem SceneryRedoMenuItem;
         internal System.Windows.Forms.ToolStripMenuItem ViewMenu;
         internal System.Windows.Forms.ToolStripMenuItem WordWrapMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripSeparator s3;
         private System.Windows.Forms.ToolStripMenuItem ColorSchemeMenu;
         private System.Windows.Forms.StatusStrip MainStatusStrip;
         internal System.Windows.Forms.ToolStripStatusLabel StatusLabel;
@@ -429,13 +444,15 @@
         internal System.Windows.Forms.ToolStripStatusLabel LinesLabel;
         private System.Windows.Forms.ToolStripMenuItem SaveAllMenuItem;
         internal System.Windows.Forms.ToolStripStatusLabel SlashLabel;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripSeparator s2;
         private System.Windows.Forms.ToolStripMenuItem CommentSelectedMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FindObjectMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FindReferencesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator s5;
         internal WeifenLuo.WinFormsUI.Docking.DockPanel DockPanel;
+        private System.Windows.Forms.ToolStripSeparator s4;
+        private System.Windows.Forms.ToolStripMenuItem ClearMarkersMenuItem;
     }
 }
 

@@ -71,5 +71,17 @@
     <Setting Name="ProjectIcon" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">136, 209, 132</Value>
     </Setting>
+    <Setting Name="SearchResultBack" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">192, 255, 192</Value>
+    </Setting>
+    <Setting Name="SearchResultFrame" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 192, 0</Value>
+    </Setting>
+    <Setting Name="ReplaceResultBack" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">255, 192, 192</Value>
+    </Setting>
+    <Setting Name="ReplaceResultFrame" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Red</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

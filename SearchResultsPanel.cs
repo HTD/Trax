@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -129,11 +130,8 @@ namespace ScnEdit {
                 var file = ProjectFile.All.FirstOrDefault(i => i.Path == item.Path);
                 if (file != null) {
                     var editor = file.Editor;
-                    var start = new Place(item.Column - 1, item.Line - 1);
-                    var startPosition = editor.PlaceToPosition(start);
-                    var endPositon = startPosition + item.Fragment.Length;
-                    var end = editor.PositionToPlace(endPositon);
-                    editor.Selection = new Range(editor, start, end);
+                    var place = editor.MarkSearchResult(item.Column - 1, item.Line - 1, item.Fragment.Length);
+                    editor.Selection = new Range(editor, place, place);
                     editor.DoSelectionVisible();
                     editor.File.Container.Activate();
                 }

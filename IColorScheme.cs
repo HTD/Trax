@@ -30,5 +30,9 @@ namespace ScnEdit {
         Color ProjectText { get; set; }
         Color ProjectSelection { get; set; }
         Color ProjectIcon { get; set; }
+        Color SearchResultBack { get; set; }
+        Color SearchResultFrame { get; set; }
+        Color ReplaceResultBack { get; set; }
+        Color ReplaceResultFrame { get; set; }
     }
 }

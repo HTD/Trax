@@ -121,18 +121,6 @@ namespace ScnEdit.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutoDecoding {
-            get {
-                return ((bool)(this["AutoDecoding"]));
-            }
-            set {
-                this["AutoDecoding"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("scn")]
         public string SceneryMainExtension {
             get {
@@ -212,6 +200,18 @@ namespace ScnEdit.Properties {
             }
             set {
                 this["HtmlEncodingDefault"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoDecoding {
+            get {
+                return ((bool)(this["AutoDecoding"]));
+            }
+            set {
+                this["AutoDecoding"] = value;
             }
         }
     }

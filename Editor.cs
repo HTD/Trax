@@ -1,7 +1,9 @@
 ﻿using FastColoredTextBoxNS;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ScnEdit {
@@ -38,11 +40,10 @@ namespace ScnEdit {
             WordWrap = Properties.Settings.Default.WordWrap;
             if (File.Type == EditorFile.Types.Timetable) {
                 IsReplaceMode = true;
-                KeyDown += Editor_KeyDown;
+                //KeyDown += Editor_KeyDown;
             }
             SyntaxModule = new EditorSyntax(this);
             if (File.Type == EditorFile.Types.SceneryMain || File.Type == EditorFile.Types.SceneryPart) ToolTipNeeded += SyntaxModule.HintParser;
-            SelectionChanged += Editor_SelectionChanged;
             SelectionChangedDelayed += SyntaxModule.SameWordHighlight;
             IsReplaceModeChanged += Editor_IsReplaceModeChanged;
         }
@@ -57,11 +58,13 @@ namespace ScnEdit {
         public void LoadFromFile() {
             Application.OpenForms[0].BeginInvoke(new Action(() => {
                 Encoding = File.EncodingDefault;
-                if (!File.AutoDecoding || File.HasHtmlEncoding) OpenBindingFile(File.Path, Encoding);
+                var bindingMode = !File.AutoDecoding || File.HasHtmlEncoding;
+                if (bindingMode) OpenBindingFile(File.Path, Encoding);
                 else Text = (File as ProjectFile).Text;
                 if (File.Container != null) File.Container.UpdateText();
                 EndUpdate();
                 IsChanged = File.IsConverted;
+                if (!bindingMode) OnSyntaxHighlight(new TextChangedEventArgs(VisibleRange));
                 ClearUndo();
                 if (File.Role == EditorFile.Roles.Log) {
                     ReadOnly = true;
@@ -95,6 +98,44 @@ namespace ScnEdit {
                 if (SelectedText.Trim().StartsWith("//")) UncommentSelectedLines(); else CommentSelectedLines();
             } else CommentSelected();
             OnSyntaxHighlight(new TextChangedEventArgs(Selection));
+        }
+
+        private Place Mark(int start, int length, StyleIndex style) {
+            BeginUpdate();
+            var p = PositionToPlace(start);
+            var q = PositionToPlace(start + length);
+            Selection = new Range(this, p, p);
+            DoSelectionVisible();
+            var target = new Range(this, p, q);
+            target.SetStyle(style);
+            EndUpdate();
+            return p;
+        }
+
+        private Place Mark(int column, int line, int length, StyleIndex style) {
+            var position = PlaceToPosition(new Place(column, line));
+            return Mark(position, length, style);
+        }
+
+        public Place MarkSearchResult(int start, int length) {
+            return Mark(start, length, EditorSyntax.StyleMap.SearchResult);
+        }
+
+        public Place MarkSearchResult(int column, int line, int length) {
+            return Mark(column, line, length, EditorSyntax.StyleMap.SearchResult);
+        }
+
+        public Place MarkRelaceResult(int start, int length) {
+            return Mark(start, length, EditorSyntax.StyleMap.ReplaceResult);
+        }
+
+        public Place MarkRelaceResult(int column, int line, int length) {
+            return Mark(column, line, length, EditorSyntax.StyleMap.ReplaceResult);
+        }
+
+        public void ClearMarkers() {
+            ClearStyle(EditorSyntax.StyleMap.SearchResult);
+            ClearStyle(EditorSyntax.StyleMap.ReplaceResult);
         }
 
         #endregion
@@ -139,7 +180,9 @@ namespace ScnEdit {
 
         #region Event handlers
 
-        private void Editor_KeyDown(object sender, KeyEventArgs e) {
+        protected override void OnKeyDown(KeyEventArgs e) {
+            base.OnKeyDown(e);
+            if (e.KeyCode == Keys.Escape) ClearMarkers();
             if (IsReplaceMode) { // usable replace mode
                 if (e.Modifiers == Keys.None || e.Modifiers == Keys.Shift) {
                     var s = Selection;
@@ -178,24 +221,34 @@ namespace ScnEdit {
             }
         }
 
+        private void Editor_KeyDown(object sender, KeyEventArgs e) {
+            
+        }
+
         private void Editor_IsReplaceModeChanged(object sender, EventArgs e) {
             Status.Replace = IsReplaceMode;
         }
 
-        private void Editor_SelectionChanged(object sender, EventArgs e) {
-            Status.Line = Selection.Start.iLine + 1;
-            Status.Column = Selection.Start.iChar + 1;
-            Status.Selection = Selection.Text.Length;
+        public override void OnSelectionChangedDelayed() {
+            base.OnSelectionChangedDelayed();
+            BeginInvoke(new Action(() => {
+                Status.Line = Selection.Start.iLine + 1;
+                Status.Column = Selection.Start.iChar + 1;
+                Status.Selection = Selection.Text.Length;
+            }));
         }
 
-        public override void OnVisibleRangeChanged() {
-            base.OnVisibleRangeChanged();
-            Status.FileSize = Text.Length;
-            Status.FileLines = Range.End.iLine + 1;
+        public override void OnVisibleRangeChangedDelayed() {
+            base.OnVisibleRangeChangedDelayed();
+            BeginInvoke(new Action(() => {
+                Status.FileSize = Text.Length;
+                Status.FileLines = Range.End.iLine + 1;
+            }));
         }
 
-        public override void OnTextChanged(Range r) {
-            base.OnTextChanged(r);
+        public override void OnTextChangedDelayed(Range changedRange) {
+            base.OnSelectionChangedDelayed();
+            File.Container.UpdateText();
             if (File.Role == EditorFile.Roles.Log) {
                 Selection.Start = new Place(0, Range.End.iLine);
                 DoCaretVisible();
@@ -203,12 +256,35 @@ namespace ScnEdit {
         }
 
         protected override void OnPaint(PaintEventArgs e) { try { base.OnPaint(e); } catch (ArgumentException) { Zoom = Zoom; } }
+
         public override void Paste() {
             base.Paste();
             OnSyntaxHighlight(new TextChangedEventArgs(Selection));
         }
 
         #endregion
+
+    }
+
+    class TargetStyle : Style {
+
+        internal Color BackColor { get; set; }
+        internal Color FrameColor { get; set; }
+
+        internal TargetStyle(Color backColor, Color frameColor) {
+            BackColor = backColor;
+            FrameColor = frameColor;
+        }
+
+        public override void Draw(System.Drawing.Graphics gr, System.Drawing.Point position, Range range) {
+            var selection = new Rectangle(position, GetSizeOfRange(range));
+            var frame = selection;
+            var pen = new Pen(FrameColor) { DashStyle = System.Drawing.Drawing2D.DashStyle.Dash };
+            var brush = new SolidBrush(BackColor);
+            frame.Inflate(5, 2);
+            gr.DrawRectangle(pen, frame);
+            gr.FillRectangle(brush, frame);
+        }
 
     }
 

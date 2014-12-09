@@ -149,7 +149,11 @@ namespace ScnEdit {
             Editor = new Editor(this) { Font = Properties.Settings.Default.Font };
             if (ReadingFile != null) ReadingFile.Invoke(this, EventArgs.Empty);
             Application.DoEvents();
-            if (Role == Roles.Main && Main.SceneryPanel == null) Main.SceneryPanel = new ProjectPanel(this);
+            if (Role == Roles.Main) {
+                if (Main.SceneryPanel != null) Main.SceneryPanel.Dispose();
+                Reset();
+                Main.SceneryPanel = new ProjectPanel(this);
+            }
             Editor.LoadFromFile();
             (Main.WordWrapMenuItem as ToolStripMenuItem).Checked = Editor.WordWrap;
             Container = new EditorContainer(Editor, Main.DockPanel, dockState);

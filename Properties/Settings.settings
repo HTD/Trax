@@ -26,9 +26,6 @@
     <Setting Name="RainstedPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\MaSzyna\Rainsted.exe</Value>
     </Setting>
-    <Setting Name="AutoDecoding" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="SceneryMainExtension" Type="System.String" Scope="User">
       <Value Profile="(Default)">scn</Value>
     </Setting>
@@ -49,6 +46,9 @@
     </Setting>
     <Setting Name="HtmlEncodingDefault" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">65001</Value>
+    </Setting>
+    <Setting Name="AutoDecoding" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
