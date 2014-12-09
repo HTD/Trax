@@ -93,7 +93,7 @@ namespace ScnEdit {
         }
 
         public void UpdateText(bool force = false) {
-            if (force || Editor.IsChanged) Text = Name + ChangedIndicator;
+            if (force || Editor.IsChanged) Text = Editor.IsChanged ? (Name + ChangedIndicator) : Name;
             else Text = Name;
         }
 
