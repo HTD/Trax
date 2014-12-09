@@ -1,5 +1,6 @@
 ﻿using FastColoredTextBoxNS;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -15,6 +16,8 @@ namespace ScnEdit {
         internal EditorFile File;
         internal Encoding Encoding;
         internal EditorSyntax SyntaxModule;
+        internal bool FileBindingMode;
+        internal bool FullAsyncMode;
 
         #endregion
 
@@ -27,6 +30,7 @@ namespace ScnEdit {
         #region Methods
 
         public Editor(EditorFile file) {
+            MaxHistoryLength = 2048;
             DoubleBuffered = true;
             File = file;
             Dock = DockStyle.Fill;
@@ -38,11 +42,9 @@ namespace ScnEdit {
             }
             Encoding = Encoding.GetEncoding(Properties.Settings.Default.EncodingDefault);
             WordWrap = Properties.Settings.Default.WordWrap;
-            if (File.Type == EditorFile.Types.Timetable) {
-                IsReplaceMode = true;
-                //KeyDown += Editor_KeyDown;
-            }
-            SyntaxModule = new EditorSyntax(this);
+            if (File.Type == EditorFile.Types.Timetable) IsReplaceMode = true;
+            FullAsyncMode = true;
+            SyntaxModule = new EditorSyntax(this, FullAsyncMode);
             if (File.Type == EditorFile.Types.SceneryMain || File.Type == EditorFile.Types.SceneryPart) ToolTipNeeded += SyntaxModule.HintParser;
             SelectionChangedDelayed += SyntaxModule.SameWordHighlight;
             IsReplaceModeChanged += Editor_IsReplaceModeChanged;
@@ -58,13 +60,13 @@ namespace ScnEdit {
         public void LoadFromFile() {
             Application.OpenForms[0].BeginInvoke(new Action(() => {
                 Encoding = File.EncodingDefault;
-                var bindingMode = !File.AutoDecoding || File.HasHtmlEncoding;
-                if (bindingMode) OpenBindingFile(File.Path, Encoding);
+                FileBindingMode = !File.AutoDecoding || File.HasHtmlEncoding;
+                if (FileBindingMode) OpenBindingFile(File.Path, Encoding);
                 else Text = (File as ProjectFile).Text;
                 if (File.Container != null) File.Container.UpdateText();
                 EndUpdate();
                 IsChanged = File.IsConverted;
-                if (!bindingMode) OnSyntaxHighlight(new TextChangedEventArgs(VisibleRange));
+                if (!FileBindingMode) OnSyntaxHighlight(new TextChangedEventArgs(VisibleRange));
                 ClearUndo();
                 if (File.Role == EditorFile.Roles.Log) {
                     ReadOnly = true;
@@ -221,29 +223,49 @@ namespace ScnEdit {
             }
         }
 
-        private void Editor_KeyDown(object sender, KeyEventArgs e) {
-            
-        }
-
         private void Editor_IsReplaceModeChanged(object sender, EventArgs e) {
             Status.Replace = IsReplaceMode;
         }
 
         public override void OnSelectionChangedDelayed() {
             base.OnSelectionChangedDelayed();
-            BeginInvoke(new Action(() => {
+            var w = new BackgroundWorker();
+            w.DoWork += BackgroundStatusUpdate;
+            w.RunWorkerCompleted += BackgroundStatusUpdateDone;
+            w.RunWorkerAsync();
+        }
+
+        void BackgroundStatusUpdate(object sender, DoWorkEventArgs e) {
+            if (InvokeRequired) BeginInvoke(new MethodInvoker(() => { BackgroundStatusUpdate(sender, e); }));
+            else {
                 Status.Line = Selection.Start.iLine + 1;
                 Status.Column = Selection.Start.iChar + 1;
                 Status.Selection = Selection.Text.Length;
-            }));
+            }
+        }
+
+        void BackgroundStatusUpdateDone(object sender, RunWorkerCompletedEventArgs e) {
+            (sender as BackgroundWorker).Dispose();
         }
 
         public override void OnVisibleRangeChangedDelayed() {
             base.OnVisibleRangeChangedDelayed();
-            BeginInvoke(new Action(() => {
+            var w = new BackgroundWorker();
+            w.DoWork += BackgroundStatusUpdate1;
+            w.RunWorkerCompleted += BackgroundStatusUpdate1Done;
+            w.RunWorkerAsync();
+        }
+
+        void BackgroundStatusUpdate1(object sender, DoWorkEventArgs e) {
+            if (InvokeRequired) BeginInvoke(new MethodInvoker(() => { BackgroundStatusUpdate1(sender, e); }));
+            else {
                 Status.FileSize = Text.Length;
                 Status.FileLines = Range.End.iLine + 1;
-            }));
+            }
+        }
+
+        void BackgroundStatusUpdate1Done(object sender, RunWorkerCompletedEventArgs e) {
+            (sender as BackgroundWorker).Dispose();
         }
 
         public override void OnTextChangedDelayed(Range changedRange) {

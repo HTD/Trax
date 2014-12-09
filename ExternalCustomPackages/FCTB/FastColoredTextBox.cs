@@ -1245,6 +1245,14 @@ namespace FastColoredTextBoxNS
         }
 
         /// <summary>
+        /// Maximum number of undo leveles, -1 for unlimited (can crash the app and system though)
+        /// </summary>
+        [SettingsBindable(true)]
+        [DefaultValue(2048)]
+        [Description("Maximum number of undo leveles, -1 for unlimited (can crash the app and system though).")]
+        public int MaxHistoryLength { get; set; }
+
+        /// <summary>
         /// Gets or sets char and styleId for given place
         /// This property does not fire OnTextChanged event
         /// </summary>
@@ -2138,6 +2146,7 @@ namespace FastColoredTextBoxNS
                 lines.InsertLine(0, lines.CreateLine());
             selection = new Range(this) { Start = new Place(0, 0) };
             //default settings
+            MaxHistoryLength = 2048;
             Cursor = Cursors.IBeam;
             BackColor = Color.White;
             LineNumberColor = Color.Teal;

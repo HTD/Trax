@@ -48,7 +48,7 @@
       <Value Profile="(Default)">65001</Value>
     </Setting>
     <Setting Name="AutoDecoding" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

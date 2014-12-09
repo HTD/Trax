@@ -67,10 +67,9 @@ namespace FastColoredTextBoxNS
         /// </summary>
         public virtual string Text
         {
-            get{
+            get {
                 StringBuilder sb = new StringBuilder(Count);
-                foreach(Char c in this)
-                    sb.Append(c.c);
+                for (int i = 0, ct = this.Count; i < ct; i++) sb.Append(this[i].c);
                 return sb.ToString();
             }
         }

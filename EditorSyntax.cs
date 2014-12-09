@@ -1,6 +1,7 @@
 ﻿using FastColoredTextBoxNS;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -119,8 +120,11 @@ namespace ScnEdit {
 
         private Editor E;
 
-        public EditorSyntax(Editor e) {
+        internal bool FullAsyncMode;
+
+        internal EditorSyntax(Editor e, bool fullAsyncMode = false) {
             E = e;
+            FullAsyncMode = fullAsyncMode;
             switch (E.File.Type) {
                 case EditorFile.Types.HTML:
                     E.Language = Language.HTML;
@@ -152,6 +156,7 @@ namespace ScnEdit {
             E.SyntaxHighlighter.CommentTagStyle = Styles.Comment;
             E.SyntaxHighlighter.FunctionsStyle = Styles.Comment;
             E.HighlightingRangeType = HighlightingRangeType.VisibleRange;
+            if (!E.FileBindingMode) GetStyles();
         }
 
         public void GetStyles(bool reload = false) {
@@ -175,34 +180,52 @@ namespace ScnEdit {
         }
 
         public void HighlightSyntax(Range range) {
-            GetStyles();
+            var w = new BackgroundWorker();
+            w.DoWork += BackgroundHighlighting;
+            w.RunWorkerCompleted += BackgroundHighlightingDone;
+            w.RunWorkerAsync(range);
+        }
+
+        static object stylesLock = new object();
+
+        private void BackgroundHighlighting(object sender, DoWorkEventArgs e) {
+            var range = e.Argument as Range;
             var type = E.File.Type;
-            switch (type) {
-                case ScnEdit.EditorFile.Types.SceneryMain:
-                case ScnEdit.EditorFile.Types.SceneryPart:
-                    range.ClearStyle(
-                        StyleIndex.Style0 | StyleIndex.Style1 | StyleIndex.Style2 | StyleIndex.Style3 |
-                        StyleIndex.Style4 | StyleIndex.Style5 | StyleIndex.Style6 | StyleIndex.Style7 |
-                        StyleIndex.Style8 | StyleIndex.Style9 | StyleIndex.Style10 | StyleIndex.Style11
-                    );
-                    range.SetStyle(StyleMap.Special, new ScnSyntax.Special());
-                    range.SetStyle(StyleMap.Command, new ScnSyntax.Command());
-                    range.SetStyle(StyleMap.Comment, new ScnSyntax.Comment());
-                    range.SetStyle(StyleMap.Keyword0, new ScnSyntax.Keyword1());
-                    range.SetStyle(StyleMap.Keyword1, new ScnSyntax.Keyword2());
-                    range.SetStyle(StyleMap.Keyword2, new ScnSyntax.Keyword3());
-                    range.SetStyle(StyleMap.Keyword3, new ScnSyntax.Keyword4());
-                    range.SetStyle(StyleMap.Keyword4, new ScnSyntax.Keyword5());
-                    range.SetStyle(StyleMap.Time, new ScnSyntax.Time());
-                    range.SetStyle(StyleMap.Path, new ScnSyntax.Path());
-                    range.SetStyle(StyleMap.Number, new ScnSyntax.Number());
-                    break;
-                case ScnEdit.EditorFile.Types.Timetable:
-                    range.ClearStyle(StyleMap.Comment | StyleMap.Time);
-                    range.SetStyle(StyleMap.Comment, new ScnSyntax.TimetableFrame());
-                    range.SetStyle(StyleMap.Time, new ScnSyntax.TimetableTime());
-                    break;
+            if (!FullAsyncMode && range.tb.InvokeRequired) { range.tb.Invoke(new Action(() => { BackgroundHighlighting(sender, e); })); }
+            else {
+                if (E.FileBindingMode) lock (stylesLock) GetStyles();
+                switch (type) {
+                    case ScnEdit.EditorFile.Types.SceneryMain:
+                    case ScnEdit.EditorFile.Types.SceneryPart:
+                        range.ClearStyle(
+                            StyleIndex.Style0 | StyleIndex.Style1 | StyleIndex.Style2 | StyleIndex.Style3 |
+                            StyleIndex.Style4 | StyleIndex.Style5 | StyleIndex.Style6 | StyleIndex.Style7 |
+                            StyleIndex.Style8 | StyleIndex.Style9 | StyleIndex.Style10 | StyleIndex.Style11
+                        );
+                        range.SetStyle(StyleMap.Special, new ScnSyntax.Special());
+                        range.SetStyle(StyleMap.Command, new ScnSyntax.Command());
+                        range.SetStyle(StyleMap.Comment, new ScnSyntax.Comment());
+                        range.SetStyle(StyleMap.Keyword0, new ScnSyntax.Keyword1());
+                        range.SetStyle(StyleMap.Keyword1, new ScnSyntax.Keyword2());
+                        range.SetStyle(StyleMap.Keyword2, new ScnSyntax.Keyword3());
+                        range.SetStyle(StyleMap.Keyword3, new ScnSyntax.Keyword4());
+                        range.SetStyle(StyleMap.Keyword4, new ScnSyntax.Keyword5());
+                        range.SetStyle(StyleMap.Time, new ScnSyntax.Time());
+                        range.SetStyle(StyleMap.Path, new ScnSyntax.Path());
+                        range.SetStyle(StyleMap.Number, new ScnSyntax.Number());
+                        break;
+                    case ScnEdit.EditorFile.Types.Timetable:
+                        range.ClearStyle(StyleMap.Comment | StyleMap.Time);
+                        range.SetStyle(StyleMap.Comment, new ScnSyntax.TimetableFrame());
+                        range.SetStyle(StyleMap.Time, new ScnSyntax.TimetableTime());
+                        break;
+                }
             }
+        }
+
+        void BackgroundHighlightingDone(object sender, RunWorkerCompletedEventArgs e) {
+            var worker = sender as BackgroundWorker;
+            worker.Dispose();
         }
 
         public void SameWordHighlight(object sender, EventArgs e) {
