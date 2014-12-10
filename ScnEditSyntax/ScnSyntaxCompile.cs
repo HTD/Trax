@@ -50,7 +50,7 @@ namespace ScnSyntax {
                 new PCR("FirstActiveDynamic", "(?<=node>P[2])%(?= dynamic>P[4](?:headdriver|reardriver))", PcrOptions.Precompiled),
                 new PCR("Include", "(?<=include )%(?= .*?end)", PcrOptions.Precompiled),
                 new PCR("IncludeSimple", "(?<=include )%(?= end)", PcrOptions.Precompiled),
-                new PCR("Timetable", @"(?<=trainset )%|(?<=timetable\:)%", PcrOptions.Precompiled),
+                new PCR("Timetable", @"(?<=trainset )%|(?<=Timetable\:)%", PcrOptions.Precompiled, RegexOptions.IgnoreCase),
                 new PCR("CommandInclude", @"(?<=// *\$f +[a-z]{2} +)[^ ]+", RegexOptions.IgnoreCase),
                 new PCR("TimetableFrame", @"[\[\]\|_]|(?<= {4,})[1-2]|(?<=\-)[1-2](?=\-)|(?<=_)[1-2](?=_)|\-{2,}"),
                 new PCR("TimetableTime", @"(?<=[1-2] {1,3})\d?\d\.\d\d(?= {1,3}|)"),
