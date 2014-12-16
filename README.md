@@ -23,5 +23,5 @@ Features list and code coverage:
 - Debug session             [*]
 - Log file analysis         [-]
 - Timetable helpers         [-]
-- Track sorting             [-]
-- Automatic track naming    [-]
+- Track sorting             [+]
+- Automatic track naming    [+]
