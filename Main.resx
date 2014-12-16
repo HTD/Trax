@@ -253,7 +253,7 @@
     <value>Ctrl+Shift+F</value>
   </data>
   <data name="findToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="findToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Find...</value>
@@ -262,7 +262,7 @@
     <value>F11</value>
   </data>
   <data name="FindObjectMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="FindObjectMenuItem.Text" xml:space="preserve">
     <value>Find &amp;object...</value>
@@ -271,31 +271,31 @@
     <value>F12</value>
   </data>
   <data name="FindReferencesMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="FindReferencesMenuItem.Text" xml:space="preserve">
     <value>Find reference&amp;s</value>
   </data>
   <data name="s5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 6</value>
+    <value>210, 6</value>
   </data>
   <data name="RefactorMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>F2</value>
   </data>
   <data name="RefactorMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="RefactorMenuItem.Text" xml:space="preserve">
     <value>&amp;Refactor...</value>
   </data>
   <data name="s6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 6</value>
+    <value>210, 6</value>
   </data>
   <data name="SceneryUndoMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+U</value>
   </data>
   <data name="SceneryUndoMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="SceneryUndoMenuItem.Text" xml:space="preserve">
     <value>&amp;Undo</value>
@@ -304,46 +304,31 @@
     <value>Ctrl+Shift+Y</value>
   </data>
   <data name="SceneryRedoMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="SceneryRedoMenuItem.Text" xml:space="preserve">
     <value>R&amp;edo</value>
   </data>
   <data name="s7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 6</value>
+    <value>210, 6</value>
   </data>
   <data name="SceneryNormalizeMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+N</value>
   </data>
   <data name="SceneryNormalizeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="SceneryNormalizeMenuItem.Text" xml:space="preserve">
     <value>&amp;Normalize</value>
   </data>
-  <data name="NameTracksMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="NameTracksMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+Alt+Shift+T</value>
+    <value>Ctrl+Shift+T</value>
   </data>
   <data name="NameTracksMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="NameTracksMenuItem.Text" xml:space="preserve">
     <value>Name tr&amp;acks</value>
-  </data>
-  <data name="SortTracksMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="SortTracksMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+Shift+T</value>
-  </data>
-  <data name="SortTracksMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
-  </data>
-  <data name="SortTracksMenuItem.Text" xml:space="preserve">
-    <value>Sort &amp;tracks</value>
   </data>
   <data name="SceneryMenu.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2449,12 +2434,6 @@
     <value>NameTracksMenuItem</value>
   </data>
   <data name="&gt;&gt;NameTracksMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SortTracksMenuItem.Name" xml:space="preserve">
-    <value>SortTracksMenuItem</value>
-  </data>
-  <data name="&gt;&gt;SortTracksMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;DebugMenu.Name" xml:space="preserve">

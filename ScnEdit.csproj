@@ -74,6 +74,8 @@
     <Compile Include="EditorContainer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ScnNumbers.cs" />
+    <Compile Include="ScnPoints.cs" />
     <Compile Include="IColorScheme.cs" />
     <Compile Include="ColorSchemes\Colors_Bright_Original.Designer.cs">
       <DependentUpon>Colors_Bright_Original.settings</DependentUpon>
@@ -127,6 +129,7 @@
       <DependentUpon>Styles_Default.settings</DependentUpon>
     </Compile>
     <Compile Include="EditorSyntax.cs" />
+    <Compile Include="ScnTracks.cs" />
     <Compile Include="VS2012ColorTable.cs" />
     <Compile Include="VS2012ToolStripExtender.cs">
       <SubType>Component</SubType>

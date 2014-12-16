@@ -213,6 +213,17 @@ namespace ScnEdit {
             CurrentEditor.ClearMarkers();
         }
 
+        private void NameTracksMenuItem_Click(object sender, EventArgs e) {
+            var ed = CurrentEditor;
+            if (ed != null) {
+                var tracks = ScnTracks.Parse(ed.Text);
+                tracks.SortAddNames();
+                ed.BeginAutoUndo();
+                ed.Text = tracks.AsText();
+                ed.EndAutoUndo();
+            }
+        }
+
     }
 
 

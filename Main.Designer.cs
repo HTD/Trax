@@ -54,7 +54,6 @@
             this.s7 = new System.Windows.Forms.ToolStripSeparator();
             this.SceneryNormalizeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NameTracksMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SortTracksMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DebugMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.StartDebuggingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StartWithoutDebuggingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -210,8 +209,7 @@
             this.SceneryRedoMenuItem,
             this.s7,
             this.SceneryNormalizeMenuItem,
-            this.NameTracksMenuItem,
-            this.SortTracksMenuItem});
+            this.NameTracksMenuItem});
             resources.ApplyResources(this.SceneryMenu, "SceneryMenu");
             this.SceneryMenu.Name = "SceneryMenu";
             // 
@@ -272,13 +270,9 @@
             // 
             // NameTracksMenuItem
             // 
-            resources.ApplyResources(this.NameTracksMenuItem, "NameTracksMenuItem");
             this.NameTracksMenuItem.Name = "NameTracksMenuItem";
-            // 
-            // SortTracksMenuItem
-            // 
-            resources.ApplyResources(this.SortTracksMenuItem, "SortTracksMenuItem");
-            this.SortTracksMenuItem.Name = "SortTracksMenuItem";
+            resources.ApplyResources(this.NameTracksMenuItem, "NameTracksMenuItem");
+            this.NameTracksMenuItem.Click += new System.EventHandler(this.NameTracksMenuItem_Click);
             // 
             // DebugMenu
             // 
@@ -425,7 +419,6 @@
         private System.Windows.Forms.ToolStripMenuItem SceneryUndoMenuItem;
         private System.Windows.Forms.ToolStripSeparator s7;
         private System.Windows.Forms.ToolStripMenuItem SceneryNormalizeMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem SortTracksMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NameTracksMenuItem;
         private System.Windows.Forms.ToolStripMenuItem StartWithoutDebuggingMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SceneryRedoMenuItem;
