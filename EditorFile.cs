@@ -145,7 +145,12 @@ namespace ScnEdit {
         #region Private methods
 
         private void Open(DockState dockState = DockState.Document) {
-            if (All.Exists(i => i.Path == this.Path)) return;
+            var existing = All.FirstOrDefault(i => i.Path == this.Path);
+            if (existing != null) {
+                existing.Container.Activate();
+                return;
+            }
+            
             Editor = new Editor(this) { Font = Properties.Settings.Default.Font };
             if (ReadingFile != null) ReadingFile.Invoke(this, EventArgs.Empty);
             Application.DoEvents();

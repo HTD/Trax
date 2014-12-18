@@ -163,7 +163,7 @@
   <data name="NormalizeMenuItem.Text" xml:space="preserve">
     <value>&amp;Normalizacja</value>
   </data>
-  <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="s2.Size" type="System.Drawing.Size, System.Drawing">
     <value>211, 6</value>
   </data>
   <data name="CommentSelectedMenuItem.Size" type="System.Drawing.Size, System.Drawing">
@@ -179,19 +179,28 @@
     <value>&amp;Edycja</value>
   </data>
   <data name="WordWrapMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="WordWrapMenuItem.Text" xml:space="preserve">
     <value>&amp;Zawijanie linii</value>
   </data>
-  <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 6</value>
+  <data name="s3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 6</value>
   </data>
   <data name="ColorSchemeMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="ColorSchemeMenu.Text" xml:space="preserve">
     <value>&amp;Schemat kolorów...</value>
+  </data>
+  <data name="s4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 6</value>
+  </data>
+  <data name="ClearMarkersMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="ClearMarkersMenuItem.Text" xml:space="preserve">
+    <value>&amp;Wyczyść znaczniki</value>
   </data>
   <data name="ViewMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 20</value>
@@ -200,67 +209,61 @@
     <value>&amp;Widok</value>
   </data>
   <data name="findToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
+    <value>238, 22</value>
   </data>
   <data name="findToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Znajdź...</value>
   </data>
   <data name="FindObjectMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
+    <value>238, 22</value>
   </data>
   <data name="FindObjectMenuItem.Text" xml:space="preserve">
     <value>Znajdź &amp;obiekt...</value>
   </data>
   <data name="FindReferencesMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
+    <value>238, 22</value>
   </data>
   <data name="FindReferencesMenuItem.Text" xml:space="preserve">
     <value>Znajdż o&amp;dniesienia</value>
   </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 6</value>
+  <data name="s5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 6</value>
   </data>
   <data name="RefactorMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
+    <value>238, 22</value>
   </data>
   <data name="RefactorMenuItem.Text" xml:space="preserve">
     <value>Zamiana</value>
   </data>
-  <data name="s3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 6</value>
+  <data name="s6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 6</value>
   </data>
   <data name="SceneryUndoMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
+    <value>238, 22</value>
   </data>
   <data name="SceneryUndoMenuItem.Text" xml:space="preserve">
     <value>&amp;Cofnij</value>
   </data>
   <data name="SceneryRedoMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
+    <value>238, 22</value>
   </data>
   <data name="SceneryRedoMenuItem.Text" xml:space="preserve">
     <value>&amp;Przywróć</value>
   </data>
-  <data name="s4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 6</value>
+  <data name="s7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 6</value>
   </data>
   <data name="SceneryNormalizeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
+    <value>238, 22</value>
   </data>
   <data name="SceneryNormalizeMenuItem.Text" xml:space="preserve">
     <value>&amp;Normalizuj</value>
   </data>
   <data name="NameTracksMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
+    <value>238, 22</value>
   </data>
   <data name="NameTracksMenuItem.Text" xml:space="preserve">
     <value>Nazywanie &amp;torów</value>
-  </data>
-  <data name="SortTracksMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
-  </data>
-  <data name="SortTracksMenuItem.Text" xml:space="preserve">
-    <value>&amp;Sortowanie torów</value>
   </data>
   <data name="SceneryMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 20</value>

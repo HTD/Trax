@@ -44,6 +44,7 @@ namespace ScnEdit {
             StatusLabel.Text = Messages.Ready;
             if (args.Length > 0) FileToOpen = args[0];
             ResumeLayout();
+            
         }
 
         private void Main_Load(object sender, EventArgs e) {
@@ -215,13 +216,23 @@ namespace ScnEdit {
 
         private void NameTracksMenuItem_Click(object sender, EventArgs e) {
             var ed = CurrentEditor;
-            if (ed != null) {
-                var tracks = ScnTracks.Parse(ed.Text);
-                tracks.SortAddNames();
-                ed.BeginAutoUndo();
-                ed.Text = tracks.AsText();
-                ed.EndAutoUndo();
+            if (ed != null && !String.IsNullOrWhiteSpace(ed.Text)) {
+                Status.Text = Messages.ProcessingTracks;
+                Application.DoEvents();
+                var tracks = ScnTracks.Parse(ed.Text, ed.File.Path);
+                if (tracks.Count > 0) {
+                    tracks.SortAddNames();
+                    ed.BeginAutoUndo();
+                    ed.Text = tracks.ReplaceText();
+                    ed.EndAutoUndo();
+                }
+                Status.Text = Messages.Ready;
             }
+        }
+
+        private void DockPanel_ActiveDocumentChanged(object sender, EventArgs e) {
+            var ed = CurrentEditor;
+            if (ed != null) ed.OnVisibleRangeChangedDelayed();
         }
 
     }

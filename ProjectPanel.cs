@@ -53,6 +53,7 @@ namespace ScnEdit {
         void AddReference(ProjectFile reference, TreeNode node = null) {
             var refNode = node.Nodes.Add(reference.FileName, reference.FileName, 1);
             refNode.Tag = reference;
+            refNode.ToolTipText = reference.Path;
             if (reference.References != null && reference.References.Count > 0) {
                 reference.References.ForEach(i => AddReference(i, refNode));
                 refNode.Expand();
@@ -144,6 +145,7 @@ namespace ScnEdit {
         #region Initialization and drawing
 
         public ProjectTree() {
+            ShowNodeToolTips = true;
             DrawMode = TreeViewDrawMode.OwnerDrawAll;
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             ForeColor = SystemColors.WindowText;

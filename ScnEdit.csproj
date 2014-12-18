@@ -74,6 +74,7 @@
     <Compile Include="EditorContainer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ScnBezier.cs" />
     <Compile Include="ScnNumbers.cs" />
     <Compile Include="ScnPoints.cs" />
     <Compile Include="IColorScheme.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="ProjectPanel.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ScnVectors.cs" />
     <Compile Include="SearchResultsPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +147,9 @@
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.sq-AL.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Messages.pl-PL.resx">

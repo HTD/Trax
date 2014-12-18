@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FastColoredTextBoxNS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -221,7 +222,8 @@ namespace ScnEdit {
         }
 
         private void GetReferences(Roles role, Regex r, string[] ignore = null, string[] allow = null, string defaultExt = null) {
-            foreach (Match m in r.Matches(Text)) {
+            var input = !Role.HasFlag(Roles.Description) ? new ScnSyntax.Comment().Replace(Text, "") : Text;
+            foreach (Match m in r.Matches(input)) {
                 if (ignore != null && ignore.Contains(m.Value)) continue;
                 var path = ((role == Roles.Description ? BaseDirectory : SceneryDirectory) + "\\" + m.Value).Replace('/', '\\');
                 var ext = System.IO.Path.GetExtension(m.Value);
@@ -238,6 +240,22 @@ namespace ScnEdit {
         }
 
         #endregion
+
+    }
+
+    internal class ProjectLocation {
+        
+        public string Path;
+        public int Index;
+        public int Length;
+
+        public static ProjectLocation FromRange(Range r) {
+            var e = r.tb as Editor;
+            var p = e.File.Path;
+            var i = e.PlaceToPosition(r.Start);
+            var l = e.PlaceToPosition(r.End) - i;
+            return new ProjectLocation() { Path = p, Index = i, Length = l };
+        }
 
     }
 

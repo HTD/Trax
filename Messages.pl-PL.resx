@@ -175,4 +175,7 @@ czy chcesz go najpierw zapisać?</value>
   <data name="SearchResults" xml:space="preserve">
     <value>Wyniki wyszukiwania</value>
   </data>
+  <data name="ProcessingTracks" xml:space="preserve">
+    <value>Przetwarzanie torów...</value>
+  </data>
 </root>

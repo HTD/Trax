@@ -259,6 +259,7 @@ namespace ScnEdit {
         void BackgroundStatusUpdate1(object sender, DoWorkEventArgs e) {
             if (InvokeRequired) BeginInvoke(new MethodInvoker(() => { BackgroundStatusUpdate1(sender, e); }));
             else {
+                Status.FileName = File.FileName;
                 Status.FileSize = Text.Length;
                 Status.FileLines = Range.End.iLine + 1;
             }

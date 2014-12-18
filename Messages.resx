@@ -175,4 +175,7 @@ do you wish to save it first?</value>
   <data name="SearchResults" xml:space="preserve">
     <value>Search Results</value>
   </data>
+  <data name="ProcessingTracks" xml:space="preserve">
+    <value>Processing tracks...</value>
+  </data>
 </root>

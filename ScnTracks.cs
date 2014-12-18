@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ScnEdit {
@@ -7,19 +8,19 @@ namespace ScnEdit {
     /// <summary>
     /// Scenery track definition
     /// </summary>
-    class ScnTrack {
+    class ScnTrack : ScnVectorObject<ScnTrack> {
         
         #region Fields
         
         // definition
         public string Name;
-        public string Type;
+        public string TrackType;
         public double TrackLength;
         public double TrackWidth;
         public double Friction;
         public double SoundDist;
-        public Int32 Quality;
-        public byte DamageFlag;
+        public int Quality;
+        public int DamageFlag;
         public string Environment;
         public string Visibility;
         // optional for visible
@@ -50,8 +51,12 @@ namespace ScnEdit {
         public string Event0;
         public string Event1;
         public string Event2;
+        public string Eventall0;
+        public string Eventall1;
+        public string Eventall2;
         public string Isolated;
         public string Extras;
+        // editor specific
         public string IncludesBefore;
         public string IncludesAfter;
 
@@ -95,19 +100,18 @@ namespace ScnEdit {
         }
 
         /// <summary>
-        /// Returns coarse approximated length of the track based on specified length or points distance
+        /// Calculates track length
         /// </summary>
+        /// <param name="n">1 for alternative track in switch</param>
         /// <returns></returns>
-        public int GetCoarseLength() {
-            int length = 0;
-            if (TrackLength < 0.01) {
-                double length12 = Point1.DistanceTo(Point2);
-                if (Point3 != null && Point4 != null) {
-                    var length34 = Point3.DistanceTo(Point4);
-                    length = (int)Math.Round(Math.Sqrt(length12 * length34));
-                } else length = (int)Math.Round(length12);
-            } else length = (int)Math.Round(TrackLength);
-            return length;
+        public double GetLength(int n) {
+            if (n == 0) {
+                if (CVec1 == null || CVec2 == null || (CVec1.Zero && CVec2.Zero)) return Point1.DistanceTo(Point2);
+                return new ScnBezier { A = Point1, B = Point1 + CVec1, C = Point2 + CVec2, D = Point2 }.Length();
+            } else {
+                if (CVec3 == null || CVec4 == null || (CVec3.Zero && CVec4.Zero)) return Point3.DistanceTo(Point4);
+                return new ScnBezier { A = Point3, B = Point3 + CVec3, C = Point4 + CVec4, D = Point4 }.Length();
+            }
         }
 
         /// <summary>
@@ -115,7 +119,7 @@ namespace ScnEdit {
         /// </summary>
         /// <param name="match"></param>
         /// <returns></returns>
-        public static ScnTrack Parse(Match match, ScnTrackIncludes includes = ScnTrackIncludes.Before) {
+        public static ScnTrack Parse(Match match, string path = null, ScnTrackIncludes includes = ScnTrackIncludes.Before) {
             var track = new ScnTrack();
             int g = 1;
             if (includes == ScnTrackIncludes.Before) track.IncludesBefore = match.Groups[g++].Value;
@@ -126,13 +130,13 @@ namespace ScnEdit {
             if (track.IncludesAfter != null && track.IncludesAfter.Length < 1) track.IncludesAfter = null;
             var f = System.Globalization.CultureInfo.InvariantCulture.NumberFormat;
             int i = 0;
-            track.Type = c[i++].Value;
+            track.TrackType = c[i++].Value;
             track.TrackLength = Double.Parse(c[i++].Value, f);
             track.TrackWidth = Double.Parse(c[i++].Value, f);
             track.Friction = Double.Parse(c[i++].Value, f);
             track.SoundDist = Double.Parse(c[i++].Value, f);
             track.Quality = Int32.Parse(c[i++].Value, f);
-            track.DamageFlag = Byte.Parse(c[i++].Value, f);
+            track.DamageFlag = Int32.Parse(c[i++].Value, f);
             track.Environment = c[i++].Value;
             track.Visibility = c[i++].Value;
             if (track.Visibility.ToLowerInvariant() == "vis") {
@@ -150,7 +154,7 @@ namespace ScnEdit {
             track.Point2 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
             track.Roll2 = Double.Parse(c[i++].Value, f);
             track.Radius1 = Double.Parse(c[i++].Value, f);
-            if (track.Type.ToLowerInvariant() == "switch") {
+            if (track.TrackType.ToLowerInvariant() == "switch") {
                 track.Point3 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
                 track.Roll3 = Double.Parse(c[i++].Value, f);
                 track.CVec3 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
@@ -166,11 +170,23 @@ namespace ScnEdit {
                     case "event0": track.Event0 = c[++i].Value; break;
                     case "event1": track.Event1 = c[++i].Value; break;
                     case "event2": track.Event2 = c[++i].Value; break;
+                    case "eventall0": track.Eventall0 = c[++i].Value; break;
+                    case "eventall1": track.Eventall1 = c[++i].Value; break;
+                    case "eventall2": track.Eventall2 = c[++i].Value; break;
                     case "isolated": track.Isolated = c[++i].Value; break;
                     default: extras.Add(c[i].Value); break;
                 }
             }
             if (extras.Count > 0) track.Extras = String.Join(" ", extras);
+            track.ScnType = "track";
+            track.SourcePath = path;
+            track.Vectors =
+                (track.Point3 == null && track.Point4 != null)
+                ? new ScnVector[] { new ScnVector(track.Point1, track.Point2) }
+                : new ScnVector[] { new ScnVector(track.Point1, track.Point2), new ScnVector(track.Point3, track.Point4) };
+            track.SourceIndex = match.Index;
+            track.SourceLength = match.Length;
+            track.TrackLength = track.GetLength(0);
             return track;
         }
 
@@ -192,7 +208,7 @@ namespace ScnEdit {
                 String.Format(
                     System.Globalization.CultureInfo.InvariantCulture,
                     "node -1 0 {0} track {1} {2} {3} {4} {5} {6}",
-                    Name, Type, ScnNumbers.ToString(new[] { TrackLength, TrackWidth, Friction, SoundDist }),
+                    Name, TrackType, ScnNumbers.ToString(new[] { TrackLength, TrackWidth, Friction, SoundDist }),
                     Quality, DamageFlag, Environment.ToLowerInvariant(), Visibility.ToLowerInvariant()
                 );
             text += basePart;
@@ -231,6 +247,9 @@ namespace ScnEdit {
             if (Event0 != null) text += String.Format("\r\nevent0 {0}", Event0);
             if (Event1 != null) text += String.Format("\r\nevent1 {0}", Event1);
             if (Event2 != null) text += String.Format("\r\nevent2 {0}", Event2);
+            if (Eventall0 != null) text += String.Format("\r\neventall0 {0}", Eventall0);
+            if (Eventall1 != null) text += String.Format("\r\neventall0 {0}", Eventall1);
+            if (Eventall2 != null) text += String.Format("\r\neventall0 {0}", Eventall2);
             if (Extras != null) text += "\r\n" + Extras;
             text += "\r\nendtrack";
             if (IncludesAfter != null) text += "\r\n" + IncludesAfter;
@@ -242,70 +261,153 @@ namespace ScnEdit {
     /// <summary>
     /// Scenery track list
     /// </summary>
-    class ScnTracks : List<ScnTrack> {
+    class ScnTracks : ScnVectorObjects<ScnTrack> {
+
+        #region Private
 
         #region Regular expressions
 
         private const string PatComment = @"\s*//.*$";
+        private const string PatXvs = @"(?:\r?\n){3,}";
         private const string PatIncludeBefore = @"(?:(include[^\r\n]+end)[ \t;]*\r?\n)?";
         private const string PatIncludeAfter = @"(?:\r?\n[ \t;]*(include[^\r\n]+end))?";
-        private const string PatTrackBlock = @"\s*node.*?track.*?endtrack\s*";
+        private const string PatTrackBlock = @"node.*?track.*?endtrack";
         private const string PatTrackDef = @"node[\s;]+[^\s;]+[\s;]+[^\s;]+[\s;]+([^\s;]+)[\s;]+track[\s;]+(?:([^\s;]+)+[\s;]+)+?endtrack";
         private static Regex RxComment = new Regex(PatComment, RegexOptions.Compiled | RegexOptions.Multiline);
+        private static Regex RxXvs = new Regex(PatXvs, RegexOptions.Compiled);
+
+        private Regex _BlockRegex;
+        private Regex BlockRegex {
+            get {
+                return _BlockRegex ?? (
+                    _BlockRegex = (
+                        new Regex(
+                            (SourceIncludes.HasFlag(ScnTrackIncludes.Before) ? PatIncludeBefore : "") +
+                            PatTrackBlock +
+                            (SourceIncludes.HasFlag(ScnTrackIncludes.After) ? PatIncludeAfter : ""),
+                            RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase
+                        )
+                    )
+                );
+            }
+        }
+
+        private Regex _DataRegex;
+        private Regex DataRegex {
+            get {
+                return _DataRegex ?? (
+                    _DataRegex = (
+                        new Regex(
+                            (SourceIncludes.HasFlag(ScnTrackIncludes.Before) ? PatIncludeBefore : "") +
+                            PatTrackDef +
+                            (SourceIncludes.HasFlag(ScnTrackIncludes.After) ? PatIncludeAfter : ""),
+                            RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase
+                        )
+                    )
+                );
+            }
+        }
 
         #endregion
 
-        /// <summary>
-        /// Parses text containing track definitions into scenery track list
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="includes"></param>
-        /// <returns></returns>
-        public static ScnTracks Parse(string text, ScnTrackIncludes includes = ScnTrackIncludes.Before) {
+        private ScnTrackIncludes SourceIncludes;
+        private int[][] SourceFragments;
+
+        private void Parse() {
+            Match blockMatch, detailsMatch;
+            int start = 0, length = Source.Length;
+            while ((blockMatch = BlockRegex.Match(Source, start)).Success && start < length) {
+                var clean = RxComment.Replace(blockMatch.Value, "");
+                detailsMatch = DataRegex.Match(clean);
+                var track = ScnTrack.Parse(detailsMatch, SourcePath, SourceIncludes);
+                track.SourceIndex = blockMatch.Index;
+                track.SourceLength = blockMatch.Length;
+                Add(track);
+                start = blockMatch.Index + blockMatch.Length;
+            }
+        }
+
+        private void GetSourceFragments() {
+            if (Count < 1) return;
+            int a = 0, b = 0, c = 0, d = 0;
+            SourceFragments = new int[Count][];
+            SourceFragments[0] = new int[] { 0, this[0].SourceIndex };
+            for (int i = 0, ct = Count; i < ct; i++) {
+                if (i == 0) {
+                    c = this[i].SourceIndex;
+                    d = this[i].SourceLength;
+                    a = c + d;
+                    continue;
+                }
+                b = this[i].SourceIndex;
+                SourceFragments[i] = new int[] { a, b - a };
+                a = b + this[i].SourceLength;
+            }
+            a = this[Count - 1].SourceIndex;
+            b = a + this[Count - 1].SourceLength;
+            SourceFragments[Count - 1] = new int[] { b, Source.Length - 1 - b };
+        }
+
+        #endregion
+
+        public string Source;
+        public string SourcePath;
+
+        public static ScnTracks Parse(string text, string path = null, ScnTrackIncludes includes = ScnTrackIncludes.Before) {
             var tracks = new ScnTracks();
-            var clean = RxComment.Replace(text, "");
-            var exp = PatTrackDef;
-            if (includes.HasFlag(ScnTrackIncludes.Before)) exp = PatIncludeBefore + exp;
-            if (includes.HasFlag(ScnTrackIncludes.After)) exp += PatIncludeAfter;
-            var rx = new Regex(exp, RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase);
-            foreach (Match match in rx.Matches(clean)) tracks.Add(ScnTrack.Parse(match, includes));
+            tracks.Source = text;
+            tracks.SourcePath = path;
+            tracks.SourceIncludes = includes;
+            tracks.Parse();
+            tracks.GetSourceFragments();
             return tracks;
+        }
+
+        public string ReplaceText() {
+            if (Count < 1) return Source;
+            var b = new StringBuilder();
+            foreach (var f in SourceFragments) if (f[1] > 0) b.Append(Source.Substring(f[0], f[1]));
+            var oc = RxXvs.Replace(b.ToString(), "\r\n\r\n").Trim();
+            return Source = (
+                oc.Length > 0
+                    ? ("// Tracks:\r\n\r\n" + AsText() + "\r\n\r\n// Original content:\r\n\r\n" + oc)
+                    : AsText()
+            );
         }
 
         /// <summary>
         /// Sorts tracks as linked list
         /// </summary>
         public new void Sort() {
-            var groups = new List<LinkedList<ScnTrack>>();
-            var queue = new Queue<ScnTrack>(this);
-            var list = new LinkedList<ScnTrack>();
-            while (queue.Count > 0) {
-                var track = queue.Dequeue();
-                if (list.Count < 1) {
-                    list.AddFirst(track);
+            var q = new Queue<ScnTrack>(this);
+            var l = new LinkedList<ScnTrack>();
+            while (q.Count > 0) {
+                var t = q.Dequeue();
+                if (l.Count < 1) {
+                    l.AddFirst(t);
                     continue;
                 }
                 var added = false;
-                LinkedListNode<ScnTrack> current = list.First;
+                var current = l.First;
                 while (current != null) {
-                    if (track.IsEndLinkedTo(current.Value)) {
-                        list.AddBefore(current, track);
+                    if (t.IsEndLinkedTo(current.Value)) {
+                        l.AddBefore(current, t);
                         current = current.Next;
                         added = true;
                         break;
                     }
-                    if (track.IsStartLinkedTo(current.Value)) {
-                        list.AddAfter(current, track);
+                    if (t.IsStartLinkedTo(current.Value)) {
+                        l.AddAfter(current, t);
                         current = current.Next;
                         added = true;
                         break;
                     }
                     current = current.Next;
                 }
-                if (!added) list.AddLast(track);
+                if (!added) l.AddLast(t);
             }
             Clear();
-            AddRange(list);
+            AddRange(l);
         }
 
         /// <summary>
@@ -319,8 +421,8 @@ namespace ScnEdit {
             this.ForEach(track => {
                 bool isSwitch = track.Point3 != null;
                 bool isLinkedToPrev = track.IsLinkedTo(prev);
-                bool isNamed = !track.Name.StartsWith("none");
-                int prevLength = prev != null ? prev.GetCoarseLength() : 0;
+                bool isNamed = track.Name != "none";
+                int prevLength = prev != null ? (int)prev.TrackLength : 0;
                 if (!isLinkedToPrev) {
                     if (isSwitch) switchIndex++; else trackIndex++;
                 }

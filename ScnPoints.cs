@@ -26,6 +26,36 @@ namespace ScnEdit {
         /// </summary>
         public double Z;
 
+        public bool Zero { get { return X == 0 && Y == 0 && Z == 0; } }
+
+        #region Operators
+
+        public static ScnPoint operator +(ScnPoint a, ScnPoint b) {
+            return new ScnPoint { X = a.X + b.X, Y = a.Y + b.Y, Z = a.Z + b.Z };
+        }
+
+        public static ScnPoint operator -(ScnPoint a, ScnPoint b) {
+            return new ScnPoint { X = a.X - b.X, Y = a.Y - b.Y, Z = a.Z - b.Z };
+        }
+
+        public static ScnPoint operator *(ScnPoint p, double k) {
+            return new ScnPoint { X = k * p.X, Y = k * p.Y, Z = k * p.Z };
+        }
+
+        public static ScnPoint operator *(double k, ScnPoint p) {
+            return new ScnPoint { X = k * p.X, Y = k * p.Y, Z = k * p.Z };
+        }
+
+        public static ScnPoint operator /(ScnPoint p, double k) {
+            return new ScnPoint { X = k / p.X, Y = k / p.Y, Z = k / p.Z };
+        }
+
+        public static ScnPoint operator /(double k, ScnPoint p) {
+            return new ScnPoint { X = k / p.X, Y = k / p.Y, Z = k / p.Z };
+        }
+
+        #endregion
+
         /// <summary>
         /// Parses coordinates given as strings to scenery point object
         /// </summary>
@@ -68,7 +98,6 @@ namespace ScnEdit {
         public override string ToString() {
             return String.Format(System.Globalization.CultureInfo.InvariantCulture, "[{0}, {1}]", X, Z); 
         }
-
     }
 
 }
