@@ -20,9 +20,6 @@
     <Setting Name="SimExe" Type="System.String" Scope="User">
       <Value Profile="(Default)">eu07.exe</Value>
     </Setting>
-    <Setting Name="StvPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Program Files (x86)\Szopa Track Viewer\STV.exe</Value>
-    </Setting>
     <Setting Name="RainstedPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\MaSzyna\Rainsted.exe</Value>
     </Setting>

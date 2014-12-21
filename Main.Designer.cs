@@ -77,18 +77,17 @@
             // 
             // MainMenu
             // 
-            resources.ApplyResources(this.MainMenu, "MainMenu");
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenu,
             this.EditMenu,
             this.ViewMenu,
             this.SceneryMenu,
             this.DebugMenu});
+            resources.ApplyResources(this.MainMenu, "MainMenu");
             this.MainMenu.Name = "MainMenu";
             // 
             // FileMenu
             // 
-            resources.ApplyResources(this.FileMenu, "FileMenu");
             this.FileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenMenuItem,
             this.SaveMenuItem,
@@ -96,44 +95,45 @@
             this.s1,
             this.ExitMenuItem});
             this.FileMenu.Name = "FileMenu";
+            resources.ApplyResources(this.FileMenu, "FileMenu");
             // 
             // OpenMenuItem
             // 
-            resources.ApplyResources(this.OpenMenuItem, "OpenMenuItem");
             this.OpenMenuItem.Name = "OpenMenuItem";
+            resources.ApplyResources(this.OpenMenuItem, "OpenMenuItem");
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
             // 
             // SaveMenuItem
             // 
-            resources.ApplyResources(this.SaveMenuItem, "SaveMenuItem");
             this.SaveMenuItem.Name = "SaveMenuItem";
+            resources.ApplyResources(this.SaveMenuItem, "SaveMenuItem");
             this.SaveMenuItem.Click += new System.EventHandler(this.SaveMenuItem_Click);
             // 
             // SaveAllMenuItem
             // 
-            resources.ApplyResources(this.SaveAllMenuItem, "SaveAllMenuItem");
             this.SaveAllMenuItem.Name = "SaveAllMenuItem";
+            resources.ApplyResources(this.SaveAllMenuItem, "SaveAllMenuItem");
             this.SaveAllMenuItem.Click += new System.EventHandler(this.SaveAllMenuItem_Click);
             // 
             // s1
             // 
-            resources.ApplyResources(this.s1, "s1");
             this.s1.Name = "s1";
+            resources.ApplyResources(this.s1, "s1");
             // 
             // ExitMenuItem
             // 
-            resources.ApplyResources(this.ExitMenuItem, "ExitMenuItem");
             this.ExitMenuItem.Name = "ExitMenuItem";
+            resources.ApplyResources(this.ExitMenuItem, "ExitMenuItem");
             this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
             // 
             // EditMenu
             // 
-            resources.ApplyResources(this.EditMenu, "EditMenu");
             this.EditMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AlignMenuItem,
             this.NormalizeMenuItem,
             this.s2,
             this.CommentSelectedMenuItem});
+            resources.ApplyResources(this.EditMenu, "EditMenu");
             this.EditMenu.Name = "EditMenu";
             // 
             // AlignMenuItem
@@ -143,24 +143,23 @@
             // 
             // NormalizeMenuItem
             // 
-            resources.ApplyResources(this.NormalizeMenuItem, "NormalizeMenuItem");
             this.NormalizeMenuItem.Name = "NormalizeMenuItem";
+            resources.ApplyResources(this.NormalizeMenuItem, "NormalizeMenuItem");
             this.NormalizeMenuItem.Click += new System.EventHandler(this.NormalizeMenuItem_Click);
             // 
             // s2
             // 
-            resources.ApplyResources(this.s2, "s2");
             this.s2.Name = "s2";
+            resources.ApplyResources(this.s2, "s2");
             // 
             // CommentSelectedMenuItem
             // 
-            resources.ApplyResources(this.CommentSelectedMenuItem, "CommentSelectedMenuItem");
             this.CommentSelectedMenuItem.Name = "CommentSelectedMenuItem";
+            resources.ApplyResources(this.CommentSelectedMenuItem, "CommentSelectedMenuItem");
             this.CommentSelectedMenuItem.Click += new System.EventHandler(this.CommentSelectedMenuItem_Click);
             // 
             // ViewMenu
             // 
-            resources.ApplyResources(this.ViewMenu, "ViewMenu");
             this.ViewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.WordWrapMenuItem,
             this.s3,
@@ -168,37 +167,37 @@
             this.s4,
             this.ClearMarkersMenuItem});
             this.ViewMenu.Name = "ViewMenu";
+            resources.ApplyResources(this.ViewMenu, "ViewMenu");
             // 
             // WordWrapMenuItem
             // 
-            resources.ApplyResources(this.WordWrapMenuItem, "WordWrapMenuItem");
             this.WordWrapMenuItem.Name = "WordWrapMenuItem";
+            resources.ApplyResources(this.WordWrapMenuItem, "WordWrapMenuItem");
             this.WordWrapMenuItem.Click += new System.EventHandler(this.WordWrapMenuItem_Click);
             // 
             // s3
             // 
-            resources.ApplyResources(this.s3, "s3");
             this.s3.Name = "s3";
+            resources.ApplyResources(this.s3, "s3");
             // 
             // ColorSchemeMenu
             // 
-            resources.ApplyResources(this.ColorSchemeMenu, "ColorSchemeMenu");
             this.ColorSchemeMenu.Name = "ColorSchemeMenu";
+            resources.ApplyResources(this.ColorSchemeMenu, "ColorSchemeMenu");
             // 
             // s4
             // 
-            resources.ApplyResources(this.s4, "s4");
             this.s4.Name = "s4";
+            resources.ApplyResources(this.s4, "s4");
             // 
             // ClearMarkersMenuItem
             // 
-            resources.ApplyResources(this.ClearMarkersMenuItem, "ClearMarkersMenuItem");
             this.ClearMarkersMenuItem.Name = "ClearMarkersMenuItem";
+            resources.ApplyResources(this.ClearMarkersMenuItem, "ClearMarkersMenuItem");
             this.ClearMarkersMenuItem.Click += new System.EventHandler(this.ClearMarkersMenuItem_Click);
             // 
             // SceneryMenu
             // 
-            resources.ApplyResources(this.SceneryMenu, "SceneryMenu");
             this.SceneryMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.findToolStripMenuItem,
             this.FindObjectMenuItem,
@@ -211,6 +210,7 @@
             this.s7,
             this.SceneryNormalizeMenuItem,
             this.NameTracksMenuItem});
+            resources.ApplyResources(this.SceneryMenu, "SceneryMenu");
             this.SceneryMenu.Name = "SceneryMenu";
             // 
             // findToolStripMenuItem
@@ -225,25 +225,25 @@
             // 
             // FindReferencesMenuItem
             // 
-            resources.ApplyResources(this.FindReferencesMenuItem, "FindReferencesMenuItem");
             this.FindReferencesMenuItem.Name = "FindReferencesMenuItem";
+            resources.ApplyResources(this.FindReferencesMenuItem, "FindReferencesMenuItem");
             this.FindReferencesMenuItem.Click += new System.EventHandler(this.FindReferencesMenuItem_Click);
             // 
             // s5
             // 
-            resources.ApplyResources(this.s5, "s5");
             this.s5.Name = "s5";
+            resources.ApplyResources(this.s5, "s5");
             // 
             // RefactorMenuItem
             // 
-            resources.ApplyResources(this.RefactorMenuItem, "RefactorMenuItem");
             this.RefactorMenuItem.Name = "RefactorMenuItem";
+            resources.ApplyResources(this.RefactorMenuItem, "RefactorMenuItem");
             this.RefactorMenuItem.Click += new System.EventHandler(this.RefactorMenuItem_Click);
             // 
             // s6
             // 
-            resources.ApplyResources(this.s6, "s6");
             this.s6.Name = "s6";
+            resources.ApplyResources(this.s6, "s6");
             // 
             // SceneryUndoMenuItem
             // 
@@ -259,43 +259,42 @@
             // 
             // s7
             // 
-            resources.ApplyResources(this.s7, "s7");
             this.s7.Name = "s7";
+            resources.ApplyResources(this.s7, "s7");
             // 
             // SceneryNormalizeMenuItem
             // 
-            resources.ApplyResources(this.SceneryNormalizeMenuItem, "SceneryNormalizeMenuItem");
             this.SceneryNormalizeMenuItem.Name = "SceneryNormalizeMenuItem";
+            resources.ApplyResources(this.SceneryNormalizeMenuItem, "SceneryNormalizeMenuItem");
             this.SceneryNormalizeMenuItem.Click += new System.EventHandler(this.SceneryNormalizeMenuItem_Click);
             // 
             // NameTracksMenuItem
             // 
-            resources.ApplyResources(this.NameTracksMenuItem, "NameTracksMenuItem");
             this.NameTracksMenuItem.Name = "NameTracksMenuItem";
+            resources.ApplyResources(this.NameTracksMenuItem, "NameTracksMenuItem");
             this.NameTracksMenuItem.Click += new System.EventHandler(this.NameTracksMenuItem_Click);
             // 
             // DebugMenu
             // 
-            resources.ApplyResources(this.DebugMenu, "DebugMenu");
             this.DebugMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StartDebuggingMenuItem,
             this.StartWithoutDebuggingMenuItem});
+            resources.ApplyResources(this.DebugMenu, "DebugMenu");
             this.DebugMenu.Name = "DebugMenu";
             // 
             // StartDebuggingMenuItem
             // 
-            resources.ApplyResources(this.StartDebuggingMenuItem, "StartDebuggingMenuItem");
             this.StartDebuggingMenuItem.Name = "StartDebuggingMenuItem";
+            resources.ApplyResources(this.StartDebuggingMenuItem, "StartDebuggingMenuItem");
             this.StartDebuggingMenuItem.Click += new System.EventHandler(this.RunMenuItem_Click);
             // 
             // StartWithoutDebuggingMenuItem
             // 
-            resources.ApplyResources(this.StartWithoutDebuggingMenuItem, "StartWithoutDebuggingMenuItem");
             this.StartWithoutDebuggingMenuItem.Name = "StartWithoutDebuggingMenuItem";
+            resources.ApplyResources(this.StartWithoutDebuggingMenuItem, "StartWithoutDebuggingMenuItem");
             // 
             // MainStatusStrip
             // 
-            resources.ApplyResources(this.MainStatusStrip, "MainStatusStrip");
             this.MainStatusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.MainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel,
@@ -307,14 +306,15 @@
             this.ColumnLabel,
             this.SelectionLabel,
             this.ReplaceLabel});
+            resources.ApplyResources(this.MainStatusStrip, "MainStatusStrip");
             this.MainStatusStrip.Name = "MainStatusStrip";
             this.MainStatusStrip.SizingGrip = false;
             // 
             // StatusLabel
             // 
-            resources.ApplyResources(this.StatusLabel, "StatusLabel");
             this.StatusLabel.ForeColor = System.Drawing.Color.White;
             this.StatusLabel.Name = "StatusLabel";
+            resources.ApplyResources(this.StatusLabel, "StatusLabel");
             this.StatusLabel.Spring = true;
             // 
             // TypeLabel
@@ -325,21 +325,21 @@
             // 
             // SizeLabel
             // 
-            resources.ApplyResources(this.SizeLabel, "SizeLabel");
             this.SizeLabel.ForeColor = System.Drawing.Color.White;
             this.SizeLabel.Name = "SizeLabel";
+            resources.ApplyResources(this.SizeLabel, "SizeLabel");
             // 
             // SlashLabel
             // 
-            resources.ApplyResources(this.SlashLabel, "SlashLabel");
             this.SlashLabel.ForeColor = System.Drawing.Color.White;
             this.SlashLabel.Name = "SlashLabel";
+            resources.ApplyResources(this.SlashLabel, "SlashLabel");
             // 
             // LinesLabel
             // 
-            resources.ApplyResources(this.LinesLabel, "LinesLabel");
             this.LinesLabel.ForeColor = System.Drawing.Color.White;
             this.LinesLabel.Name = "LinesLabel";
+            resources.ApplyResources(this.LinesLabel, "LinesLabel");
             // 
             // LineLabel
             // 
@@ -369,14 +369,6 @@
             // 
             resources.ApplyResources(this.OpenFileDialog, "OpenFileDialog");
             this.OpenFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.OpenFile_FileOk);
-            // 
-            // SaveFileDialog
-            // 
-            resources.ApplyResources(this.SaveFileDialog, "SaveFileDialog");
-            // 
-            // BrowseFolder
-            // 
-            resources.ApplyResources(this.BrowseFolder, "BrowseFolder");
             // 
             // DockPanel
             // 

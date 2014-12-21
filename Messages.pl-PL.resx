@@ -178,4 +178,13 @@ czy chcesz go najpierw zapisać?</value>
   <data name="ProcessingTracks" xml:space="preserve">
     <value>Przetwarzanie torów...</value>
   </data>
+  <data name="ReplaceResults" xml:space="preserve">
+    <value>Wyniki zamiany</value>
+  </data>
+  <data name="Replacing" xml:space="preserve">
+    <value>Zamiana w plikach projektu...</value>
+  </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Wyszukiwanie w plikach projektu...</value>
+  </data>
 </root>

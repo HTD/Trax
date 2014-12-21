@@ -102,25 +102,25 @@ namespace ScnEdit {
         }
 
         internal abstract class StyleMap {
-            public const StyleIndex SameWord = StyleIndex.Style0;
-            public const StyleIndex Special = StyleIndex.Style1;
-            public const StyleIndex Command = StyleIndex.Style2;
-            public const StyleIndex Comment = StyleIndex.Style3;
-            public const StyleIndex Keyword0 = StyleIndex.Style4;
-            public const StyleIndex Keyword1 = StyleIndex.Style5;
-            public const StyleIndex Keyword2 = StyleIndex.Style6;
-            public const StyleIndex Keyword3 = StyleIndex.Style7;
-            public const StyleIndex Keyword4 = StyleIndex.Style8;
-            public const StyleIndex Time = StyleIndex.Style9;
-            public const StyleIndex Path = StyleIndex.Style10;
-            public const StyleIndex Number = StyleIndex.Style11;
-            public const StyleIndex SearchResult = StyleIndex.Style12;
-            public const StyleIndex ReplaceResult = StyleIndex.Style13;
+            public const StyleIndex SearchResult = StyleIndex.Style0;
+            public const StyleIndex ReplaceResult = StyleIndex.Style1;
+            public const StyleIndex SameWord = StyleIndex.Style2;
+            public const StyleIndex Special = StyleIndex.Style3;
+            public const StyleIndex Command = StyleIndex.Style4;
+            public const StyleIndex Comment = StyleIndex.Style5;
+            public const StyleIndex Keyword0 = StyleIndex.Style6;
+            public const StyleIndex Keyword1 = StyleIndex.Style7;
+            public const StyleIndex Keyword2 = StyleIndex.Style8;
+            public const StyleIndex Keyword3 = StyleIndex.Style9;
+            public const StyleIndex Keyword4 = StyleIndex.Style10;
+            public const StyleIndex Time = StyleIndex.Style11;
+            public const StyleIndex Path = StyleIndex.Style12;
+            public const StyleIndex Number = StyleIndex.Style13;
         }
 
         private Editor E;
 
-        internal bool FullAsyncMode;
+        internal static bool FullAsyncMode;
 
         internal EditorSyntax(Editor e, bool fullAsyncMode = false) {
             E = e;
@@ -162,6 +162,8 @@ namespace ScnEdit {
         public void GetStyles(bool reload = false) {
             if (reload || E.Styles[1] == null) {
                 E.ClearStylesBuffer();
+                E.AddStyle(Styles.SearchResult);
+                E.AddStyle(Styles.ReplaceResult);
                 E.AddStyle(Styles.SameWord);
                 E.AddStyle(Styles.Special);
                 E.AddStyle(Styles.Command);
@@ -174,8 +176,6 @@ namespace ScnEdit {
                 E.AddStyle(Styles.Time);
                 E.AddStyle(Styles.Path);
                 E.AddStyle(Styles.Number);
-                E.AddStyle(Styles.SearchResult);
-                E.AddStyle(Styles.ReplaceResult);
             }
         }
 
@@ -198,9 +198,9 @@ namespace ScnEdit {
                     case ScnEdit.EditorFile.Types.SceneryMain:
                     case ScnEdit.EditorFile.Types.SceneryPart:
                         range.ClearStyle(
-                            StyleIndex.Style0 | StyleIndex.Style1 | StyleIndex.Style2 | StyleIndex.Style3 |
-                            StyleIndex.Style4 | StyleIndex.Style5 | StyleIndex.Style6 | StyleIndex.Style7 |
-                            StyleIndex.Style8 | StyleIndex.Style9 | StyleIndex.Style10 | StyleIndex.Style11
+                            StyleIndex.Style2 | StyleIndex.Style3 | StyleIndex.Style4 | StyleIndex.Style5 |
+                            StyleIndex.Style6 | StyleIndex.Style7 | StyleIndex.Style8 | StyleIndex.Style9 |
+                            StyleIndex.Style10 | StyleIndex.Style11 | StyleIndex.Style12 | StyleIndex.Style13
                         );
                         range.SetStyle(StyleMap.Special, new ScnSyntax.Special());
                         range.SetStyle(StyleMap.Command, new ScnSyntax.Command());
@@ -244,6 +244,10 @@ namespace ScnEdit {
                 MatchParser(e, p, m, "node", NodeDescriptor);
             foreach (Match m in new ScnSyntax.IncludeParams().Matches(ctl.Text))
                 MatchParser(e, p, m, "include", IncludeDescriptor);
+            foreach (Match m in new ScnSyntax.EventParams().Matches(ctl.Text))
+                MatchParser(e, p, m, "event", EventDescriptor);
+            foreach (Match m in new ScnSyntax.TrainsetParams().Matches(ctl.Text))
+                MatchParser(e, p, m, "trainset", TrainsetDescriptor);
         }
 
         bool IsComment(int index, int length) {
@@ -275,13 +279,30 @@ namespace ScnEdit {
             switch (i) {
                 case 1: d = "Max distance: {1}"; break;
                 case 2: d = "Min distance: {1}"; break;
-                case 3: d = "Name: {1}"; break;
+                case 3: d = "Name: \"{1}\""; break;
                 case 4: d = "Type: {1}"; break;
             }
         }
 
         void IncludeDescriptor(int i, ref string d, List<string> v) {
-            if (i == 1) d = "File: {1}";
+            if (i == 1) d = "File: \"{1}\"";
+        }
+
+        void EventDescriptor(int i, ref string d, List<string> v) {
+            switch (i) {
+                case 1: d = "Name: \"{1}\""; break;
+                case 2: d = "Type: {1}"; break;
+                case 3: d = "Delay: {1}s"; break;
+            }
+        }
+
+        void TrainsetDescriptor(int i, ref string d, List<string> v) {
+            switch (i) {
+                case 1: d = "Timetable: \"{1}\""; break;
+                case 2: d = "Track: \"{1}\""; break;
+                case 3: d = "Offset: {1}m"; break;
+                case 4: d = "Velocity: {1}km/h"; break;
+            }
         }
 
     }

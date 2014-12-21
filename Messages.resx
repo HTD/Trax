@@ -173,9 +173,18 @@ do you wish to save it first?</value>
     <value>Scenery</value>
   </data>
   <data name="SearchResults" xml:space="preserve">
-    <value>Search Results</value>
+    <value>Search results</value>
   </data>
   <data name="ProcessingTracks" xml:space="preserve">
     <value>Processing tracks...</value>
+  </data>
+  <data name="ReplaceResults" xml:space="preserve">
+    <value>Replace results</value>
+  </data>
+  <data name="Replacing" xml:space="preserve">
+    <value>Replacing in project files...</value>
+  </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Searching in project files...</value>
   </data>
 </root>

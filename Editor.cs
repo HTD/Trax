@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -10,6 +11,16 @@ using System.Windows.Forms;
 namespace ScnEdit {
     
     class Editor : FastColoredTextBox {
+
+        public override string Text {
+            get {
+                return base.Text;
+            }
+            set {
+                base.Text = value;
+                OnSyntaxHighlight(new TextChangedEventArgs(VisibleRange));
+            }
+        }
 
         #region Fields
 
@@ -44,7 +55,7 @@ namespace ScnEdit {
             WordWrap = Properties.Settings.Default.WordWrap;
             if (File.Type == EditorFile.Types.Timetable) IsReplaceMode = true;
             FullAsyncMode = true;
-            SyntaxModule = new EditorSyntax(this, FullAsyncMode);
+            SyntaxModule = new EditorSyntax(this);
             if (File.Type == EditorFile.Types.SceneryMain || File.Type == EditorFile.Types.SceneryPart) ToolTipNeeded += SyntaxModule.HintParser;
             SelectionChangedDelayed += SyntaxModule.SameWordHighlight;
             IsReplaceModeChanged += Editor_IsReplaceModeChanged;
@@ -58,23 +69,24 @@ namespace ScnEdit {
             File.Container.DocumentMap.BackColor = EditorSyntax.Styles.Background;
         }
         public void LoadFromFile() {
-            Application.OpenForms[0].BeginInvoke(new Action(() => {
-                Encoding = File.EncodingDefault;
-                FileBindingMode = !File.AutoDecoding || File.HasHtmlEncoding;
+            Encoding = File.EncodingDefault;
+            FileBindingMode = !File.AutoDecoding || File.HasHtmlEncoding;
+            if (File.TextCache != null) Text = File.TextCache;
+            else {
                 if (FileBindingMode) OpenBindingFile(File.Path, Encoding);
                 else Text = (File as ProjectFile).Text;
-                if (File.Container != null) File.Container.UpdateText();
-                EndUpdate();
-                IsChanged = File.IsConverted;
-                if (!FileBindingMode) OnSyntaxHighlight(new TextChangedEventArgs(VisibleRange));
-                ClearUndo();
-                if (File.Role == EditorFile.Roles.Log) {
-                    ReadOnly = true;
-                    TextChangedDelayed += ShowLogTail;
-                }
-                if (File.Container != null) File.Container.UpdateText();
-                if (FileIODone != null) FileIODone.Invoke(this, EventArgs.Empty);
-            }));
+            }
+            EndUpdate();
+            IsChanged = File.IsConverted || File.IsNormalized || File.IsChanged;
+            if (File.Container != null) File.Container.UpdateText();
+            if (!FileBindingMode) OnSyntaxHighlight(new TextChangedEventArgs(VisibleRange));
+            ClearUndo();
+            if (File.Role == EditorFile.Roles.Log) {
+                ReadOnly = true;
+                TextChangedDelayed += ShowLogTail;
+            }
+            if (File.Container != null) File.Container.UpdateText();
+            if (FileIODone != null) FileIODone.Invoke(this, EventArgs.Empty);
         }
 
         public void SaveToFile() {
@@ -102,15 +114,19 @@ namespace ScnEdit {
             OnSyntaxHighlight(new TextChangedEventArgs(Selection));
         }
 
+        public bool SelectionHasStyle(Enum s) {
+            if (Selection.IsEmpty) return false;
+            return Selection.Chars.First().style.HasFlag(s);
+        }
+
         private Place Mark(int start, int length, StyleIndex style) {
-            BeginUpdate();
             var p = PositionToPlace(start);
             var q = PositionToPlace(start + length);
             Selection = new Range(this, p, p);
             DoSelectionVisible();
             var target = new Range(this, p, q);
+            var timer = new Timer { Interval = 2000 };
             target.SetStyle(style);
-            EndUpdate();
             return p;
         }
 
@@ -119,19 +135,11 @@ namespace ScnEdit {
             return Mark(position, length, style);
         }
 
-        public Place MarkSearchResult(int start, int length) {
-            return Mark(start, length, EditorSyntax.StyleMap.SearchResult);
-        }
-
         public Place MarkSearchResult(int column, int line, int length) {
             return Mark(column, line, length, EditorSyntax.StyleMap.SearchResult);
         }
 
-        public Place MarkRelaceResult(int start, int length) {
-            return Mark(start, length, EditorSyntax.StyleMap.ReplaceResult);
-        }
-
-        public Place MarkRelaceResult(int column, int line, int length) {
+        public Place MarkReplaceResult(int column, int line, int length) {
             return Mark(column, line, length, EditorSyntax.StyleMap.ReplaceResult);
         }
 
@@ -283,6 +291,48 @@ namespace ScnEdit {
         public override void Paste() {
             base.Paste();
             OnSyntaxHighlight(new TextChangedEventArgs(Selection));
+        }
+
+        public override void Undo() {
+            base.Undo();
+            Selection = new Range(this);
+            OnSyntaxHighlight(new TextChangedEventArgs(VisibleRange));
+        }
+
+        public override void Redo() {
+            base.Redo();
+            Selection = new Range(this);
+            OnSyntaxHighlight(new TextChangedEventArgs(VisibleRange));
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e) {
+            base.OnMouseMove(e);
+            if (ModifierKeys == Keys.Control) {
+                var p = PointToPlace(e.Location);
+                var q = new Place(p.iChar + 1, p.iLine);
+                var r = new Range(this, p, q);
+                var s = r.Chars.FirstOrDefault().style;
+                Cursor = s.HasFlag(EditorSyntax.StyleMap.Path) ? Cursors.Hand : Cursors.IBeam;
+            } else Cursor = Cursors.IBeam;
+        }
+
+        protected override void OnClick(EventArgs e) {
+            if (Enabled) EditorSyntax.FullAsyncMode = true;
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e) {
+            if (e.Button == MouseButtons.Left && ModifierKeys == Keys.Control) {
+                var p = PointToPlace(e.Location);
+                var b = Selection.Clone();
+                CaretVisible = false;
+                Selection = new Range(this, p, p);
+                var w = SelectWord();
+                var r = Selection.Clone();
+                var s = !r.IsEmpty ? Selection.Chars.First().style : StyleIndex.None;
+                Selection = b;
+                CaretVisible = true;
+                if (s.HasFlag(EditorSyntax.StyleMap.Path)) EditorFile.TryOpen(File, w);
+            } else base.OnMouseDown(e);
         }
 
         #endregion

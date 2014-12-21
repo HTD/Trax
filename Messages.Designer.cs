@@ -196,11 +196,29 @@ namespace ScnEdit {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replace results.
+        /// </summary>
+        internal static string ReplaceResults {
+            get {
+                return ResourceManager.GetString("ReplaceResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OVR.
         /// </summary>
         internal static string ReplaceSymbol {
             get {
                 return ResourceManager.GetString("ReplaceSymbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replacing in project files....
+        /// </summary>
+        internal static string Replacing {
+            get {
+                return ResourceManager.GetString("Replacing", resourceCulture);
             }
         }
         
@@ -214,7 +232,16 @@ namespace ScnEdit {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search Results.
+        ///   Looks up a localized string similar to Searching in project files....
+        /// </summary>
+        internal static string Searching {
+            get {
+                return ResourceManager.GetString("Searching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search results.
         /// </summary>
         internal static string SearchResults {
             get {

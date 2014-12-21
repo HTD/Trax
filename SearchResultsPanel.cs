@@ -44,7 +44,17 @@ namespace ScnEdit {
 
         internal static void Add(SearchResult result) {
             Show();
-            Main.SearchResultsPanel.Items.Add(result);
+            var p = Main.SearchResultsPanel;
+            var v = p.RV;
+            var e = Main.CurrentEditor;
+            if (result.Replacement != null) p.Text = Messages.ReplaceResults;
+            p.Items.Add(result);
+            v.ClearSelection();
+            v.Rows[v.Rows.Count - 1].Selected = true;
+            if (e != null) {
+                if (result.Replacement == null) e.MarkSearchResult(result.Column - 1, result.Line - 1, result.Fragment.Length);
+                else e.MarkReplaceResult(result.Column - 1, result.Line - 1, result.Replacement.Length);
+            }
         }
 
         internal static void CloseIfEmpty() {
@@ -130,7 +140,10 @@ namespace ScnEdit {
                 var file = ProjectFile.All.FirstOrDefault(i => i.Path == item.Path);
                 if (file != null) {
                     var editor = file.Editor;
-                    var place = editor.MarkSearchResult(item.Column - 1, item.Line - 1, item.Fragment.Length);
+                    var place =
+                            item.Replacement == null
+                                ? editor.MarkSearchResult(item.Column - 1, item.Line - 1, item.Fragment.Length)
+                                : editor.MarkReplaceResult(item.Column - 1, item.Line - 1, item.Replacement.Length);
                     editor.Selection = new Range(editor, place, place);
                     editor.DoSelectionVisible();
                     editor.File.Container.Activate();
@@ -177,6 +190,7 @@ namespace ScnEdit {
     class SearchResult {
         public string Path;
         public string Fragment;
+        public string Replacement;
         public string File;
         public int Line;
         public int Column;

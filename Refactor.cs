@@ -11,27 +11,37 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
 namespace ScnEdit {
+    
+    /// <summary>
+    /// Global symbol replace form
+    /// </summary>
     public partial class Refactor : Form {
 
         FastColoredTextBox E;
+        Main M;
         string S;
-        //string ReplaceSymbol;
+        string R;
 
-
+        /// <summary>
+        /// Creates global replace dialog
+        /// </summary>
+        /// <param name="main"></param>
         public Refactor(Main main) {
+            M = main;
+            E = M.CurrentEditor;
             InitializeComponent();
-            E = main.CurrentEditor;
+            Width = Symbol.Width + Rename.Width + 4;
             if (E != null) {
-                KeyDown += Refactor_KeyDown;
+                PreviewKeyDown += Refactor_PreviewKeyDown;
+                Symbol.KeyDown += Symbol_KeyDown;
                 GetSymbol();
+                Symbol.Focus();
             } else Dispose();
         }
 
-        void Refactor_Shown(object sender, EventArgs e) {
-            var main = Owner as Main;
-            E = main.CurrentEditor;
-        }
-
+        /// <summary>
+        /// Gets symbol from current editor selection and decides if it's applicable
+        /// </summary>
         void GetSymbol() {
             var originalSelection = new Range(E, E.Selection.Start, E.Selection.End);
             S = E.SelectWord();
@@ -57,25 +67,50 @@ namespace ScnEdit {
             if (applicable) ShowDialog();
             else { E.Selection = originalSelection; Dispose(); }
         }
-        
-        void Refactor_KeyDown(object sender, KeyEventArgs e) {
+
+        /// <summary>
+        /// Handles form's preview keys
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Refactor_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
             switch (e.KeyCode) {
-                case Keys.Escape:
-                    Close();
-                    break;
+                case Keys.Escape: if (!IsDisposed) Close(); break;
+                case Keys.Enter: if (!IsDisposed) Close(); break;
+            }
+        }
+        
+        /// <summary>
+        /// Handles keys pressed in text box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Symbol_KeyDown(object sender, KeyEventArgs e) {
+            switch (e.KeyCode) {
+                case Keys.Escape: Close(); e.Handled = true; break;
+                case Keys.Enter: R = Symbol.Text; DoReplace(S, R); e.Handled = true; break;
             }
         }
 
-        int FindStart(string text, int i) {
-            while (i > 0) { var x = text[i--]; if (x == ' ' || x == ';' || x == '\n') return i + 2; }
-            return -1;
+        /// <summary>
+        /// Handles rename click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Rename_Click(object sender, EventArgs e) {
+            DoReplace(S, Symbol.Text);
         }
 
-        int FindEnd(string text, int i) {
-            while (i > 0) { var x = text[i++]; if (x == ' ' || x == ';' || x == '\r' || x == '\n') return i - 1; }
-            return -1;
+        /// <summary>
+        /// Performs replace
+        /// </summary>
+        /// <param name="original"></param>
+        /// <param name="updated"></param>
+        private void DoReplace(string original, string updated) {
+            E.BeginInvoke(new MethodInvoker(() => { ProjectFile.ReplaceSymbol(original, updated); }));
+            if (!IsDisposed) Close();
         }
 
-        
     }
+
 }

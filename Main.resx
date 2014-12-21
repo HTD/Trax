@@ -117,362 +117,365 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;StatusLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <metadata name="MainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="OpenMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+O</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="StatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 17</value>
-  </data>
-  <data name="&gt;&gt;SceneryRedoMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="s6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 6</value>
-  </data>
-  <data name="&gt;&gt;EditMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AlignMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+T</value>
-  </data>
-  <data name="s5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 6</value>
-  </data>
-  <data name="&gt;&gt;TypeLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;s3.Name" xml:space="preserve">
-    <value>s3</value>
-  </data>
-  <data name="SaveMenuItem.Text" xml:space="preserve">
-    <value>&amp;Save</value>
-  </data>
-  <data name="&gt;&gt;FindReferencesMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FileMenu.Name" xml:space="preserve">
-    <value>FileMenu</value>
-  </data>
-  <data name="SceneryUndoMenuItem.Text" xml:space="preserve">
-    <value>&amp;Undo</value>
-  </data>
-  <data name="LineLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="SelectionLabel.Text" xml:space="preserve">
-    <value>Sel 0</value>
-  </data>
-  <data name="&gt;&gt;MainStatusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;SceneryUndoMenuItem.Name" xml:space="preserve">
-    <value>SceneryUndoMenuItem</value>
-  </data>
-  <data name="FindReferencesMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>F12</value>
-  </data>
-  <data name="&gt;&gt;ReplaceLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;StartDebuggingMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AlignMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ColorSchemeMenu.Text" xml:space="preserve">
-    <value>&amp;Color scheme...</value>
-  </data>
-  <data name="&gt;&gt;MainStatusStrip.Name" xml:space="preserve">
-    <value>MainStatusStrip</value>
-  </data>
-  <data name="SizeLabel.Text" xml:space="preserve">
-    <value>0kB</value>
-  </data>
-  <data name="DebugMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
-  </data>
-  <data name="&gt;&gt;ExitMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="OpenMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>
   </data>
   <data name="OpenMenuItem.Text" xml:space="preserve">
     <value>&amp;Open...</value>
   </data>
-  <data name="&gt;&gt;WordWrapMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RefactorMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CommentSelectedMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="&gt;&gt;SceneryMenu.Name" xml:space="preserve">
-    <value>SceneryMenu</value>
-  </data>
-  <data name="&gt;&gt;BrowseFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Scenery Editor</value>
-  </data>
-  <data name="MainMenu.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="ColumnLabel.Text" xml:space="preserve">
-    <value>Col 1</value>
-  </data>
-  <data name="&gt;&gt;SaveMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MainStatusStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="StartDebuggingMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 22</value>
-  </data>
-  <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1185, 24</value>
-  </data>
-  <data name="&gt;&gt;SceneryUndoMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CommentSelectedMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
-    <value>Ctrl+/</value>
-  </data>
-  <data name="&gt;&gt;DockPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;BrowseFolder.Name" xml:space="preserve">
-    <value>BrowseFolder</value>
-  </data>
-  <data name="FindObjectMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="&gt;&gt;StartDebuggingMenuItem.Name" xml:space="preserve">
-    <value>StartDebuggingMenuItem</value>
-  </data>
-  <data name="WordWrapMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
-  </data>
-  <data name="StatusLabel.Text" xml:space="preserve">
-    <value>Ready</value>
-  </data>
-  <data name="SceneryUndoMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+Shift+U</value>
-  </data>
-  <data name="&gt;&gt;SaveAllMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SceneryNormalizeMenuItem.Text" xml:space="preserve">
-    <value>&amp;Normalize</value>
-  </data>
-  <data name="ColorSchemeMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
-  </data>
-  <data name="&gt;&gt;DebugMenu.Name" xml:space="preserve">
-    <value>DebugMenu</value>
-  </data>
-  <data name="&gt;&gt;NameTracksMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NormalizeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="&gt;&gt;findToolStripMenuItem.Name" xml:space="preserve">
-    <value>findToolStripMenuItem</value>
+  <data name="SaveMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+S</value>
   </data>
   <data name="SaveMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>
   </data>
-  <data name="ViewMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="&gt;&gt;ReplaceLabel.Name" xml:space="preserve">
-    <value>ReplaceLabel</value>
-  </data>
-  <data name="SlashLabel.Text" xml:space="preserve">
-    <value>/</value>
-  </data>
-  <data name="EditMenu.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;DockPanel.Name" xml:space="preserve">
-    <value>DockPanel</value>
-  </data>
-  <data name="FindReferencesMenuItem.Text" xml:space="preserve">
-    <value>Find reference&amp;s</value>
-  </data>
-  <data name="RefactorMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="SceneryUndoMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="&gt;&gt;s2.Name" xml:space="preserve">
-    <value>s2</value>
-  </data>
-  <data name="&gt;&gt;s5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LinesLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="WordWrapMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+W</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="ViewMenu.Text" xml:space="preserve">
-    <value>&amp;View</value>
-  </data>
-  <data name="SceneryNormalizeMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+Shift+N</value>
-  </data>
-  <data name="MainMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ClearMarkersMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
-  </data>
-  <data name="RefactorMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>F2</value>
-  </data>
-  <data name="&gt;&gt;SaveFileDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SelectionLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ClearMarkersMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
-    <value>Esc</value>
-  </data>
-  <data name="NameTracksMenuItem.Text" xml:space="preserve">
-    <value>Name tr&amp;acks</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Main</value>
-  </data>
-  <data name="findToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+Shift+F</value>
-  </data>
-  <data name="&gt;&gt;AlignMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;s7.Name" xml:space="preserve">
-    <value>s7</value>
-  </data>
-  <data name="&gt;&gt;EditMenu.Name" xml:space="preserve">
-    <value>EditMenu</value>
-  </data>
-  <data name="StartWithoutDebuggingMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 22</value>
-  </data>
-  <data name="&gt;&gt;s6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SceneryMenu.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="StartDebuggingMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>F5</value>
-  </data>
-  <data name="ExitMenuItem.Text" xml:space="preserve">
-    <value>&amp;Exit</value>
-  </data>
-  <data name="TypeLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;s2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="s3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 6</value>
-  </data>
-  <data name="&gt;&gt;TypeLabel.Name" xml:space="preserve">
-    <value>TypeLabel</value>
-  </data>
-  <data name="DockPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="SaveMenuItem.Text" xml:space="preserve">
+    <value>&amp;Save</value>
   </data>
   <data name="SaveAllMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+S</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
+  <data name="SaveAllMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
   </data>
-  <data name="&gt;&gt;StatusLabel.Name" xml:space="preserve">
-    <value>StatusLabel</value>
+  <data name="SaveAllMenuItem.Text" xml:space="preserve">
+    <value>Save &amp;All</value>
   </data>
-  <data name="&gt;&gt;SceneryNormalizeMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="s1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 6</value>
   </data>
-  <data name="TypeLabel.Text" xml:space="preserve">
-    <value>Text</value>
+  <data name="ExitMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Alt+F4</value>
   </data>
-  <data name="DebugMenu.Text" xml:space="preserve">
-    <value>&amp;Debug</value>
+  <data name="ExitMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
   </data>
-  <data name="LineLabel.Text" xml:space="preserve">
-    <value>Ln 1</value>
+  <data name="ExitMenuItem.Text" xml:space="preserve">
+    <value>&amp;Exit</value>
   </data>
-  <data name="&gt;&gt;s3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="FileMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
   </data>
-  <data name="&gt;&gt;ClearMarkersMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="FileMenu.Text" xml:space="preserve">
+    <value>&amp;File</value>
   </data>
-  <data name="&gt;&gt;OpenMenuItem.Name" xml:space="preserve">
-    <value>OpenMenuItem</value>
-  </data>
-  <data name="&gt;&gt;s6.Name" xml:space="preserve">
-    <value>s6</value>
-  </data>
-  <data name="ColumnLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 17</value>
-  </data>
-  <data name="ReplaceLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="FindObjectMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>F11</value>
-  </data>
-  <data name="ColumnLabel.AutoSize" type="System.Boolean, mscorlib">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AlignMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ReplaceLabel.Text" xml:space="preserve">
-    <value>INS</value>
+  <data name="AlignMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+T</value>
+  </data>
+  <data name="AlignMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
+  </data>
+  <data name="AlignMenuItem.Text" xml:space="preserve">
+    <value>&amp;Align</value>
+  </data>
+  <data name="NormalizeMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+N</value>
+  </data>
+  <data name="NormalizeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
   </data>
   <data name="NormalizeMenuItem.Text" xml:space="preserve">
     <value>&amp;Normalize</value>
   </data>
-  <data name="DockPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1185, 410</value>
+  <data name="s2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 6</value>
   </data>
-  <data name="&gt;&gt;StartWithoutDebuggingMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="CommentSelectedMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Ctrl+/</value>
+  </data>
+  <data name="CommentSelectedMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+OemQuestion</value>
+  </data>
+  <data name="CommentSelectedMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
+  </data>
+  <data name="CommentSelectedMenuItem.Text" xml:space="preserve">
+    <value>Toggle &amp;comment</value>
+  </data>
+  <data name="EditMenu.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="EditMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 20</value>
   </data>
-  <data name="&gt;&gt;SizeLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnLabel.Name" xml:space="preserve">
-    <value>ColumnLabel</value>
-  </data>
   <data name="EditMenu.Text" xml:space="preserve">
     <value>&amp;Edit</value>
+  </data>
+  <data name="WordWrapMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+W</value>
+  </data>
+  <data name="WordWrapMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
+  </data>
+  <data name="WordWrapMenuItem.Text" xml:space="preserve">
+    <value>&amp;Word wrap</value>
+  </data>
+  <data name="s3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 6</value>
+  </data>
+  <data name="ColorSchemeMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
+  </data>
+  <data name="ColorSchemeMenu.Text" xml:space="preserve">
+    <value>&amp;Color scheme...</value>
+  </data>
+  <data name="s4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 6</value>
+  </data>
+  <data name="ClearMarkersMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Esc</value>
+  </data>
+  <data name="ClearMarkersMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
+  </data>
+  <data name="ClearMarkersMenuItem.Text" xml:space="preserve">
+    <value>Clear markers</value>
+  </data>
+  <data name="ViewMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="ViewMenu.Text" xml:space="preserve">
+    <value>&amp;View</value>
+  </data>
+  <data name="findToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="findToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+F</value>
+  </data>
+  <data name="findToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="findToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Find...</value>
+  </data>
+  <data name="FindObjectMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="FindObjectMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>F11</value>
+  </data>
+  <data name="FindObjectMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="FindObjectMenuItem.Text" xml:space="preserve">
+    <value>Find &amp;object...</value>
+  </data>
+  <data name="FindReferencesMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>F12</value>
+  </data>
+  <data name="FindReferencesMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="FindReferencesMenuItem.Text" xml:space="preserve">
+    <value>Find reference&amp;s</value>
+  </data>
+  <data name="s5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 6</value>
+  </data>
+  <data name="RefactorMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>F2</value>
+  </data>
+  <data name="RefactorMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="RefactorMenuItem.Text" xml:space="preserve">
+    <value>&amp;Refactor...</value>
+  </data>
+  <data name="s6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 6</value>
+  </data>
+  <data name="SceneryUndoMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SceneryUndoMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+U</value>
+  </data>
+  <data name="SceneryUndoMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="SceneryUndoMenuItem.Text" xml:space="preserve">
+    <value>&amp;Undo</value>
+  </data>
+  <data name="SceneryRedoMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SceneryRedoMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+Y</value>
+  </data>
+  <data name="SceneryRedoMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="SceneryRedoMenuItem.Text" xml:space="preserve">
+    <value>R&amp;edo</value>
+  </data>
+  <data name="s7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 6</value>
+  </data>
+  <data name="SceneryNormalizeMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+N</value>
+  </data>
+  <data name="SceneryNormalizeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="SceneryNormalizeMenuItem.Text" xml:space="preserve">
+    <value>&amp;Normalize</value>
+  </data>
+  <data name="NameTracksMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+T</value>
+  </data>
+  <data name="NameTracksMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="NameTracksMenuItem.Text" xml:space="preserve">
+    <value>Name tr&amp;acks</value>
+  </data>
+  <data name="SceneryMenu.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SceneryMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="SceneryMenu.Text" xml:space="preserve">
+    <value>&amp;Scenery</value>
+  </data>
+  <data name="StartDebuggingMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>F5</value>
+  </data>
+  <data name="StartDebuggingMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>249, 22</value>
+  </data>
+  <data name="StartDebuggingMenuItem.Text" xml:space="preserve">
+    <value>&amp;Start debugging</value>
+  </data>
+  <data name="StartWithoutDebuggingMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+F5</value>
+  </data>
+  <data name="StartWithoutDebuggingMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>249, 22</value>
+  </data>
+  <data name="StartWithoutDebuggingMenuItem.Text" xml:space="preserve">
+    <value>Start &amp;without debugging</value>
+  </data>
+  <data name="DebugMenu.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="DebugMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="DebugMenu.Text" xml:space="preserve">
+    <value>&amp;Debug</value>
+  </data>
+  <data name="MainMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1185, 24</value>
+  </data>
+  <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MainMenu.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Name" xml:space="preserve">
+    <value>MainMenu</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="MainStatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>127, 17</value>
+  </metadata>
+  <data name="StatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>592, 17</value>
+  </data>
+  <data name="StatusLabel.Text" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="StatusLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="TypeLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TypeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 17</value>
+  </data>
+  <data name="TypeLabel.Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="SizeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 17</value>
+  </data>
+  <data name="SizeLabel.Text" xml:space="preserve">
+    <value>0kB</value>
+  </data>
+  <data name="SizeLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="SlashLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="SlashLabel.Text" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="LinesLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 17</value>
+  </data>
+  <data name="LinesLabel.Text" xml:space="preserve">
+    <value>0 lines</value>
+  </data>
+  <data name="LineLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LineLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 17</value>
+  </data>
+  <data name="LineLabel.Text" xml:space="preserve">
+    <value>Ln 1</value>
+  </data>
+  <data name="LineLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="ColumnLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ColumnLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 17</value>
+  </data>
+  <data name="ColumnLabel.Text" xml:space="preserve">
+    <value>Col 1</value>
+  </data>
+  <data name="ColumnLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="SelectionLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SelectionLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 17</value>
+  </data>
+  <data name="SelectionLabel.Text" xml:space="preserve">
+    <value>Sel 0</value>
   </data>
   <data name="SelectionLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -480,245 +483,83 @@
   <data name="ReplaceLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;s1.Name" xml:space="preserve">
-    <value>s1</value>
-  </data>
-  <data name="LinesLabel.Text" xml:space="preserve">
-    <value>0 lines</value>
-  </data>
-  <data name="SceneryRedoMenuItem.Text" xml:space="preserve">
-    <value>R&amp;edo</value>
-  </data>
-  <data name="MainStatusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="SceneryMenu.Text" xml:space="preserve">
-    <value>&amp;Scenery</value>
-  </data>
-  <data name="&gt;&gt;SelectionLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="StatusLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;RefactorMenuItem.Name" xml:space="preserve">
-    <value>RefactorMenuItem</value>
-  </data>
-  <data name="&gt;&gt;s7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="FileMenu.Text" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
-  <data name="StartDebuggingMenuItem.Text" xml:space="preserve">
-    <value>&amp;Start debugging</value>
-  </data>
-  <data name="&gt;&gt;s4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="ReplaceLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 17</value>
   </data>
-  <data name="&gt;&gt;ColumnLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ReplaceLabel.Text" xml:space="preserve">
+    <value>INS</value>
   </data>
-  <data name="CommentSelectedMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+OemQuestion</value>
-  </data>
-  <data name="findToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Find...</value>
-  </data>
-  <data name="&gt;&gt;ColorSchemeMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NameTracksMenuItem.Name" xml:space="preserve">
-    <value>NameTracksMenuItem</value>
+  <data name="ReplaceLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
   </data>
   <data name="MainStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 434</value>
   </data>
-  <data name="&gt;&gt;findToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="MainStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1185, 22</value>
   </data>
-  <data name="FileMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="&gt;&gt;MainStatusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="LineLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 17</value>
-  </data>
-  <data name="&gt;&gt;ViewMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SlashLabel.Name" xml:space="preserve">
-    <value>SlashLabel</value>
-  </data>
-  <data name="&gt;&gt;ViewMenu.Name" xml:space="preserve">
-    <value>ViewMenu</value>
-  </data>
-  <data name="&gt;&gt;OpenMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1185, 456</value>
-  </data>
-  <data name="&gt;&gt;DockPanel.Type" xml:space="preserve">
-    <value>WeifenLuo.WinFormsUI.Docking.DockPanel, WeifenLuo.WinFormsUI.Docking, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481</value>
-  </data>
-  <data name="s1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 6</value>
-  </data>
-  <data name="SceneryRedoMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="SelectionLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 17</value>
-  </data>
-  <data name="&gt;&gt;SelectionLabel.Name" xml:space="preserve">
-    <value>SelectionLabel</value>
+  <data name="MainStatusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="MainStatusStrip.Text" xml:space="preserve">
     <value>statusStrip1</value>
   </data>
-  <data name="CommentSelectedMenuItem.Text" xml:space="preserve">
-    <value>Toggle &amp;comment</value>
+  <data name="&gt;&gt;MainStatusStrip.Name" xml:space="preserve">
+    <value>MainStatusStrip</value>
   </data>
-  <data name="&gt;&gt;ExitMenuItem.Name" xml:space="preserve">
-    <value>ExitMenuItem</value>
+  <data name="&gt;&gt;MainStatusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="StartWithoutDebuggingMenuItem.Text" xml:space="preserve">
-    <value>Start &amp;without debugging</value>
-  </data>
-  <data name="&gt;&gt;SaveAllMenuItem.Name" xml:space="preserve">
-    <value>SaveAllMenuItem</value>
-  </data>
-  <data name="&gt;&gt;SlashLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SaveAllMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="LineLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;CommentSelectedMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;NormalizeMenuItem.Name" xml:space="preserve">
-    <value>NormalizeMenuItem</value>
-  </data>
-  <data name="&gt;&gt;s5.Name" xml:space="preserve">
-    <value>s5</value>
-  </data>
-  <data name="&gt;&gt;WordWrapMenuItem.Name" xml:space="preserve">
-    <value>WordWrapMenuItem</value>
-  </data>
-  <data name="TypeLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 17</value>
-  </data>
-  <data name="&gt;&gt;SaveFileDialog.Name" xml:space="preserve">
-    <value>SaveFileDialog</value>
-  </data>
-  <data name="SizeLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="findToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="DebugMenu.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="NormalizeMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+N</value>
-  </data>
-  <data name="SceneryNormalizeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="MainStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1185, 22</value>
-  </data>
-  <data name="&gt;&gt;LineLabel.Name" xml:space="preserve">
-    <value>LineLabel</value>
-  </data>
-  <data name="SceneryMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
-  </data>
-  <data name="&gt;&gt;FindReferencesMenuItem.Name" xml:space="preserve">
-    <value>FindReferencesMenuItem</value>
-  </data>
-  <data name="&gt;&gt;s1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SceneryMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SlashLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 17</value>
-  </data>
-  <data name="&gt;&gt;s4.Name" xml:space="preserve">
-    <value>s4</value>
-  </data>
-  <data name="&gt;&gt;StartWithoutDebuggingMenuItem.Name" xml:space="preserve">
-    <value>StartWithoutDebuggingMenuItem</value>
-  </data>
-  <data name="&gt;&gt;SaveMenuItem.Name" xml:space="preserve">
-    <value>SaveMenuItem</value>
-  </data>
-  <data name="&gt;&gt;DockPanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;MainStatusStrip.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;FileMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;MainStatusStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;ColorSchemeMenu.Name" xml:space="preserve">
-    <value>ColorSchemeMenu</value>
+  <metadata name="OpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>265, 17</value>
+  </metadata>
+  <data name="OpenFileDialog.Filter" xml:space="preserve">
+    <value>Scenery files|*.scn|All files|*.*</value>
   </data>
-  <data name="StartWithoutDebuggingMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+F5</value>
-  </data>
+  <metadata name="SaveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>400, 17</value>
+  </metadata>
+  <metadata name="BrowseFolder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>531, 17</value>
+  </metadata>
   <data name="DockPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="NameTracksMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="&gt;&gt;LinesLabel.Name" xml:space="preserve">
-    <value>LinesLabel</value>
-  </data>
-  <data name="SaveAllMenuItem.Text" xml:space="preserve">
-    <value>Save &amp;All</value>
-  </data>
-  <data name="&gt;&gt;SceneryNormalizeMenuItem.Name" xml:space="preserve">
-    <value>SceneryNormalizeMenuItem</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.Name" xml:space="preserve">
-    <value>MainMenu</value>
-  </data>
-  <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="FindReferencesMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
   </data>
   <data name="DockPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
-  <data name="ExitMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
+  <data name="DockPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1185, 410</value>
   </data>
-  <data name="LinesLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 17</value>
+  <data name="DockPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="SaveMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+S</value>
+  <data name="&gt;&gt;DockPanel.Name" xml:space="preserve">
+    <value>DockPanel</value>
+  </data>
+  <data name="&gt;&gt;DockPanel.Type" xml:space="preserve">
+    <value>WeifenLuo.WinFormsUI.Docking.DockPanel, WeifenLuo.WinFormsUI.Docking, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481</value>
+  </data>
+  <data name="&gt;&gt;DockPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DockPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1185, 456</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2427,109 +2268,280 @@
         //////////////////8=
 </value>
   </data>
-  <data name="&gt;&gt;SizeLabel.Name" xml:space="preserve">
-    <value>SizeLabel</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
-  <data name="&gt;&gt;SceneryRedoMenuItem.Name" xml:space="preserve">
-    <value>SceneryRedoMenuItem</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Scenery Editor</value>
   </data>
-  <data name="ColumnLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
+  <data name="&gt;&gt;FileMenu.Name" xml:space="preserve">
+    <value>FileMenu</value>
   </data>
-  <data name="&gt;&gt;OpenFileDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;FileMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="OpenFileDialog.Filter" xml:space="preserve">
-    <value>Scenery files|*.scn|All files|*.*</value>
+  <data name="&gt;&gt;OpenMenuItem.Name" xml:space="preserve">
+    <value>OpenMenuItem</value>
   </data>
-  <data name="NameTracksMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+Shift+T</value>
+  <data name="&gt;&gt;OpenMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SaveMenuItem.Name" xml:space="preserve">
+    <value>SaveMenuItem</value>
+  </data>
+  <data name="&gt;&gt;SaveMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SaveAllMenuItem.Name" xml:space="preserve">
+    <value>SaveAllMenuItem</value>
+  </data>
+  <data name="&gt;&gt;SaveAllMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s1.Name" xml:space="preserve">
+    <value>s1</value>
+  </data>
+  <data name="&gt;&gt;s1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ExitMenuItem.Name" xml:space="preserve">
+    <value>ExitMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ExitMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EditMenu.Name" xml:space="preserve">
+    <value>EditMenu</value>
+  </data>
+  <data name="&gt;&gt;EditMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AlignMenuItem.Name" xml:space="preserve">
     <value>AlignMenuItem</value>
   </data>
-  <data name="s7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 6</value>
-  </data>
-  <data name="&gt;&gt;DebugMenu.Type" xml:space="preserve">
+  <data name="&gt;&gt;AlignMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="AlignMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="&gt;&gt;ClearMarkersMenuItem.Name" xml:space="preserve">
-    <value>ClearMarkersMenuItem</value>
-  </data>
-  <data name="SceneryRedoMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+Shift+Y</value>
-  </data>
-  <data name="RefactorMenuItem.Text" xml:space="preserve">
-    <value>&amp;Refactor...</value>
-  </data>
-  <data name="ExitMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
-    <value>Alt+F4</value>
-  </data>
-  <data name="&gt;&gt;FindObjectMenuItem.Name" xml:space="preserve">
-    <value>FindObjectMenuItem</value>
-  </data>
-  <data name="ClearMarkersMenuItem.Text" xml:space="preserve">
-    <value>Clear markers</value>
-  </data>
-  <data name="&gt;&gt;OpenFileDialog.Name" xml:space="preserve">
-    <value>OpenFileDialog</value>
-  </data>
-  <data name="s2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 6</value>
+  <data name="&gt;&gt;NormalizeMenuItem.Name" xml:space="preserve">
+    <value>NormalizeMenuItem</value>
   </data>
   <data name="&gt;&gt;NormalizeMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="FindObjectMenuItem.Text" xml:space="preserve">
-    <value>Find &amp;object...</value>
+  <data name="&gt;&gt;s2.Name" xml:space="preserve">
+    <value>s2</value>
+  </data>
+  <data name="&gt;&gt;s2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CommentSelectedMenuItem.Name" xml:space="preserve">
     <value>CommentSelectedMenuItem</value>
   </data>
-  <data name="s4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 6</value>
+  <data name="&gt;&gt;CommentSelectedMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MainMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ViewMenu.Name" xml:space="preserve">
+    <value>ViewMenu</value>
   </data>
-  <data name="&gt;&gt;LineLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ViewMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WordWrapMenuItem.Name" xml:space="preserve">
+    <value>WordWrapMenuItem</value>
+  </data>
+  <data name="&gt;&gt;WordWrapMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s3.Name" xml:space="preserve">
+    <value>s3</value>
+  </data>
+  <data name="&gt;&gt;s3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColorSchemeMenu.Name" xml:space="preserve">
+    <value>ColorSchemeMenu</value>
+  </data>
+  <data name="&gt;&gt;ColorSchemeMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s4.Name" xml:space="preserve">
+    <value>s4</value>
+  </data>
+  <data name="&gt;&gt;s4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ClearMarkersMenuItem.Name" xml:space="preserve">
+    <value>ClearMarkersMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ClearMarkersMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SceneryMenu.Name" xml:space="preserve">
+    <value>SceneryMenu</value>
+  </data>
+  <data name="&gt;&gt;SceneryMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;findToolStripMenuItem.Name" xml:space="preserve">
+    <value>findToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;findToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FindObjectMenuItem.Name" xml:space="preserve">
+    <value>FindObjectMenuItem</value>
   </data>
   <data name="&gt;&gt;FindObjectMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="OpenMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+O</value>
+  <data name="&gt;&gt;FindReferencesMenuItem.Name" xml:space="preserve">
+    <value>FindReferencesMenuItem</value>
   </data>
-  <data name="AlignMenuItem.Text" xml:space="preserve">
-    <value>&amp;Align</value>
+  <data name="&gt;&gt;FindReferencesMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="WordWrapMenuItem.Text" xml:space="preserve">
-    <value>&amp;Word wrap</value>
+  <data name="&gt;&gt;s5.Name" xml:space="preserve">
+    <value>s5</value>
   </data>
-  <data name="SizeLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 17</value>
+  <data name="&gt;&gt;s5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="BrowseFolder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>688, 17</value>
-  </metadata>
-  <metadata name="SaveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>557, 17</value>
-  </metadata>
-  <metadata name="OpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>422, 17</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="MainStatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>284, 17</value>
-  </metadata>
-  <metadata name="MainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>174, 17</value>
-  </metadata>
+  <data name="&gt;&gt;RefactorMenuItem.Name" xml:space="preserve">
+    <value>RefactorMenuItem</value>
+  </data>
+  <data name="&gt;&gt;RefactorMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s6.Name" xml:space="preserve">
+    <value>s6</value>
+  </data>
+  <data name="&gt;&gt;s6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SceneryUndoMenuItem.Name" xml:space="preserve">
+    <value>SceneryUndoMenuItem</value>
+  </data>
+  <data name="&gt;&gt;SceneryUndoMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SceneryRedoMenuItem.Name" xml:space="preserve">
+    <value>SceneryRedoMenuItem</value>
+  </data>
+  <data name="&gt;&gt;SceneryRedoMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s7.Name" xml:space="preserve">
+    <value>s7</value>
+  </data>
+  <data name="&gt;&gt;s7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SceneryNormalizeMenuItem.Name" xml:space="preserve">
+    <value>SceneryNormalizeMenuItem</value>
+  </data>
+  <data name="&gt;&gt;SceneryNormalizeMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NameTracksMenuItem.Name" xml:space="preserve">
+    <value>NameTracksMenuItem</value>
+  </data>
+  <data name="&gt;&gt;NameTracksMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DebugMenu.Name" xml:space="preserve">
+    <value>DebugMenu</value>
+  </data>
+  <data name="&gt;&gt;DebugMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StartDebuggingMenuItem.Name" xml:space="preserve">
+    <value>StartDebuggingMenuItem</value>
+  </data>
+  <data name="&gt;&gt;StartDebuggingMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StartWithoutDebuggingMenuItem.Name" xml:space="preserve">
+    <value>StartWithoutDebuggingMenuItem</value>
+  </data>
+  <data name="&gt;&gt;StartWithoutDebuggingMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StatusLabel.Name" xml:space="preserve">
+    <value>StatusLabel</value>
+  </data>
+  <data name="&gt;&gt;StatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TypeLabel.Name" xml:space="preserve">
+    <value>TypeLabel</value>
+  </data>
+  <data name="&gt;&gt;TypeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SizeLabel.Name" xml:space="preserve">
+    <value>SizeLabel</value>
+  </data>
+  <data name="&gt;&gt;SizeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SlashLabel.Name" xml:space="preserve">
+    <value>SlashLabel</value>
+  </data>
+  <data name="&gt;&gt;SlashLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LinesLabel.Name" xml:space="preserve">
+    <value>LinesLabel</value>
+  </data>
+  <data name="&gt;&gt;LinesLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LineLabel.Name" xml:space="preserve">
+    <value>LineLabel</value>
+  </data>
+  <data name="&gt;&gt;LineLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnLabel.Name" xml:space="preserve">
+    <value>ColumnLabel</value>
+  </data>
+  <data name="&gt;&gt;ColumnLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectionLabel.Name" xml:space="preserve">
+    <value>SelectionLabel</value>
+  </data>
+  <data name="&gt;&gt;SelectionLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ReplaceLabel.Name" xml:space="preserve">
+    <value>ReplaceLabel</value>
+  </data>
+  <data name="&gt;&gt;ReplaceLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OpenFileDialog.Name" xml:space="preserve">
+    <value>OpenFileDialog</value>
+  </data>
+  <data name="&gt;&gt;OpenFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SaveFileDialog.Name" xml:space="preserve">
+    <value>SaveFileDialog</value>
+  </data>
+  <data name="&gt;&gt;SaveFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BrowseFolder.Name" xml:space="preserve">
+    <value>BrowseFolder</value>
+  </data>
+  <data name="&gt;&gt;BrowseFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

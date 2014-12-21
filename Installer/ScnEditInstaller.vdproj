@@ -21,44 +21,44 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9C9B928C8EFB0485B2E8AAACD70BB28E"
+        "MsmKey" = "8:_4405C9E547F45290DE3288E4F716F29F"
         "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C82AFCE9CEA0AF0694CFE3DA5575736F"
+        "MsmKey" = "8:_CAAB1174BB42E8AF9EC176E3887E2FF5"
         "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E4CA46DA417226824D51B72220819336"
-        "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E4CA46DA417226824D51B72220819336"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_F61B4D050DDB45714E098874F20144EF"
         "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9C9B928C8EFB0485B2E8AAACD70BB28E"
+        "OwnerKey" = "8:_F61B4D050DDB45714E098874F20144EF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C82AFCE9CEA0AF0694CFE3DA5575736F"
+        "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4405C9E547F45290DE3288E4F716F29F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CAAB1174BB42E8AF9EC176E3887E2FF5"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -156,14 +156,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9C9B928C8EFB0485B2E8AAACD70BB28E"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4405C9E547F45290DE3288E4F716F29F"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:ScnSyntax, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_9C9B928C8EFB0485B2E8AAACD70BB28E"
+                    "_4405C9E547F45290DE3288E4F716F29F"
                     {
                     "Name" = "8:ScnSyntax.dll"
                     "Attributes" = "3:512"
@@ -187,20 +187,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C82AFCE9CEA0AF0694CFE3DA5575736F"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CAAB1174BB42E8AF9EC176E3887E2FF5"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WeifenLuo.WinFormsUI.Docking, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:FastColoredTextBox, Version=2.16.2.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_C82AFCE9CEA0AF0694CFE3DA5575736F"
+                    "_CAAB1174BB42E8AF9EC176E3887E2FF5"
                     {
-                    "Name" = "8:WeifenLuo.WinFormsUI.Docking.dll"
+                    "Name" = "8:FastColoredTextBox.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:WeifenLuo.WinFormsUI.Docking.dll"
+            "SourcePath" = "8:FastColoredTextBox.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A53F7399E8AE42F4BBF46AB07ADDA637"
@@ -218,20 +218,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E4CA46DA417226824D51B72220819336"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F61B4D050DDB45714E098874F20144EF"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FastColoredTextBox, Version=2.16.2.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:WeifenLuo.WinFormsUI.Docking, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E4CA46DA417226824D51B72220819336"
+                    "_F61B4D050DDB45714E098874F20144EF"
                     {
-                    "Name" = "8:FastColoredTextBox.dll"
+                    "Name" = "8:WeifenLuo.WinFormsUI.Docking.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:FastColoredTextBox.dll"
+            "SourcePath" = "8:WeifenLuo.WinFormsUI.Docking.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A53F7399E8AE42F4BBF46AB07ADDA637"
@@ -329,7 +329,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ScnEdit"
         "ProductCode" = "8:{9BFF35EB-9F12-4C91-816A-F66A71B8AEF1}"
-        "PackageCode" = "8:{A7643C0C-B7B9-4286-9BC0-A8CD2C5D210D}"
+        "PackageCode" = "8:{D5772A3F-CC40-453F-869B-E0A17336AF56}"
         "UpgradeCode" = "8:{DF763464-8332-4689-BCC9-99A2A6ED6C8A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

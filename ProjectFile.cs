@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace ScnEdit {
     
@@ -41,11 +42,26 @@ namespace ScnEdit {
         internal string FileName;
         internal string RelativeDirectory;
         internal bool IsConverted;
+        internal bool IsNormalized;
+        internal bool IsChanged;
+
+        public string TextCache;
 
         #endregion
 
         #region Properties
 
+        internal static ProjectFile Project {
+            get {
+                return ProjectFile.All.Find(i => i.Role == Roles.Main);
+            }
+        }
+
+        internal static List<ProjectFile> ProjectFiles {
+            get { return ProjectFile.All; }
+        }
+
+        internal bool IsOpen { get { return this is EditorFile; } }
         internal bool HasHtmlEncoding { get { return Type == Types.HTML || Type == Types.CSS; } }
         
         /// <summary>
@@ -73,9 +89,11 @@ namespace ScnEdit {
                     var buffer = new byte[stream.Length];
                     stream.Read(buffer, 0, (int)stream.Length);
                     stream.Close();
-                    return (AutoDecoding && !HasHtmlEncoding)
-                        ? AutoDecode(EncodingDefault, buffer, out IsConverted)
-                        : EncodingDefault.GetString(buffer);
+                    return TextCache = PreNormalize(
+                        (AutoDecoding && !HasHtmlEncoding)
+                            ? AutoDecode(EncodingDefault, buffer, out IsConverted)
+                            : EncodingDefault.GetString(buffer)
+                    );
                 }
             }
         }
@@ -131,7 +149,71 @@ namespace ScnEdit {
         /// <summary>
         /// Opens file in editor
         /// </summary>
-        internal void Open() { new EditorFile(Path, Role); }
+        internal void Open() { new EditorFile(this); }
+
+        internal static void FindText(string text, bool useRegex = false) {
+            var pattern = useRegex ? text : Regex.Escape(text);
+            try { FindAll(new Regex(pattern, RegexOptions.Compiled)); } catch (ArgumentException) { }
+        }
+        
+        internal static void FindSymbol(string symbol) {
+            var pattern = @"(?<=^|[ :;\r\n]+)" + Regex.Escape(symbol) + "(?=[_ ;\r\n]+|$)";
+            FindAll(new Regex(pattern, RegexOptions.Compiled));
+        }
+
+        internal static void ReplaceSymbol(string symbol, string replaceText) {
+            var pattern = @"(?<=^|[ :;\r\n]+)" + Regex.Escape(symbol) + "(?=[_ ;\r\n]+|$)";
+            ReplaceAll(new Regex(pattern, RegexOptions.Compiled), replaceText);
+        }
+
+        private static void ProcessAll(Action<ProjectFile> action) {
+            var files = ProjectFiles;
+            for (int i = 0, n = files.Count; i < n; i++) action(files[i]);
+        }
+
+        private static void FindAll(Regex regex) {
+            Main.Instance.DisableEdit();
+            Status.Text = Messages.Searching;
+            Application.DoEvents();
+            SearchResultsPanel.Reset();
+            ProcessAll(i => {
+                foreach (Match m in regex.Matches(i.Text)) {
+                    i.Open();
+                    var p = i.Editor.PositionToPlace(m.Index);// i.Editor.MarkSearchResult(m.Index, m.Length);
+                    SearchResultsPanel.Add(new SearchResult {
+                        Path = i.Path, File = i.FileName, Fragment = m.Value, Line = p.iLine + 1, Column = p.iChar + 1
+                    });
+                }
+            });
+            SearchResultsPanel.CloseIfEmpty();
+            Status.Text = Messages.Ready;
+            Application.DoEvents();
+            Main.Instance.EnableEdit();
+        }
+
+        private static void ReplaceAll(Regex regex, string replaceText) {
+            Main.Instance.DisableEdit();
+            Status.Text = Messages.Replacing;
+            Application.DoEvents();
+            SearchResultsPanel.Reset();
+            ProcessAll(i => {
+                string t;
+                foreach (Match m in regex.Matches(t = i.Text)) {
+                    var p = i.Editor.PositionToPlace(m.Index);
+                    t = t.Substring(0, m.Index) + replaceText + t.Substring(m.Index + m.Length);
+                    i.Editor.BeginAutoUndo();
+                    i.Editor.Text = t;
+                    i.Editor.EndAutoUndo();
+                    SearchResultsPanel.Add(new SearchResult {
+                        Path = i.Path, File = i.FileName, Fragment = m.Value, Replacement = replaceText, Line = p.iLine + 1, Column = p.iChar + 1
+                    });
+                }
+            });
+            SearchResultsPanel.CloseIfEmpty();
+            Status.Text = Messages.Ready;
+            Application.DoEvents();
+            Main.Instance.EnableEdit();
+        }
 
         /// <summary>
         /// Returns file normalized text if applicable, original text otherwise
@@ -188,6 +270,15 @@ namespace ScnEdit {
         private static bool _AutoDecoding;
         private static bool _AutoDecodingSet;
         private Encoding _EncodingDefault;
+
+        private string PreNormalize(string text) {
+            int initialLength = text.Length;
+            var tabString = "".PadLeft(4);
+            text = new ScnSyntax.LineEnding().Replace(text, "\r\n");
+            text = new ScnSyntax.Tab().Replace(text, tabString);
+            IsNormalized = text.Length != initialLength;
+            return text;
+        }
 
         private static string AutoDecode(Encoding nonUnicodeDefault, byte[] buffer, out bool u) {
             string s;

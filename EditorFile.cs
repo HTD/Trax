@@ -47,6 +47,31 @@ namespace ScnEdit {
             s.Save();
         }
 
+        /// <summary>
+        /// Tries to open a relative filename within the current project
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static bool TryOpen(ProjectFile context, string name) {
+            string b = context.BaseDirectory, s = context.SceneryDirectory, n = name, l = "\\", i = ".inc", t = ".txt";
+            var searchPath = new string[] {
+                    b + l + n,
+                    b + l + n + i,
+                    b + l + n + t,
+                    s + l + n,
+                    s + l + n + i,
+                    s + l + n + t,
+                };
+            foreach (var path in searchPath) {
+                if (System.IO.File.Exists(path)) {
+                    new EditorFile(path);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public static void SaveAll() {
             if (BatchStart != null) BatchStart.Invoke(All, EventArgs.Empty);
             All.ForEach(m => m.Save());
@@ -76,7 +101,7 @@ namespace ScnEdit {
                         if (debug && !andExit) {
                             p.WaitForExit();
                             var logPath = String.Format("{0}\\{1}", main.BaseDirectory, "log.txt");
-                            if (System.IO.File.Exists(logPath)) new EditorFile(logPath, Roles.Log, DockState.DockBottom);
+                            if (System.IO.File.Exists(logPath)) new EditorFile(logPath, Roles.Log);
                         }
                         if (andExit) Application.Exit();
                     }
@@ -106,12 +131,17 @@ namespace ScnEdit {
 
         #region Constructors
 
-        public EditorFile(string path, Roles role = Roles.Any, DockState dockState = DockState.Document) : base(path, role) {
-            try {
-                Open(dockState);
-            } catch (Exception x) {
-                MessageBox.Show(x.Message + "\r\nStack trace:\r\n" + x.StackTrace);
-            }
+        public EditorFile(string path, Roles role = Roles.Any) : base(path, role) {
+            Open(DockState.Document);
+        }
+
+        public EditorFile(ProjectFile file) : base(file.Path, file.Role) {
+            if (file.TextCache != null) TextCache = file.TextCache;
+            IsChanged = file.IsChanged;
+            Open(DockState.Document);
+            var projectIndex = ProjectFile.All.FindIndex(i => i.Path == Path);
+            if (projectIndex >= 0) ProjectFile.All[projectIndex] = this;
+
         }
 
         #endregion
@@ -150,7 +180,6 @@ namespace ScnEdit {
                 existing.Container.Activate();
                 return;
             }
-            
             Editor = new Editor(this) { Font = Properties.Settings.Default.Font };
             if (ReadingFile != null) ReadingFile.Invoke(this, EventArgs.Empty);
             Application.DoEvents();

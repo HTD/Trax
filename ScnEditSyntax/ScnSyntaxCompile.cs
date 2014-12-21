@@ -25,6 +25,10 @@ namespace ScnSyntax {
                 @"(?<=node>P[3]track>P[11])%"
             };
             var syntax = new PCR[] {
+                new PCR("LineEnding", @"\r?\n"),
+                new PCR("SingleLF", @"[^\r]\n"),
+                new PCR("CRLF", @"\r\n"),
+                new PCR("Tab", @"\t"),
                 new PCR("HtmlClosingSlash", "</"),
                 new PCR("HtmlEquals", "="),
                 new PCR("HtmlStyleSheet", "(?<=<style>).*?(?=</style>)", RegexOptions.Singleline),
@@ -55,7 +59,9 @@ namespace ScnSyntax {
                 new PCR("TimetableFrame", @"[\[\]\|_]|(?<= {4,})[1-2]|(?<=\-)[1-2](?=\-)|(?<=_)[1-2](?=_)|\-{2,}"),
                 new PCR("TimetableTime", @"(?<=[1-2] {1,3})\d?\d\.\d\d(?= {1,3}|)"),
                 new PCR("NodeParams", @"(?<=node)(?: (%))+?(?= end[a-z]*)", PcrOptions.Precompiled),
-                new PCR("IncludeParams", @"(?<=include)(?: (%))+?(?= end)", PcrOptions.Precompiled)
+                new PCR("IncludeParams", @"(?<=include)(?: (%))+?(?= end)", PcrOptions.Precompiled),
+                new PCR("EventParams", @"(?<=event)(?: (%))+?(?= endevent)", PcrOptions.Precompiled),
+                new PCR("TrainsetParams", @"(?<=trainset)(?: (%)){4}", PcrOptions.Precompiled)
             };
             Regex.CompileToAssembly(syntax, new AssemblyName("ScnSyntax"));
         }

@@ -20,6 +20,9 @@ namespace ScnEdit {
         float DocumentMapScaleFactor = 0.0015f;
         const string ChangedIndicator = "*";
 
+        //private DockPanel _DockPanel;
+        //private DockState _DockState;
+
         public EditorContainer(Editor editor, DockPanel dock, DockState dockState = DockState.Document) {
             Editor = editor;
             Editor.UndoRedoStateChanged += Editor_UndoRedoStateChanged;
@@ -43,9 +46,10 @@ namespace ScnEdit {
             Controls.Add(Splitter);
             Controls.Add(DocumentMap);
             UpdateText(true);
-            Show(dock, dockState);
             FormClosing += EditorContainer_FormClosing;
             FormClosed += EditorContainer_FormClosed;
+            System.Threading.Thread.Sleep(10);
+            dock.Invoke(new Action(() => { Show(dock, dockState); }));
         }
 
         void DocumentMap_MouseWheel(object sender, MouseEventArgs e) {
@@ -93,8 +97,11 @@ namespace ScnEdit {
         }
 
         public void UpdateText(bool force = false) {
-            if (force || Editor.IsChanged) Text = Editor.IsChanged ? (Name + ChangedIndicator) : Name;
-            else Text = Name;
+            if (IsHandleCreated)
+                Invoke(new Action(() => {
+                    if (force || Editor.IsChanged) Text = Editor.IsChanged ? (Name + ChangedIndicator) : Name;
+                    else Text = Name;
+                }));
         }
 
     }
