@@ -20,6 +20,7 @@ namespace ScnEdit {
         internal string FileToOpen;
         internal ProjectPanel SceneryPanel;
         internal SearchResultsPanel SearchResultsPanel;
+        internal Map TrackMap;
 
         #endregion
 
@@ -245,6 +246,11 @@ namespace ScnEdit {
             }
         }
 
+        private void ShowMapMenuItem_Click(object sender, EventArgs e) {
+            TrackMap = new Map();
+            TrackMap.Show(DockPanel, DockState.Document);
+        }
+
         #endregion
 
         #region Debug
@@ -254,7 +260,6 @@ namespace ScnEdit {
         }
 
         #endregion
-
         #endregion
 
     }

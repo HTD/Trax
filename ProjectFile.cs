@@ -295,6 +295,11 @@ namespace ScnEdit {
 
         private static void GetScenery(ProjectFile f) {
             if (f.Role != Roles.Main) throw new InvalidOperationException("Main scenery file expected.");
+            if (Main.Instance.TrackMap != null) {
+                Main.Instance.TrackMap.Close();
+                Main.Instance.TrackMap.Dispose();
+                Main.Instance.TrackMap = null;
+            }
             All = new List<ProjectFile>();
             All.Add(f);
         }

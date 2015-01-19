@@ -187,4 +187,7 @@ czy chcesz go najpierw zapisać?</value>
   <data name="Searching" xml:space="preserve">
     <value>Wyszukiwanie w plikach projektu...</value>
   </data>
+  <data name="TrackMap" xml:space="preserve">
+    <value>Mapa trasy</value>
+  </data>
 </root>

@@ -117,77 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ColumnSymbol" xml:space="preserve">
-    <value>Col</value>
+  <metadata name="MapToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ResetViewButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACkSURBVDhPrZFRCoQwDEQ9W88m/e9h7Y8srlOcMI3JsqCF
+        wZjOm2qz9N6PSJ99W5droY480AgopUyqtY5NgITR8740AGJIBkNhQGvNQC8fhN4UQIOeTuke/eiPADa9
+        MYLxrrXdcAZorft42qR+jSmTwViPAgj7T/z7FxTwsALa0/qdMbJBg4IqhSH0bgGUBnmQSgMI45L0kr3P
+        AiLZmM7FkLv68QVYnemYn5HeiwAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="InsertSymbol" xml:space="preserve">
-    <value>INS</value>
+  <data name="ShowGridButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABISURBVDhPrY5BCgAwCMP6Nv//pw13cvRiq4GCuQRxBiDJ
+        IyLkUaDSdQo4vveBOgpUuk4Bx/c+UEeBStcp4PjeB+q+gMsLzAAu7BeZ1z3bhksAAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="LinesUnit" xml:space="preserve">
-    <value>lines</value>
+  <data name="ShowDotsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPYyAW2Nvbczg6OgYB8QwnJ6fbQPwAyF4ClcYN
+        gBplgIrbgfRbBweHXUB2OpCtApVGgP///zsAcQMM//z5s6Wnp2cBSCNQUx8QS0OVYgKo5gMtLS1P3dzc
+        vnl4eHyPj4//fffu3VdnzpwJgyrDDUA2gjQDbfmPjEFiIDmoMtwApAhkM7oBIDH6GVBfX/8J3QCivXDv
+        3j2/y5cv/wIa8gJkKwhDNR8AYgeoMtwAmCBAgbgRZBsaJqw5NDSU2dbW9gkwvjWgQqQBYOpyB+JjUC7p
+        AOj8KUBcAuWSDoChfR+ItaBc0gHI/1AmeQBo+0IokwzAwAAAIWK9kTclNPAAAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="LineSymbol" xml:space="preserve">
-    <value>Ln</value>
-  </data>
-  <data name="LoadingIncludes" xml:space="preserve">
-    <value>Loading includes...</value>
-  </data>
-  <data name="NormalizeInProgress" xml:space="preserve">
-    <value>Normalize in progress...</value>
-  </data>
-  <data name="OutOfMemoryException" xml:space="preserve">
-    <value>The file was too large to apply syntax highlighting correctly.</value>
-  </data>
-  <data name="Ready" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ReplaceSymbol" xml:space="preserve">
-    <value>OVR</value>
-  </data>
-  <data name="SelectionSymbol" xml:space="preserve">
-    <value>Sel</value>
-  </data>
-  <data name="UnsavedChanges" xml:space="preserve">
-    <value>The file "{0}" was changed,
-do you wish to save it first?</value>
-  </data>
-  <data name="Ready1" xml:space="preserve">
-    <value>Ready</value>
-  </data>
-  <data name="ColumnHeader" xml:space="preserve">
-    <value>Column</value>
-  </data>
-  <data name="FileHeader" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="FragmentHeader" xml:space="preserve">
-    <value>Fragment</value>
-  </data>
-  <data name="LineHeader" xml:space="preserve">
-    <value>Line</value>
-  </data>
-  <data name="PathHeader" xml:space="preserve">
-    <value>Path</value>
-  </data>
-  <data name="Scenery" xml:space="preserve">
-    <value>Scenery</value>
-  </data>
-  <data name="SearchResults" xml:space="preserve">
-    <value>Search results</value>
-  </data>
-  <data name="ProcessingTracks" xml:space="preserve">
-    <value>Processing tracks...</value>
-  </data>
-  <data name="ReplaceResults" xml:space="preserve">
-    <value>Replace results</value>
-  </data>
-  <data name="Replacing" xml:space="preserve">
-    <value>Replacing in project files...</value>
-  </data>
-  <data name="Searching" xml:space="preserve">
-    <value>Searching in project files...</value>
-  </data>
-  <data name="TrackMap" xml:space="preserve">
-    <value>Track map</value>
+  <data name="SelectButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEESURBVDhPjZExboNAEEVpc5HcwS09Ulp6Cnd0PoHFKbgF
+        PT09t0BCSgQrhJNd+41mJGxD4Etfs8P+/3d2iQx/t/EKnXPBaN9Usg0zNk0jxjiOpVq/G4IAMca6rkOe
+        51Lp+b4bwCkQU9d1sqbS255K14GA0ziZdZZlEkBv11HpOuwUmwATIW3bHpvg9Q2oMEkSCfG/7uK9/1D5
+        O9b+wpJVVYX+x4XdEAt6DYBlWYb+ewh+mj7Vso6tAFgURRjGxyTzfFL5OywAcZqmsl7+TmO4TV9qeQab
+        mKncnQCC6P99AwNCG5NqUxDm5/Gssm2IWR8Kw3IK2dubYvnKiDExlfHQFMcRRXfFB59iR0k/RQAAAABJ
+        RU5ErkJggg==
+</value>
   </data>
 </root>

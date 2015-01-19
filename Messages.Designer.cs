@@ -259,6 +259,15 @@ namespace ScnEdit {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Track map.
+        /// </summary>
+        internal static string TrackMap {
+            get {
+                return ResourceManager.GetString("TrackMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file &quot;{0}&quot; was changed,
         ///do you wish to save it first?.
         /// </summary>

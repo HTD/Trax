@@ -71,6 +71,8 @@
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.BrowseFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.DockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ShowMapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.MainStatusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -209,7 +211,9 @@
             this.SceneryRedoMenuItem,
             this.s7,
             this.SceneryNormalizeMenuItem,
-            this.NameTracksMenuItem});
+            this.NameTracksMenuItem,
+            this.toolStripMenuItem1,
+            this.ShowMapMenuItem});
             resources.ApplyResources(this.SceneryMenu, "SceneryMenu");
             this.SceneryMenu.Name = "SceneryMenu";
             // 
@@ -376,6 +380,17 @@
             this.DockPanel.Name = "DockPanel";
             this.DockPanel.ActiveDocumentChanged += new System.EventHandler(this.DockPanel_ActiveDocumentChanged);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            // 
+            // ShowMapMenuItem
+            // 
+            this.ShowMapMenuItem.Name = "ShowMapMenuItem";
+            resources.ApplyResources(this.ShowMapMenuItem, "ShowMapMenuItem");
+            this.ShowMapMenuItem.Click += new System.EventHandler(this.ShowMapMenuItem_Click);
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -447,6 +462,8 @@
         internal WeifenLuo.WinFormsUI.Docking.DockPanel DockPanel;
         private System.Windows.Forms.ToolStripSeparator s4;
         private System.Windows.Forms.ToolStripMenuItem ClearMarkersMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ShowMapMenuItem;
     }
 }
 

@@ -50,7 +50,7 @@ namespace ScnSyntax {
                 new PCR("Command", @"\$\w+"),
                 new PCR("Special", @"\*{1}"),
                 new PCR("Path", paths, PcrOptions.Special),
-                new PCR("ExplicitTexExt", @"\.(?:bmp|tga|dds)(?=[\b\r\n ])", RegexOptions.IgnoreCase),
+                new PCR("ExplicitTexExt", @"\.(?:bmp|tga|dds)\b", RegexOptions.IgnoreCase),
                 new PCR("FirstActiveDynamic", "(?<=node>P[2])%(?= dynamic>P[4](?:headdriver|reardriver))", PcrOptions.Precompiled),
                 new PCR("Include", "(?<=include )%(?= .*?end)", PcrOptions.Precompiled),
                 new PCR("IncludeSimple", "(?<=include )%(?= end)", PcrOptions.Precompiled),
