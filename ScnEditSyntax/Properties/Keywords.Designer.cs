@@ -35,17 +35,17 @@ namespace ScnSyntax.Properties {
             ">event2</string>\r\n  <string>eventall0</string>\r\n  <string>eventall1</string>\r\n  " +
             "<string>eventall2</string>\r\n  <string>eventlauncher</string>\r\n  <string>FirstIni" +
             "t</string>\r\n  <string>getvalues</string>\r\n  <string>include</string>\r\n  <string>" +
-            "light</string>\r\n  <string>lights</string>\r\n  <string>line_loop</string>\r\n  <stri" +
-            "ng>line_strip</string>\r\n  <string>lines</string>\r\n  <string>material</string>\r\n " +
-            " <string>memcell</string>\r\n  <string>memcompare</string>\r\n  <string>model</strin" +
-            "g>\r\n  <string>multiple</string>\r\n  <string>node</string>\r\n  <string>origin</stri" +
-            "ng>\r\n  <string>propability</string>\r\n  <string>putvalues</string>\r\n  <string>rot" +
-            "ate</string>\r\n  <string>setvalues</string>\r\n  <string>sky</string>\r\n  <string>so" +
-            "und</string>\r\n  <string>test</string>\r\n  <string>time</string>\r\n  <string>track<" +
-            "/string>\r\n  <string>traction</string>\r\n  <string>trainset</string>\r\n  <string>tr" +
-            "iangle_fan</string>\r\n  <string>triangle_strip</string>\r\n  <string>triangles</str" +
-            "ing>\r\n  <string>updatevalues</string>\r\n  <string>velocity</string>\r\n</ArrayOfStr" +
-            "ing>")]
+            "isolated</string>\r\n  <string>light</string>\r\n  <string>lights</string>\r\n  <strin" +
+            "g>line_loop</string>\r\n  <string>line_strip</string>\r\n  <string>lines</string>\r\n " +
+            " <string>material</string>\r\n  <string>memcell</string>\r\n  <string>memcompare</st" +
+            "ring>\r\n  <string>model</string>\r\n  <string>multiple</string>\r\n  <string>node</st" +
+            "ring>\r\n  <string>origin</string>\r\n  <string>propability</string>\r\n  <string>putv" +
+            "alues</string>\r\n  <string>rotate</string>\r\n  <string>setvalues</string>\r\n  <stri" +
+            "ng>sky</string>\r\n  <string>sound</string>\r\n  <string>test</string>\r\n  <string>ti" +
+            "me</string>\r\n  <string>track</string>\r\n  <string>tracklength</string>\r\n  <string" +
+            ">traction</string>\r\n  <string>trainset</string>\r\n  <string>triangle_fan</string>" +
+            "\r\n  <string>triangle_strip</string>\r\n  <string>triangles</string>\r\n  <string>upd" +
+            "atevalues</string>\r\n  <string>velocity</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Set1 {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Set1"]));

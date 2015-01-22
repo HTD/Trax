@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -8,8 +10,10 @@ namespace ScnEdit {
     /// <summary>
     /// Scenery track definition
     /// </summary>
-    class ScnTrack : ScnVectorObject<ScnTrack> {
-        
+    public class ScnTrack : ScnVectorObject<ScnTrack> {
+
+        const double LinkDistance = 0.01;
+
         #region Fields
         
         // definition
@@ -31,22 +35,23 @@ namespace ScnEdit {
         public double? TexWidth;
         public double? TexSlope;
         // geometry
-        public ScnPoint Point1;
+        public V3D Point1;
         public double Roll1;
-        public ScnPoint CVec1;
-        public ScnPoint CVec2;
-        public ScnPoint Point2;
+        public V3D CVec1;
+        public V3D CVec2;
+        public V3D Point2;
         public double Roll2;
         public double Radius1;
         // geometry (switch)
-        public ScnPoint Point3;
+        public V3D Point3;
         public double? Roll3;
-        public ScnPoint CVec3;
-        public ScnPoint CVec4;
-        public ScnPoint Point4;
+        public V3D CVec3;
+        public V3D CVec4;
+        public V3D Point4;
         public double? Roll4;
         public double? Radius2;
         // optional
+        public double? TrackLength2;
         public double? Velocity;
         public string Event0;
         public string Event1;
@@ -62,57 +67,16 @@ namespace ScnEdit {
 
         #endregion
 
-        /// <summary>
-        /// Returns true if this track's start is linked to given track end
-        /// </summary>
-        /// <param name="track"></param>
-        /// <returns></returns>
-        public bool IsStartLinkedTo(ScnTrack track) {
-            if (track == null) return false;
-            return
-                Point1.IsLinkedTo(track.Point2) ||
-                Point1.IsLinkedTo(track.Point4) ||
-                (Point3 != null && Point3.IsLinkedTo(track.Point2)) ||
-                (Point3 != null && Point3.IsLinkedTo(track.Point4));
-        }
+        #region Properties
 
-        /// <summary>
-        /// Returns true if this track's end is linked to given track start
-        /// </summary>
-        /// <param name="track"></param>
-        /// <returns></returns>
-        public bool IsEndLinkedTo(ScnTrack track) {
-            if (track == null) return false;
-            return
-                Point2.IsLinkedTo(track.Point1) ||
-                Point2.IsLinkedTo(track.Point3) ||
-                (Point4 != null && Point4.IsLinkedTo(track.Point1)) ||
-                (Point4 != null && Point4.IsLinkedTo(track.Point3));
-        }
+        public bool IsSwitch { get { return Point3 != null; } }
+        public int SwitchState { get; set; }
+        public V3D P1 { get { return SwitchState == 0 ? Point1 : Point3; } }
+        public V3D P2 { get { return SwitchState == 0 ? Point2 : Point4; } }
 
-        /// <summary>
-        /// Returns true if this track is linked to given track
-        /// </summary>
-        /// <param name="track"></param>
-        /// <returns></returns>
-        public bool IsLinkedTo(ScnTrack track) {
-            return IsStartLinkedTo(track) || IsEndLinkedTo(track);
-        }
+        #endregion
 
-        /// <summary>
-        /// Calculates track length
-        /// </summary>
-        /// <param name="n">1 for alternative track in switch</param>
-        /// <returns></returns>
-        public double GetLength(int n) {
-            if (n == 0) {
-                if (CVec1 == null || CVec2 == null || (CVec1.Zero && CVec2.Zero)) return Point1.DistanceTo(Point2);
-                return new ScnBezier { A = Point1, B = Point1 + CVec1, C = Point2 + CVec2, D = Point2 }.Length();
-            } else {
-                if (CVec3 == null || CVec4 == null || (CVec3.Zero && CVec4.Zero)) return Point3.DistanceTo(Point4);
-                return new ScnBezier { A = Point3, B = Point3 + CVec3, C = Point4 + CVec4, D = Point4 }.Length();
-            }
-        }
+         // 1cm
 
         /// <summary>
         /// Parses track match to track object
@@ -130,16 +94,16 @@ namespace ScnEdit {
             if (track.IncludesAfter != null && track.IncludesAfter.Length < 1) track.IncludesAfter = null;
             var f = System.Globalization.CultureInfo.InvariantCulture.NumberFormat;
             int i = 0;
-            track.TrackType = c[i++].Value;
+            track.TrackType = c[i++].Value.ToLowerInvariant();
             track.TrackLength = Double.Parse(c[i++].Value, f);
             track.TrackWidth = Double.Parse(c[i++].Value, f);
             track.Friction = Double.Parse(c[i++].Value, f);
             track.SoundDist = Double.Parse(c[i++].Value, f);
             track.Quality = Int32.Parse(c[i++].Value, f);
             track.DamageFlag = Int32.Parse(c[i++].Value, f);
-            track.Environment = c[i++].Value;
-            track.Visibility = c[i++].Value;
-            if (track.Visibility.ToLowerInvariant() == "vis") {
+            track.Environment = c[i++].Value.ToLowerInvariant();
+            track.Visibility = c[i++].Value.ToLowerInvariant();
+            if (track.Visibility == "vis") {
                 track.Tex1 = c[i++].Value;
                 track.TexLength = Double.Parse(c[i++].Value, f);
                 track.Tex2 = c[i++].Value;
@@ -147,19 +111,19 @@ namespace ScnEdit {
                 track.TexWidth = Double.Parse(c[i++].Value, f);
                 track.TexSlope = Double.Parse(c[i++].Value, f);
             }
-            track.Point1 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
+            track.Point1 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
             track.Roll1 = Double.Parse(c[i++].Value, f);
-            track.CVec1 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
-            track.CVec2 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
-            track.Point2 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
+            track.CVec1 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
+            track.CVec2 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
+            track.Point2 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
             track.Roll2 = Double.Parse(c[i++].Value, f);
             track.Radius1 = Double.Parse(c[i++].Value, f);
-            if (track.TrackType.ToLowerInvariant() == "switch") {
-                track.Point3 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
+            if (track.TrackType == "switch") {
+                track.Point3 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
                 track.Roll3 = Double.Parse(c[i++].Value, f);
-                track.CVec3 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
-                track.CVec4 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
-                track.Point4 = ScnPoint.Parse(c[i++].Value, c[i++].Value, c[i++].Value);
+                track.CVec3 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
+                track.CVec4 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
+                track.Point4 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
                 track.Roll4 = Double.Parse(c[i++].Value, f);
                 track.Radius2 = Double.Parse(c[i++].Value, f);
             }
@@ -180,14 +144,86 @@ namespace ScnEdit {
             if (extras.Count > 0) track.Extras = String.Join(" ", extras);
             track.ScnType = "track";
             track.SourcePath = path;
-            track.Vectors =
-                (track.Point3 == null && track.Point4 != null)
-                ? new ScnVector[] { new ScnVector(track.Point1, track.Point2) }
-                : new ScnVector[] { new ScnVector(track.Point1, track.Point2), new ScnVector(track.Point3, track.Point4) };
             track.SourceIndex = match.Index;
             track.SourceLength = match.Length;
-            track.TrackLength = track.GetLength(0);
             return track;
+        }
+
+        private bool IsLinked(V3D p1, V3D p2) {
+            if (p1 == null || p2 == null) return false;
+            return (p1 - p2).Length < LinkDistance;
+        }
+
+
+        /// <summary>
+        /// Returns true if this track's start is linked to given track end
+        /// </summary>
+        /// <param name="track"></param>
+        /// <returns></returns>
+        public bool IsStartLinkedTo(ScnTrack track, out bool switchEnd) {
+            switchEnd = false;
+            if (track == null) return false;
+            bool mainEnd = IsLinked(Point1, track.Point2) || IsLinked(Point3, track.Point2);
+            switchEnd = IsLinked(Point1, track.Point4) || IsLinked(Point3, track.Point4);
+            return mainEnd || switchEnd;
+        }
+
+        /// <summary>
+        /// Returns true if this track's end is linked to given track start
+        /// </summary>
+        /// <param name="track"></param>
+        /// <returns></returns>
+        public bool IsEndLinkedTo(ScnTrack track, out bool switchEnd) {
+            switchEnd = false;
+            if (track == null) return false;
+            bool mainEnd = IsLinked(Point2, track.Point1) || IsLinked(Point4, track.Point1);
+            switchEnd = IsLinked(Point2, track.Point3) || IsLinked(Point4, track.Point3);
+            return mainEnd || switchEnd;
+        }
+
+        /// <summary>
+        /// Returns true if this track is linked to given track
+        /// </summary>
+        /// <param name="track"></param>
+        /// <returns></returns>
+        public bool IsLinkedTo(ScnTrack track, out bool switchEnd) {
+            return IsStartLinkedTo(track, out switchEnd) || IsEndLinkedTo(track, out switchEnd);
+        }
+
+        /// <summary>
+        /// Sets Curves field of ScnVectorObject base
+        /// </summary>
+        public void GetCurves() {
+            Curves =
+                (IsSwitch)
+                    ? new ScnBezier[] {
+                        new ScnBezier(Point1, CVec1, CVec2, Point2),
+                        new ScnBezier(Point3, CVec3, CVec4, Point4)
+                    }
+                    : new ScnBezier[] { new ScnBezier(Point1, CVec1, CVec2, Point2) };
+        }
+
+        /// <summary>
+        /// Calculates track length
+        /// </summary>
+        /// <param name="n">1 for alternative track in switch</param>
+        /// <returns></returns>
+        public double GetLength(int? switchState = null) {
+            if ((switchState != null ? switchState : SwitchState) == 0) {
+                if (CVec1 == null || CVec2 == null || (CVec1.Zero && CVec2.Zero)) return Math.Round((Point1 - Point2).Length, 9);
+                return Math.Round(new ScnBezier(Point1, CVec1, CVec2, Point2).QLength, 9);
+            } else {
+                if (CVec3 == null || CVec4 == null || (CVec3.Zero && CVec4.Zero)) return Math.Round((Point3 - Point4).Length, 9);
+                return Math.Round(new ScnBezier(Point3, CVec3, CVec4, Point4).QLength, 9);
+            }
+        }
+
+        /// <summary>
+        /// Calculates track lenghts (main and swith if applicable)
+        /// </summary>
+        public void GetLengths() {
+            TrackLength = GetLength(0);
+            if (IsSwitch) TrackLength2 = GetLength(1);
         }
 
         /// <summary>
@@ -243,6 +279,7 @@ namespace ScnEdit {
             if (visiblePart != null) text += "\r\n" + visiblePart;
             text += "\r\n" + trackPart;
             if (switchPart != null) text += "\r\n" + switchPart;
+            if (TrackLength2 != null) text += String.Format("\r\ntracklength {0}", ScnNumbers.ToString(TrackLength2));
             if (Velocity != null) text += String.Format("\r\nvelocity {0}", ScnNumbers.ToString(Velocity));
             if (Event0 != null) text += String.Format("\r\nevent0 {0}", Event0);
             if (Event1 != null) text += String.Format("\r\nevent1 {0}", Event1);
@@ -261,7 +298,7 @@ namespace ScnEdit {
     /// <summary>
     /// Scenery track list
     /// </summary>
-    class ScnTracks : ScnVectorObjects<ScnTrack> {
+    public class ScnTracks : ScnVectorObjects<ScnTrack> {
 
         #region Private
 
@@ -271,7 +308,7 @@ namespace ScnEdit {
         private const string PatXvs = @"(?:\r?\n){3,}";
         private const string PatIncludeBefore = @"(?:(include[^\r\n]+end)[ \t;]*\r?\n)?";
         private const string PatIncludeAfter = @"(?:\r?\n[ \t;]*(include[^\r\n]+end))?";
-        private const string PatTrackBlock = @"node.*?track.*?endtrack";
+        private const string PatTrackBlock = @"(?<!// *)node.*?track.*?(?<!// *)endtrack";
         private const string PatTrackDef = @"node[\s;]+[^\s;]+[\s;]+[^\s;]+[\s;]+([^\s;]+)[\s;]+track[\s;]+(?:([^\s;]+)+[\s;]+)+?endtrack";
         private static Regex RxComment = new Regex(PatComment, RegexOptions.Compiled | RegexOptions.Multiline);
         private static Regex RxXvs = new Regex(PatXvs, RegexOptions.Compiled);
@@ -313,10 +350,59 @@ namespace ScnEdit {
         private ScnTrackIncludes SourceIncludes;
         private int[][] SourceFragments;
 
+        #region Track finder
+
+        private bool IsSeparator(char c) { return c == ' ' || c == ';' || c == '\t' || c == '\r' || c == '\n'; }
+
+        private int FindStart(int length) {
+            int x = 0, y = -1;
+            while (y < 0 && x < length) {
+                y = Source.IndexOf("track", x);
+                if (y > 0) {
+                    if (!IsSeparator(Source[y - 1]) || !IsSeparator(Source[y + 5])) { x = y + 5; y = -1; continue; }
+                    x = y;
+                } else return -1;
+            }
+            if (x > 0) x = Source.LastIndexOf("node", x);
+            if (SourceIncludes.HasFlag(ScnTrackIncludes.Before)) {
+                y = Source.LastIndexOf("include", 0, x);
+                if (y > -1) x = y;
+            }
+            return x;
+        }
+
+        private int FindEnd(int start, int length) {
+            int x = start, y = -1;
+            while (y < 0 && length - x > start) {
+                y = Source.LastIndexOf("endtrack", length - 1, length - x);
+                if (y > 0) {
+                    if (!IsSeparator(Source[y - 1]) || ((y + 8 < length) && !IsSeparator(Source[y + 8]))) { x = y + 1; y = -1; continue; }
+                    x = y;
+                } else return length - 1;
+            }
+            x += 7;
+            if (SourceIncludes.HasFlag(ScnTrackIncludes.After)) {
+                y = Source.IndexOf("include", x);
+                bool allSeparators = true;
+                if (y >= x) {
+                    for (int i = 0; i < y - x; i++) if (!IsSeparator(Source[i])) allSeparators = false;
+                    if (allSeparators) x = Source.IndexOf("end", x);
+                }
+            }
+            return x > 0 ? x : (length - 1);
+        }
+
+        #endregion
+
         private void Parse() {
             Match blockMatch, detailsMatch;
-            int start = 0, length = Source.Length;
-            while ((blockMatch = BlockRegex.Match(Source, start)).Success && start < length) {
+            int length = Source.Length, start = FindStart(length);
+            if (start < 0) return;
+            int end = FindEnd(start, length);
+            length = end - start + 1;
+            var sample = Source.Substring(start, length);
+            System.Diagnostics.Debug.Print(sample);
+            while (start < length && (blockMatch = BlockRegex.Match(Source, start)).Success) {
                 var clean = RxComment.Replace(blockMatch.Value, "");
                 detailsMatch = DataRegex.Match(clean);
                 var track = ScnTrack.Parse(detailsMatch, SourcePath, SourceIncludes);
@@ -363,16 +449,55 @@ namespace ScnEdit {
             return tracks;
         }
 
-        public string ReplaceText() {
-            if (Count < 1) return Source;
-            var b = new StringBuilder();
-            foreach (var f in SourceFragments) if (f[1] > 0) b.Append(Source.Substring(f[0], f[1]));
-            var oc = RxXvs.Replace(b.ToString(), "\r\n\r\n").Trim();
-            return Source = (
-                oc.Length > 0
-                    ? ("// Tracks:\r\n\r\n" + AsText() + "\r\n\r\n// Original content:\r\n\r\n" + oc)
-                    : AsText()
-            );
+        public static ScnTracks Load() {
+            var tracks = new ScnTracks();
+            ProjectFile.All.ForEach(f => {
+                if (f.Type == ProjectFile.Types.SceneryPart || f.Type == ProjectFile.Types.SceneryMain) {
+                    var set = ScnTracks.Parse(f.Text, f.Path, ScnTrackIncludes.Ignore);
+                    if (set.Count > 0) tracks.AddRange(set);
+                }
+            });
+            return tracks;
+        }
+
+        /// <summary>
+        /// Gets a rectangle containing all tracks
+        /// </summary>
+        /// <returns></returns>
+        public RectangleF GetBounds() {
+            double x = 0, left = 0, top = 0, right = 0, bottom = 0;
+            foreach (var track in this) {
+                if ((x = track.Point1.X) < left) left = x;
+                if ((x = track.Point2.X) < left) left = x;
+                if ((x = track.Point1.X) > right) right = x;
+                if ((x = track.Point2.X) > right) right = x;
+                if ((x = track.Point1.Z) < top) top = x;
+                if ((x = track.Point2.Z) < top) top = x;
+                if ((x = track.Point1.Z) > bottom) bottom = x;
+                if ((x = track.Point2.Z) > bottom) bottom = x;
+                if (track.IsSwitch) {
+                    if ((x = track.Point3.X) < left) left = x;
+                    if ((x = track.Point4.X) < left) left = x;
+                    if ((x = track.Point3.X) > right) right = x;
+                    if ((x = track.Point4.X) > right) right = x;
+                    if ((x = track.Point3.Z) < top) top = x;
+                    if ((x = track.Point4.Z) < top) top = x;
+                    if ((x = track.Point3.Z) > bottom) bottom = x;
+                    if ((x = track.Point4.Z) > bottom) bottom = x;
+                }
+            }
+            return new RectangleF((float)left, (float)top, (float)(right - left), (float)(bottom - top));
+        }
+
+        public float GetFitScale(RectangleF mapBounds, Rectangle displayBounds) {
+            var x = (float)displayBounds.Width / mapBounds.Width;
+            var y = (float)displayBounds.Height / mapBounds.Height;
+            return new[] { x, y }.Min();
+        }
+
+        public ScnTracks GetVisible(float scale, RectangleF viewport) {
+            var visible = new ScnTracks();
+            return visible;
         }
 
         /// <summary>
@@ -389,14 +514,15 @@ namespace ScnEdit {
                 }
                 var added = false;
                 var current = l.First;
+                var switchEnd = false;
                 while (current != null) {
-                    if (t.IsEndLinkedTo(current.Value)) {
+                    if (t.IsEndLinkedTo(current.Value, out switchEnd)) {
                         l.AddBefore(current, t);
                         current = current.Next;
                         added = true;
                         break;
                     }
-                    if (t.IsStartLinkedTo(current.Value)) {
+                    if (t.IsStartLinkedTo(current.Value, out switchEnd)) {
                         l.AddAfter(current, t);
                         current = current.Next;
                         added = true;
@@ -420,9 +546,10 @@ namespace ScnEdit {
             ScnTrack prev = null;
             this.ForEach(track => {
                 bool isSwitch = track.Point3 != null;
-                bool isLinkedToPrev = track.IsLinkedTo(prev);
+                bool isPrevSwitchEnd = false;
+                bool isLinkedToPrev = track.IsLinkedTo(prev, out isPrevSwitchEnd);
                 bool isNamed = track.Name != "none";
-                int prevLength = prev != null ? (int)prev.TrackLength : 0;
+                int prevLength = prev != null ? (int)Math.Round(prev.GetLength(isPrevSwitchEnd ? 1 : 0)) : 0;
                 if (!isLinkedToPrev) {
                     if (isSwitch) switchIndex++; else trackIndex++;
                 }
@@ -445,6 +572,18 @@ namespace ScnEdit {
         public void SortAddNames() {
             Sort();
             AddNames();
+        }
+
+        public string ReplaceText() {
+            if (Count < 1) return Source;
+            var b = new StringBuilder();
+            foreach (var f in SourceFragments) if (f[1] > 0) b.Append(Source.Substring(f[0], f[1]));
+            var oc = RxXvs.Replace(b.ToString(), "\r\n\r\n").Trim();
+            return Source = (
+                oc.Length > 0
+                    ? ("// Tracks:\r\n\r\n" + AsText() + "\r\n\r\n// Original content:\r\n\r\n" + oc)
+                    : AsText()
+            );
         }
 
         /// <summary>

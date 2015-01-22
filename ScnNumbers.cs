@@ -10,7 +10,7 @@ namespace ScnEdit {
     public static class ScnNumbers {
 
         public static CultureInfo IC = CultureInfo.InvariantCulture;
-        public const string NF = "0.######";
+        public const string NF = "0.############";
 
         public static double Parse(string s) {
             return System.Double.Parse(s, IC);

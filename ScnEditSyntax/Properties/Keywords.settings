@@ -27,6 +27,7 @@
   &lt;string&gt;FirstInit&lt;/string&gt;
   &lt;string&gt;getvalues&lt;/string&gt;
   &lt;string&gt;include&lt;/string&gt;
+  &lt;string&gt;isolated&lt;/string&gt;
   &lt;string&gt;light&lt;/string&gt;
   &lt;string&gt;lights&lt;/string&gt;
   &lt;string&gt;line_loop&lt;/string&gt;
@@ -48,6 +49,7 @@
   &lt;string&gt;test&lt;/string&gt;
   &lt;string&gt;time&lt;/string&gt;
   &lt;string&gt;track&lt;/string&gt;
+  &lt;string&gt;tracklength&lt;/string&gt;
   &lt;string&gt;traction&lt;/string&gt;
   &lt;string&gt;trainset&lt;/string&gt;
   &lt;string&gt;triangle_fan&lt;/string&gt;

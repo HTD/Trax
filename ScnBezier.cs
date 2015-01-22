@@ -7,37 +7,11 @@ using System.Threading.Tasks;
 namespace ScnEdit {
     
     /// <summary>
-    /// Basic cubic Bézier curve interpolation class
+    /// Bézier curve interpolation class using scn type definitions
     /// </summary>
-    class ScnBezier {
+    public class ScnBezier : Bezier3 {
 
-        public const double DefaultPrecision = 0.05; // 5cm
-
-        public ScnPoint A;
-        public ScnPoint B;
-        public ScnPoint C;
-        public ScnPoint D;
-
-        /// <summary>
-        /// Returns point of the curve for t = 0..1
-        /// </summary>
-        /// <param name="t"></param>
-        /// <returns></returns>
-        public ScnPoint P(double t) {
-            double t11 = 1 - t, t12 = t11 * t11, t13 = t12 * t11, t2 = t * t, t3 = t2 * t, _3tt12 = 3 * t * t12, _3t2t11 = 3 * t2 * t11;
-            return t13 * A + _3tt12 * B + _3t2t11 * C + t3 * D;
-        }
-
-        /// <summary>
-        /// Returns interpolated curve length
-        /// </summary>
-        /// <param name="precision">[m]</param>
-        /// <returns></returns>
-        public double Length(double precision = DefaultPrecision) {
-            double dt = precision / A.DistanceTo(D), length = 0;
-            for (double t = dt; t < 1; t += dt) length += new ScnVector(P(t - dt), P(t)).Length;
-            return length;
-        }
+        public ScnBezier(V3D p1, V3D c1, V3D c2, V3D p2) : base(p1, p1 + c1, c2 + p2, p2) { }
         
     }
 
