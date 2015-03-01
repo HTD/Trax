@@ -109,7 +109,7 @@ namespace ScnEdit {
             SwitchColor = Color.Orange;
             RoadColor = ColorTranslator.FromHtml("#1d3331");
             RiverColor = ColorTranslator.FromHtml("#2d536f");
-            CrossColor = ColorTranslator.FromHtml("#222222");
+            CrossColor = RoadColor;
             GridColor = ColorTranslator.FromHtml("#ddeddd");
             DotColor = ColorTranslator.FromHtml("#ff2200");
             ShowDots = true;

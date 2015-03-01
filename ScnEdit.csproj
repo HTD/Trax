@@ -91,6 +91,7 @@
       <DependentUpon>MapCtl.cs</DependentUpon>
     </Compile>
     <Compile Include="ScnBezier.cs" />
+    <Compile Include="ScnNodeLexer.cs" />
     <Compile Include="ScnNumbers.cs" />
     <Compile Include="IColorScheme.cs" />
     <Compile Include="ColorSchemes\Colors_Bright_Original.Designer.cs">

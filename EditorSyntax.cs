@@ -191,7 +191,11 @@ namespace ScnEdit {
         private void BackgroundHighlighting(object sender, DoWorkEventArgs e) {
             var range = e.Argument as Range;
             var type = E.File.Type;
-            if (!FullAsyncMode && range.tb.InvokeRequired) { range.tb.Invoke(new Action(() => { BackgroundHighlighting(sender, e); })); }
+            if (!FullAsyncMode && range.tb.InvokeRequired) {
+                try {
+                    range.tb.Invoke(new Action(() => { BackgroundHighlighting(sender, e); }));
+                } catch (ObjectDisposedException) { }
+            }
             else {
                 if (E.FileBindingMode) lock (stylesLock) GetStyles();
                 switch (type) {

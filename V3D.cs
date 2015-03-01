@@ -10,6 +10,7 @@ public class V3D {
     public double Z;
     public double Length { get { return Math.Sqrt(X * X + Y * Y + Z * Z); } }
     public bool Zero { get { return X == 0 && Y == 0; } }
+    public V3D() { }
     public V3D(double x, double y, double z) { X = x; Y = y; Z = z; }
     public override int GetHashCode() { return base.GetHashCode(); }
     public override bool Equals(object obj) {

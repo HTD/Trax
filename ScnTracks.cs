@@ -76,7 +76,134 @@ namespace ScnEdit {
 
         #endregion
 
-         // 1cm
+        /// <summary>
+        /// Track empty constructor
+        /// </summary>
+        public ScnTrack() { }
+
+        /// <summary>
+        /// Track created from lexer node
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="buffer"></param>
+        /// <param name="node"></param>
+        public ScnTrack(string path, byte[] buffer, ScnNodeLexer.Node node) {
+            int i = 0, block = 0;
+            string xname = null;
+            List<string> extras = new List<string>();
+            foreach (var value in node.Values(buffer)) {
+                switch (block) {
+                    case 0: // common properties
+                        switch (i++) {
+                            case 0: TrackType = GetLCString(value); break;
+                            case 1: TrackLength = (float)value; break;
+                            case 2: TrackWidth = (float)value; break;
+                            case 3: Friction = (float)value; break;
+                            case 4: SoundDist = (float)value; break;
+                            case 5: Quality = (int)(float)value; break;
+                            case 6: DamageFlag = (int)(float)value; break;
+                            case 7: Environment = GetLCString(value); break;
+                            case 8: Visibility = GetLCString(value);
+                                block = Visibility == "vis" ? 1 : 2;
+                                i = 0;
+                                break;
+                        }
+                        break;
+                    case 1: // fields for visible tracks
+                        switch (i++) {
+                            case 0: Tex1 = GetString(value);  break;
+                            case 1: TexLength = (float?)value; break;
+                            case 2: Tex2 = GetString(value); break;
+                            case 3: TexHeight = (float?)value; break;
+                            case 4: TexWidth = (float?)value; break;
+                            case 5: TexSlope = (float?)value;
+                                block++;
+                                i = 0;
+                                break;
+                        }
+                        break;
+                    case 2: // track vectors and parameters
+                        switch (i++) {
+                            case 0: Point1 = new V3D { X = (float)value }; break;
+                            case 1: Point1.Y = (float)value; break;
+                            case 2: Point1.Z = (float)value; break;
+                            case 3: Roll1 = (float)value; break;
+                            case 4: CVec1 = new V3D { X = (float)value }; break;
+                            case 5: CVec1.Y = (float)value; break;
+                            case 6: CVec1.Z = (float)value; break;
+                            case 7: CVec2 = new V3D { X = (float)value }; break;
+                            case 8: CVec2.Y = (float)value; break;
+                            case 9: CVec2.Z = (float)value; break;
+                            case 10: Point2 = new V3D { X = (float)value }; break;
+                            case 11: Point2.Y = (float)value; break;
+                            case 12: Point2.Z = (float)value; break;
+                            case 13: Roll2 = (float)value; break;
+                            case 14: Radius1 = (float)value;
+                                block = (TrackType == "switch" || TrackType == "cross") ? 3 : 4;
+                                i = 0;
+                                break;
+                        }
+                        break;
+                    case 3: // switch vectors and parameters
+                        switch (i++) {
+                            case 0: Point3 = new V3D { X = (float)value }; break;
+                            case 1: Point3.Y = (float)value; break;
+                            case 2: Point3.Z = (float)value; break;
+                            case 3: Roll3 = (float)value; break;
+                            case 4: CVec3 = new V3D { X = (float)value }; break;
+                            case 5: CVec3.Y = (float)value; break;
+                            case 6: CVec3.Z = (float)value; break;
+                            case 7: CVec4 = new V3D { X = (float)value }; break;
+                            case 8: CVec4.Y = (float)value; break;
+                            case 9: CVec4.Z = (float)value; break;
+                            case 10: Point4 = new V3D { X = (float)value }; break;
+                            case 11: Point4.Y = (float)value; break;
+                            case 12: Point4.Z = (float)value; break;
+                            case 13: Roll4 = (float)value; break;
+                            case 14: Radius2 = (float)value;
+                                block++;
+                                i = 0;
+                                break;
+                        }
+                        break;
+                    case 4: // extras
+                        if (i++ % 2 == 0) xname = GetLCString(value);
+                        else {
+                            switch (xname) {
+                                case "velocity": Velocity = (float)value; break;
+                                case "event0": Event0 = (string)value; break;
+                                case "event1": Event1 = (string)value; break;
+                                case "event2": Event2 = (string)value; break;
+                                case "eventall0": Eventall0 = (string)value; break;
+                                case "eventall1": Eventall1 = (string)value; break;
+                                case "eventall2": Eventall2 = (string)value; break;
+                                case "isolated": Isolated = (string)value; break;
+                                default: extras.Add(xname); extras.Add(GetString(value)); break;
+                            }
+                        }
+                        break;
+                }
+            }
+            if (extras.Count > 0) Extras = String.Join(" ", extras);
+            ScnType = "track";
+            SourcePath = path;
+            SourceIndex = node.SourceIndex;
+            SourceLength = node.SourceLength;
+        }
+
+        /// <summary>
+        /// Gets string value from object which could not necessarily be boxed string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private string GetString(object value) { return value == null ? null : value.ToString(); }
+        
+        /// <summary>
+        /// Gets lower case string value from object which could not necessarily be boxed string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private string GetLCString(object value) { return value == null ? null : value.ToString().ToLowerInvariant(); }
 
         /// <summary>
         /// Parses track match to track object
@@ -395,22 +522,33 @@ namespace ScnEdit {
         #endregion
 
         private void Parse() {
-            Match blockMatch, detailsMatch;
-            int length = Source.Length, start = FindStart(length);
-            if (start < 0) return;
-            int end = FindEnd(start, length);
-            length = end - start + 1;
-            var sample = Source.Substring(start, length);
-            System.Diagnostics.Debug.Print(sample);
-            while (start < length && (blockMatch = BlockRegex.Match(Source, start)).Success) {
-                var clean = RxComment.Replace(blockMatch.Value, "");
-                detailsMatch = DataRegex.Match(clean);
-                var track = ScnTrack.Parse(detailsMatch, SourcePath, SourceIncludes);
-                track.SourceIndex = blockMatch.Index;
-                track.SourceLength = blockMatch.Length;
-                Add(track);
-                start = blockMatch.Index + blockMatch.Length;
+            try {
+                var lexer = new ScnNodeLexer(Source, "track");
+                if (lexer.Nodes != null)
+                    foreach (var node in lexer.Nodes)
+                        Add(new ScnTrack(SourcePath, lexer.Buffer, node));
+            } catch (Exception x) {
+                System.Windows.Forms.MessageBox.Show(x.Message + "\r\n\r\n" + x.StackTrace);
             }
+            
+            ////System.Diagnostics.Debug.Print(lexer.Nodes.Length.ToString());
+
+            //Match blockMatch, detailsMatch;
+            //int length = Source.Length, start = FindStart(length);
+            //if (start < 0) return;
+            //int end = FindEnd(start, length);
+            //length = end - start + 1;
+            //var sample = Source.Substring(start, length);
+            //System.Diagnostics.Debug.Print(sample);
+            //while (start < length && (blockMatch = BlockRegex.Match(Source, start)).Success) {
+            //    var clean = RxComment.Replace(blockMatch.Value, "");
+            //    detailsMatch = DataRegex.Match(clean);
+            //    var track = ScnTrack.Parse(detailsMatch, SourcePath, SourceIncludes);
+            //    track.SourceIndex = blockMatch.Index;
+            //    track.SourceLength = blockMatch.Length;
+            //    Add(track);
+            //    start = blockMatch.Index + blockMatch.Length;
+            //}
         }
 
         private void GetSourceFragments() {

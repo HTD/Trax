@@ -27,22 +27,20 @@
             this.MapToolStrip = new System.Windows.Forms.ToolStrip();
             this.ZLabel = new System.Windows.Forms.ToolStripLabel();
             this.XLabel = new System.Windows.Forms.ToolStripLabel();
-            this.ScaleLabel = new System.Windows.Forms.ToolStripLabel();
-            this.ResetViewButton = new System.Windows.Forms.ToolStripButton();
-            this.ShowGridButton = new System.Windows.Forms.ToolStripButton();
-            this.ShowDotsButton = new System.Windows.Forms.ToolStripButton();
-            this.SelectButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.OffsetLabel = new System.Windows.Forms.ToolStripLabel();
-            this.XOffsetLabel = new System.Windows.Forms.ToolStripLabel();
-            this.ZOffsetLabel = new System.Windows.Forms.ToolStripLabel();
-            this.ScaleLabelTitle = new System.Windows.Forms.ToolStripLabel();
             this.PositionLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ZOffsetLabel = new System.Windows.Forms.ToolStripLabel();
+            this.XOffsetLabel = new System.Windows.Forms.ToolStripLabel();
+            this.OffsetLabel = new System.Windows.Forms.ToolStripLabel();
+            this.ScaleLabel = new System.Windows.Forms.ToolStripLabel();
+            this.ScaleLabelTitle = new System.Windows.Forms.ToolStripLabel();
+            this.ResetViewButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ShowGridButton = new System.Windows.Forms.ToolStripButton();
+            this.ShowDotsButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.SelectButton = new System.Windows.Forms.ToolStripButton();
             this.Ctl = new ScnEdit.MapCtl();
-            this.mapCtl2 = new ScnEdit.MapCtl();
-            this.mapCtl1 = new ScnEdit.MapCtl();
             this.MapToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,6 +89,50 @@
             this.XLabel.Text = "X = +00000,00m";
             this.XLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // PositionLabel
+            // 
+            this.PositionLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.PositionLabel.AutoSize = false;
+            this.PositionLabel.Name = "PositionLabel";
+            this.PositionLabel.Size = new System.Drawing.Size(80, 22);
+            this.PositionLabel.Text = "Position:";
+            this.PositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // ZOffsetLabel
+            // 
+            this.ZOffsetLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.ZOffsetLabel.AutoSize = false;
+            this.ZOffsetLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.ZOffsetLabel.Name = "ZOffsetLabel";
+            this.ZOffsetLabel.Size = new System.Drawing.Size(100, 22);
+            this.ZOffsetLabel.Text = "Z = +00000,00m";
+            this.ZOffsetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // XOffsetLabel
+            // 
+            this.XOffsetLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.XOffsetLabel.AutoSize = false;
+            this.XOffsetLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.XOffsetLabel.Name = "XOffsetLabel";
+            this.XOffsetLabel.Size = new System.Drawing.Size(100, 22);
+            this.XOffsetLabel.Text = "X = +00000,00m";
+            this.XOffsetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // OffsetLabel
+            // 
+            this.OffsetLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.OffsetLabel.AutoSize = false;
+            this.OffsetLabel.Name = "OffsetLabel";
+            this.OffsetLabel.Size = new System.Drawing.Size(80, 22);
+            this.OffsetLabel.Text = "Offset:";
+            this.OffsetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // ScaleLabel
             // 
             this.ScaleLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -101,6 +143,15 @@
             this.ScaleLabel.Size = new System.Drawing.Size(125, 22);
             this.ScaleLabel.Text = "100m -> 100,00px";
             // 
+            // ScaleLabelTitle
+            // 
+            this.ScaleLabelTitle.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.ScaleLabelTitle.AutoSize = false;
+            this.ScaleLabelTitle.Name = "ScaleLabelTitle";
+            this.ScaleLabelTitle.Size = new System.Drawing.Size(80, 22);
+            this.ScaleLabelTitle.Text = "Scale:";
+            this.ScaleLabelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // ResetViewButton
             // 
             this.ResetViewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -110,6 +161,11 @@
             this.ResetViewButton.Size = new System.Drawing.Size(23, 22);
             this.ResetViewButton.Text = "Reset view";
             this.ResetViewButton.Click += new System.EventHandler(this.ResetViewButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // ShowGridButton
             // 
@@ -131,6 +187,11 @@
             this.ShowDotsButton.Text = "Show dots";
             this.ShowDotsButton.Click += new System.EventHandler(this.ShowDotsButton_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // SelectButton
             // 
             this.SelectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -140,73 +201,10 @@
             this.SelectButton.Size = new System.Drawing.Size(23, 22);
             this.SelectButton.Text = "Select mode";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // OffsetLabel
-            // 
-            this.OffsetLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.OffsetLabel.AutoSize = false;
-            this.OffsetLabel.Name = "OffsetLabel";
-            this.OffsetLabel.Size = new System.Drawing.Size(80, 22);
-            this.OffsetLabel.Text = "Offset:";
-            this.OffsetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // XOffsetLabel
-            // 
-            this.XOffsetLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.XOffsetLabel.AutoSize = false;
-            this.XOffsetLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.XOffsetLabel.Name = "XOffsetLabel";
-            this.XOffsetLabel.Size = new System.Drawing.Size(100, 22);
-            this.XOffsetLabel.Text = "X = +00000,00m";
-            this.XOffsetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ZOffsetLabel
-            // 
-            this.ZOffsetLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.ZOffsetLabel.AutoSize = false;
-            this.ZOffsetLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.ZOffsetLabel.Name = "ZOffsetLabel";
-            this.ZOffsetLabel.Size = new System.Drawing.Size(100, 22);
-            this.ZOffsetLabel.Text = "Z = +00000,00m";
-            this.ZOffsetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ScaleLabelTitle
-            // 
-            this.ScaleLabelTitle.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.ScaleLabelTitle.AutoSize = false;
-            this.ScaleLabelTitle.Name = "ScaleLabelTitle";
-            this.ScaleLabelTitle.Size = new System.Drawing.Size(80, 22);
-            this.ScaleLabelTitle.Text = "Scale:";
-            this.ScaleLabelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // PositionLabel
-            // 
-            this.PositionLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.PositionLabel.AutoSize = false;
-            this.PositionLabel.Name = "PositionLabel";
-            this.PositionLabel.Size = new System.Drawing.Size(80, 22);
-            this.PositionLabel.Text = "Position:";
-            this.PositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
             // Ctl
             // 
             this.Ctl.BackColor = System.Drawing.Color.White;
-            this.Ctl.CrossColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.Ctl.CrossColor = System.Drawing.Color.LightGray;
             this.Ctl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Ctl.DotColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(34)))), ((int)(((byte)(0)))));
             this.Ctl.Enabled = false;
@@ -218,50 +216,11 @@
             this.Ctl.RiverColor = System.Drawing.Color.SteelBlue;
             this.Ctl.RoadColor = System.Drawing.Color.LightGray;
             this.Ctl.ShowDots = false;
+            this.Ctl.ShowGrid = false;
             this.Ctl.Size = new System.Drawing.Size(957, 450);
             this.Ctl.SwitchColor = System.Drawing.Color.Black;
             this.Ctl.TabIndex = 0;
             this.Ctl.TrackColor = System.Drawing.Color.Black;
-            // 
-            // mapCtl2
-            // 
-            this.mapCtl2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(62)))), ((int)(((byte)(59)))));
-            this.mapCtl2.CrossColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.mapCtl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapCtl2.DotColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(34)))), ((int)(((byte)(0)))));
-            this.mapCtl2.Enabled = false;
-            this.mapCtl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.mapCtl2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(51)))), ((int)(((byte)(49)))));
-            this.mapCtl2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.mapCtl2.Location = new System.Drawing.Point(0, 0);
-            this.mapCtl2.Name = "mapCtl2";
-            this.mapCtl2.RiverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(83)))), ((int)(((byte)(111)))));
-            this.mapCtl2.RoadColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(51)))), ((int)(((byte)(49)))));
-            this.mapCtl2.ShowDots = false;
-            this.mapCtl2.Size = new System.Drawing.Size(1040, 526);
-            this.mapCtl2.SwitchColor = System.Drawing.Color.Black;
-            this.mapCtl2.TabIndex = 0;
-            this.mapCtl2.TrackColor = System.Drawing.Color.Black;
-            // 
-            // mapCtl1
-            // 
-            this.mapCtl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(62)))), ((int)(((byte)(59)))));
-            this.mapCtl1.CrossColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.mapCtl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapCtl1.DotColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(34)))), ((int)(((byte)(0)))));
-            this.mapCtl1.Enabled = false;
-            this.mapCtl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.mapCtl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(51)))), ((int)(((byte)(49)))));
-            this.mapCtl1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.mapCtl1.Location = new System.Drawing.Point(0, 0);
-            this.mapCtl1.Name = "mapCtl1";
-            this.mapCtl1.RiverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(83)))), ((int)(((byte)(111)))));
-            this.mapCtl1.RoadColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(51)))), ((int)(((byte)(49)))));
-            this.mapCtl1.ShowDots = false;
-            this.mapCtl1.Size = new System.Drawing.Size(1040, 526);
-            this.mapCtl1.SwitchColor = System.Drawing.Color.Black;
-            this.mapCtl1.TabIndex = 0;
-            this.mapCtl1.TrackColor = System.Drawing.Color.Black;
             // 
             // Map
             // 
@@ -283,8 +242,6 @@
         #endregion
 
         private MapCtl Ctl;
-        private MapCtl mapCtl2;
-        private MapCtl mapCtl1;
         private System.Windows.Forms.ToolStrip MapToolStrip;
         private System.Windows.Forms.ToolStripLabel ZLabel;
         private System.Windows.Forms.ToolStripLabel XLabel;

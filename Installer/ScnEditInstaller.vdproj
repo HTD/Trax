@@ -4,9 +4,9 @@
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
 "ProjectName" = "8:Installer"
-"LanguageId" = "3:1045"
-"CodePage" = "3:1250"
-"UILanguageId" = "3:1045"
+"LanguageId" = "3:0"
+"CodePage" = "3:1252"
+"UILanguageId" = "3:0"
 "SccProjectName" = "8:"
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
@@ -27,20 +27,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CAAB1174BB42E8AF9EC176E3887E2FF5"
+        "MsmKey" = "8:_4D12A9D2D42EF593DB68BC34F6C4C3BF"
         "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F61B4D050DDB45714E098874F20144EF"
+        "MsmKey" = "8:_C8BE2E56E776131DE065AABC66735DCC"
         "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F61B4D050DDB45714E098874F20144EF"
+        "OwnerKey" = "8:_4D12A9D2D42EF593DB68BC34F6C4C3BF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CAAB1174BB42E8AF9EC176E3887E2FF5"
+        "OwnerKey" = "8:_C8BE2E56E776131DE065AABC66735DCC"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -187,20 +187,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CAAB1174BB42E8AF9EC176E3887E2FF5"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4D12A9D2D42EF593DB68BC34F6C4C3BF"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FastColoredTextBox, Version=2.16.2.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:WeifenLuo.WinFormsUI.Docking, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_CAAB1174BB42E8AF9EC176E3887E2FF5"
+                    "_4D12A9D2D42EF593DB68BC34F6C4C3BF"
                     {
-                    "Name" = "8:FastColoredTextBox.dll"
+                    "Name" = "8:WeifenLuo.WinFormsUI.Docking.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:FastColoredTextBox.dll"
+            "SourcePath" = "8:WeifenLuo.WinFormsUI.Docking.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A53F7399E8AE42F4BBF46AB07ADDA637"
@@ -218,20 +218,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F61B4D050DDB45714E098874F20144EF"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C8BE2E56E776131DE065AABC66735DCC"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WeifenLuo.WinFormsUI.Docking, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:FastColoredTextBox, Version=2.16.2.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F61B4D050DDB45714E098874F20144EF"
+                    "_C8BE2E56E776131DE065AABC66735DCC"
                     {
-                    "Name" = "8:WeifenLuo.WinFormsUI.Docking.dll"
+                    "Name" = "8:FastColoredTextBox.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:WeifenLuo.WinFormsUI.Docking.dll"
+            "SourcePath" = "8:FastColoredTextBox.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A53F7399E8AE42F4BBF46AB07ADDA637"
@@ -321,7 +321,7 @@
         }
         "MsiBootstrapper"
         {
-        "LangId" = "3:1045"
+        "LangId" = "3:0"
         "RequiresElevation" = "11:FALSE"
         }
         "Product"
@@ -329,7 +329,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ScnEdit"
         "ProductCode" = "8:{9BFF35EB-9F12-4C91-816A-F66A71B8AEF1}"
-        "PackageCode" = "8:{D5772A3F-CC40-453F-869B-E0A17336AF56}"
+        "PackageCode" = "8:{1EC4CBA0-14AA-4067-BA1C-C88A940BC45C}"
         "UpgradeCode" = "8:{DF763464-8332-4689-BCC9-99A2A6ED6C8A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
