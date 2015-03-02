@@ -87,11 +87,11 @@ namespace ScnEdit {
         /// <param name="path"></param>
         /// <param name="buffer"></param>
         /// <param name="node"></param>
-        public ScnTrack(string path, byte[] buffer, ScnNodeLexer.Node node) {
+        public ScnTrack(string path, ScnNodeLexer.Node node) {
             int i = 0, block = 0;
             string xname = null;
             List<string> extras = new List<string>();
-            foreach (var value in node.Values(buffer)) {
+            foreach (var value in node.Values) {
                 switch (block) {
                     case 0: // common properties
                         switch (i++) {
@@ -526,7 +526,7 @@ namespace ScnEdit {
                 var lexer = new ScnNodeLexer(Source, "track");
                 if (lexer.Nodes != null)
                     foreach (var node in lexer.Nodes)
-                        Add(new ScnTrack(SourcePath, lexer.Buffer, node));
+                        Add(new ScnTrack(SourcePath, node));
             } catch (Exception x) {
                 System.Windows.Forms.MessageBox.Show(x.Message + "\r\n\r\n" + x.StackTrace);
             }
