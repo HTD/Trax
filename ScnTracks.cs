@@ -205,82 +205,17 @@ namespace ScnEdit {
         /// <returns></returns>
         private string GetLCString(object value) { return value == null ? null : value.ToString().ToLowerInvariant(); }
 
-        /// <summary>
-        /// Parses track match to track object
-        /// </summary>
-        /// <param name="match"></param>
-        /// <returns></returns>
-        public static ScnTrack Parse(Match match, string path = null, ScnTrackIncludes includes = ScnTrackIncludes.Before) {
-            var track = new ScnTrack();
-            int g = 1;
-            if (includes == ScnTrackIncludes.Before) track.IncludesBefore = match.Groups[g++].Value;
-            if (track.IncludesBefore != null && track.IncludesBefore.Length < 1) track.IncludesBefore = null;
-            track.Name = match.Groups[g++].Value;
-            var c = match.Groups[g++].Captures;
-            if (includes == ScnTrackIncludes.After) track.IncludesAfter = match.Groups[g++].Value;
-            if (track.IncludesAfter != null && track.IncludesAfter.Length < 1) track.IncludesAfter = null;
-            var f = System.Globalization.CultureInfo.InvariantCulture.NumberFormat;
-            int i = 0;
-            track.TrackType = c[i++].Value.ToLowerInvariant();
-            track.TrackLength = Double.Parse(c[i++].Value, f);
-            track.TrackWidth = Double.Parse(c[i++].Value, f);
-            track.Friction = Double.Parse(c[i++].Value, f);
-            track.SoundDist = Double.Parse(c[i++].Value, f);
-            track.Quality = Int32.Parse(c[i++].Value, f);
-            track.DamageFlag = Int32.Parse(c[i++].Value, f);
-            track.Environment = c[i++].Value.ToLowerInvariant();
-            track.Visibility = c[i++].Value.ToLowerInvariant();
-            if (track.Visibility == "vis") {
-                track.Tex1 = c[i++].Value;
-                track.TexLength = Double.Parse(c[i++].Value, f);
-                track.Tex2 = c[i++].Value;
-                track.TexHeight = Double.Parse(c[i++].Value, f);
-                track.TexWidth = Double.Parse(c[i++].Value, f);
-                track.TexSlope = Double.Parse(c[i++].Value, f);
-            }
-            track.Point1 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
-            track.Roll1 = Double.Parse(c[i++].Value, f);
-            track.CVec1 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
-            track.CVec2 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
-            track.Point2 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
-            track.Roll2 = Double.Parse(c[i++].Value, f);
-            track.Radius1 = Double.Parse(c[i++].Value, f);
-            if (track.TrackType == "switch") {
-                track.Point3 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
-                track.Roll3 = Double.Parse(c[i++].Value, f);
-                track.CVec3 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
-                track.CVec4 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
-                track.Point4 = new V3D(Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f), Double.Parse(c[i++].Value, f));
-                track.Roll4 = Double.Parse(c[i++].Value, f);
-                track.Radius2 = Double.Parse(c[i++].Value, f);
-            }
-            var extras = new List<string>();
-            for (var count = c.Count; i < count; i++) {
-                switch (c[i].Value.ToLowerInvariant()) {
-                    case "velocity": track.Velocity = Double.Parse(c[++i].Value, f); break;
-                    case "event0": track.Event0 = c[++i].Value; break;
-                    case "event1": track.Event1 = c[++i].Value; break;
-                    case "event2": track.Event2 = c[++i].Value; break;
-                    case "eventall0": track.Eventall0 = c[++i].Value; break;
-                    case "eventall1": track.Eventall1 = c[++i].Value; break;
-                    case "eventall2": track.Eventall2 = c[++i].Value; break;
-                    case "isolated": track.Isolated = c[++i].Value; break;
-                    default: extras.Add(c[i].Value); break;
-                }
-            }
-            if (extras.Count > 0) track.Extras = String.Join(" ", extras);
-            track.ScnType = "track";
-            track.SourcePath = path;
-            track.SourceIndex = match.Index;
-            track.SourceLength = match.Length;
-            return track;
-        }
 
+        /// <summary>
+        /// Returns true if the distance between 2 points is less than treshold
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
         private bool IsLinked(V3D p1, V3D p2) {
             if (p1 == null || p2 == null) return false;
             return (p1 - p2).Length < LinkDistance;
         }
-
 
         /// <summary>
         /// Returns true if this track's start is linked to given track end
@@ -435,91 +370,13 @@ namespace ScnEdit {
         private const string PatXvs = @"(?:\r?\n){3,}";
         private const string PatIncludeBefore = @"(?:(include[^\r\n]+end)[ \t;]*\r?\n)?";
         private const string PatIncludeAfter = @"(?:\r?\n[ \t;]*(include[^\r\n]+end))?";
-        private const string PatTrackBlock = @"(?<!// *)node.*?track.*?(?<!// *)endtrack";
-        private const string PatTrackDef = @"node[\s;]+[^\s;]+[\s;]+[^\s;]+[\s;]+([^\s;]+)[\s;]+track[\s;]+(?:([^\s;]+)+[\s;]+)+?endtrack";
         private static Regex RxComment = new Regex(PatComment, RegexOptions.Compiled | RegexOptions.Multiline);
         private static Regex RxXvs = new Regex(PatXvs, RegexOptions.Compiled);
-
-        private Regex _BlockRegex;
-        private Regex BlockRegex {
-            get {
-                return _BlockRegex ?? (
-                    _BlockRegex = (
-                        new Regex(
-                            (SourceIncludes.HasFlag(ScnTrackIncludes.Before) ? PatIncludeBefore : "") +
-                            PatTrackBlock +
-                            (SourceIncludes.HasFlag(ScnTrackIncludes.After) ? PatIncludeAfter : ""),
-                            RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase
-                        )
-                    )
-                );
-            }
-        }
-
-        private Regex _DataRegex;
-        private Regex DataRegex {
-            get {
-                return _DataRegex ?? (
-                    _DataRegex = (
-                        new Regex(
-                            (SourceIncludes.HasFlag(ScnTrackIncludes.Before) ? PatIncludeBefore : "") +
-                            PatTrackDef +
-                            (SourceIncludes.HasFlag(ScnTrackIncludes.After) ? PatIncludeAfter : ""),
-                            RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase
-                        )
-                    )
-                );
-            }
-        }
 
         #endregion
 
         private ScnTrackIncludes SourceIncludes;
         private int[][] SourceFragments;
-
-        #region Track finder
-
-        private bool IsSeparator(char c) { return c == ' ' || c == ';' || c == '\t' || c == '\r' || c == '\n'; }
-
-        private int FindStart(int length) {
-            int x = 0, y = -1;
-            while (y < 0 && x < length) {
-                y = Source.IndexOf("track", x);
-                if (y > 0) {
-                    if (!IsSeparator(Source[y - 1]) || !IsSeparator(Source[y + 5])) { x = y + 5; y = -1; continue; }
-                    x = y;
-                } else return -1;
-            }
-            if (x > 0) x = Source.LastIndexOf("node", x);
-            if (SourceIncludes.HasFlag(ScnTrackIncludes.Before)) {
-                y = Source.LastIndexOf("include", 0, x);
-                if (y > -1) x = y;
-            }
-            return x;
-        }
-
-        private int FindEnd(int start, int length) {
-            int x = start, y = -1;
-            while (y < 0 && length - x > start) {
-                y = Source.LastIndexOf("endtrack", length - 1, length - x);
-                if (y > 0) {
-                    if (!IsSeparator(Source[y - 1]) || ((y + 8 < length) && !IsSeparator(Source[y + 8]))) { x = y + 1; y = -1; continue; }
-                    x = y;
-                } else return length - 1;
-            }
-            x += 7;
-            if (SourceIncludes.HasFlag(ScnTrackIncludes.After)) {
-                y = Source.IndexOf("include", x);
-                bool allSeparators = true;
-                if (y >= x) {
-                    for (int i = 0; i < y - x; i++) if (!IsSeparator(Source[i])) allSeparators = false;
-                    if (allSeparators) x = Source.IndexOf("end", x);
-                }
-            }
-            return x > 0 ? x : (length - 1);
-        }
-
-        #endregion
 
         private void Parse() {
             try {
@@ -530,25 +387,6 @@ namespace ScnEdit {
             } catch (Exception x) {
                 System.Windows.Forms.MessageBox.Show(x.Message + "\r\n\r\n" + x.StackTrace);
             }
-            
-            ////System.Diagnostics.Debug.Print(lexer.Nodes.Length.ToString());
-
-            //Match blockMatch, detailsMatch;
-            //int length = Source.Length, start = FindStart(length);
-            //if (start < 0) return;
-            //int end = FindEnd(start, length);
-            //length = end - start + 1;
-            //var sample = Source.Substring(start, length);
-            //System.Diagnostics.Debug.Print(sample);
-            //while (start < length && (blockMatch = BlockRegex.Match(Source, start)).Success) {
-            //    var clean = RxComment.Replace(blockMatch.Value, "");
-            //    detailsMatch = DataRegex.Match(clean);
-            //    var track = ScnTrack.Parse(detailsMatch, SourcePath, SourceIncludes);
-            //    track.SourceIndex = blockMatch.Index;
-            //    track.SourceLength = blockMatch.Length;
-            //    Add(track);
-            //    start = blockMatch.Index + blockMatch.Length;
-            //}
         }
 
         private void GetSourceFragments() {
