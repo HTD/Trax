@@ -10,9 +10,13 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
 namespace ScnEdit {
+    
+    /// <summary>
+    /// Control for displaying a map of the scenery
+    /// </summary>
     public partial class MapCtl : UserControl {
 
-        #region Map properties
+        #region Properties
 
         [Category("Appearance")]
         public Color TrackColor { get; set; }
@@ -26,6 +30,8 @@ namespace ScnEdit {
         public Color CrossColor { get; set; }
         [Category("Appearance")]
         public Color GridColor { get; set; }
+        [Category("Appearance")]
+        public Color GridZeroColor { get; set; }
         [Category("Appearance")]
         public Color DotColor { get; set; }
         [Category("Appearance")]
@@ -72,7 +78,7 @@ namespace ScnEdit {
 
         #endregion
 
-        #region Map events
+        #region Events
 
         public event EventHandler Loaded;
         public event EventHandler ScaleChanged;
@@ -89,6 +95,7 @@ namespace ScnEdit {
         float _GridSize = 100f;
         TrackSplines Splines;
         TrackSpline[] VisibleSplines;
+        MapTransformation T = new MapTransformation();
         RectangleF _Bounds;
         RectangleF _Viewport;
         PointF _CtlCenter;
@@ -96,9 +103,13 @@ namespace ScnEdit {
         PointF _MapOffset;
         PointF _MapPointed;
         MapLayer[] _Layers;
+        object LayerLock = new Object();
 
         #endregion
 
+        /// <summary>
+        /// Initializes map control instance
+        /// </summary>
         public MapCtl() {
             SuspendLayout();
             Dock = DockStyle.Fill;
@@ -111,6 +122,7 @@ namespace ScnEdit {
             RiverColor = ColorTranslator.FromHtml("#2d536f");
             CrossColor = RoadColor;
             GridColor = ColorTranslator.FromHtml("#ddeddd");
+            GridZeroColor = ColorTranslator.FromHtml("#bbcccc");
             DotColor = ColorTranslator.FromHtml("#ff2200");
             ShowDots = true;
             ResizeRedraw = true;
@@ -120,6 +132,8 @@ namespace ScnEdit {
             _CtlCenter = new PointF(Width / 2, Height / 2);
             BeginLoad();
         }
+
+        #region Loading
 
         private void BeginLoad() {
             Enabled = false;
@@ -151,7 +165,9 @@ namespace ScnEdit {
             }
         }
 
-        private object LayerLock = new Object();
+        #endregion
+
+        #region Transformations
 
         public void ResetView() {
             lock (LayerLock) {
@@ -171,28 +187,97 @@ namespace ScnEdit {
             if (OffsetChanged != null) OffsetChanged.Invoke(this, EventArgs.Empty);
         }
 
-        private float[] GetTransformation() {
-            return new float[] {
-                _CurrentScale,
-                _CtlCenter.X + (_MapOffset.X - _MapCenter.X) * _CurrentScale,
-                _CtlCenter.Y + (_MapOffset.Y - _MapCenter.Y) * _CurrentScale
-            };
+        private void UpdateTransformation() {
+            T.Scale = _CurrentScale;
+            T.X = _CtlCenter.X + (_MapOffset.X - _MapCenter.X) * _CurrentScale;
+            T.Y = _CtlCenter.Y + (_MapOffset.Y - _MapCenter.Y) * _CurrentScale;
         }
 
+        /// <summary>
+        /// Translates map coordinates to display point
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        private PointF MapToDisplay(float x, float y) {
+            return new PointF(x * T.Scale + T.X, y * T.Scale + T.Y);
+        }
+
+        /// <summary>
+        /// Translates map point to display point
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        private PointF MapToDisplay(PointF p) {
+            return MapToDisplay(p.X, p.Y);
+        }
+
+        /// <summary>
+        /// Translates map rectangle to display rectangle
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
+        private RectangleF MapToDisplay(RectangleF r) {
+            var a = MapToDisplay(r.Left, r.Top);
+            var b = MapToDisplay(r.Right, r.Bottom);
+            return new RectangleF(a.X, a.Y, b.X - a.X, b.Y - a.Y);
+        }
+
+        /// <summary>
+        /// Translates display coordinates to map point
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        private PointF DisplayToMap(float x, float y) {
+            return new PointF((x - T.X) / T.Scale, (y - T.Y) / T.Scale);
+        }
+
+
+        /// <summary>
+        /// Translates display point to map point
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        private PointF DisplayToMap(PointF p) {
+            return DisplayToMap(p.X, p.Y);
+        }
+
+        /// <summary>
+        /// Translates display rectangle to map rectangle
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
+        private RectangleF DisplayToMap(RectangleF r) {
+            var a = DisplayToMap(r.Left, r.Top);
+            var b = DisplayToMap(r.Right, r.Bottom);
+            return new RectangleF(a.X, a.Y, b.X - a.X, b.Y - a.Y);
+        }
+
+        /// <summary>
+        /// Returns scale allowing whole map to fit in current control bounds
+        /// </summary>
+        /// <returns></returns>
         private float GetFitScale() {
             var sx = Bounds.Width / _Bounds.Width;
             var sy = Bounds.Height / _Bounds.Height;
             return new[] { sx, sy }.Min();
         }
 
-        private void DrawMap(PaintEventArgs e) {
+        #endregion
+
+        #region Drawing
+
+        /// <summary>
+        /// Draws tracks
+        /// </summary>
+        /// <param name="e"></param>
+        private void DrawTracks(PaintEventArgs e) {
             if (_Layers == null) return;
             var b = Splines.Bounds;
             var g = e.Graphics;
-            var f = true; // OutFull;
-            var tr = GetTransformation();
-            float ts = tr[0], tx = tr[1], ty = tr[2];
-            TrackSpline[] visible = !f ? Splines.GetSubset(ts, _Viewport) : null;
+            var f = true;
+            TrackSpline[] visible = !f ? Splines.GetSubset(T.Scale, _Viewport) : null;
             var ct = f ? Splines.Count : visible.Length;
             lock (LayerLock) {
                 foreach (var layer in _Layers) {
@@ -200,16 +285,16 @@ namespace ScnEdit {
                         for (int i = 0; i < ct; i++) {
                             TrackSpline s = f ? Splines[i] : visible[i];
                             if (s.T == layer.Type) {
-                                pen.Width = ts * s.W;
-                                if (ts < 0.01 || s.L) {
-                                    var p1 = new PointF(s.A.X * ts + tx, s.A.Y * ts + ty);
-                                    var p2 = new PointF(s.D.X * ts + tx, s.D.Y * ts + ty);
+                                pen.Width = T.Scale * s.W;
+                                if (T.Scale < 0.01 || s.L) {
+                                    var p1 = MapToDisplay(s.A);
+                                    var p2 = MapToDisplay(s.D);
                                     g.DrawLine(pen, p1, p2);
                                 } else {
-                                    var p1 = new PointF(s.A.X * ts + tx, s.A.Y * ts + ty);
-                                    var p2 = new PointF(s.B.X * ts + tx, s.B.Y * ts + ty);
-                                    var p3 = new PointF(s.C.X * ts + tx, s.C.Y * ts + ty);
-                                    var p4 = new PointF(s.D.X * ts + tx, s.D.Y * ts + ty);
+                                    var p1 = MapToDisplay(s.A);
+                                    var p2 = MapToDisplay(s.B);
+                                    var p3 = MapToDisplay(s.C);
+                                    var p4 = MapToDisplay(s.D);
                                     var b1c = Math.Abs(p1.X - p2.X) >= 0.1f || Math.Abs(p1.Y - p2.Y) > 0.1f;
                                     var b2c = Math.Abs(p3.X - p4.X) >= 0.1f || Math.Abs(p3.Y - p4.Y) > 0.1f;
                                     if (b1c && b2c) g.DrawBezier(pen, p1, p2, p3, p4); else g.DrawLine(pen, p1, p4);
@@ -221,27 +306,36 @@ namespace ScnEdit {
             }
         }
 
+        /// <summary>
+        /// Draws map grid starting at map (0, 0) point
+        /// </summary>
+        /// <param name="e"></param>
         private void DrawGrid(PaintEventArgs e) {
-            var g = e.Graphics;
-            var b = Splines.Bounds;
-            var t = GetTransformation();
-            var d = 100;
-            var s = t[0] * d;
-            if (s > 3) {
-                var dx_m = _MapOffset.X;
-                var dy_m = _MapOffset.Y;
-                var dx_i = (int)Math.Floor(dx_m / d);
-                var dy_i = (int)Math.Floor(dy_m / d);
-                var dx_r = dx_m - (d * dx_i);
-                var dy_r = dy_m - (d * dy_i);
-                var o = new PointF(dx_r * s / d, dy_r * s / d);
-                using (var pen = new Pen(GridColor)) {
-                    for (float y = -s; y < Height + s; y += s) g.DrawLine(pen, 0, y + o.Y, Width, y + o.Y);
-                    for (float x = -s; x < Width + s; x += s) g.DrawLine(pen, x + o.X, 0, x + o.X, Height);
-                }
+            var d = _GridSize; // grid division size (in meters)
+            var m = Splines.Bounds; // full map rectangle
+            var v = DisplayToMap(Bounds); // visible map rectangle
+            var pen = new Pen(GridColor);
+            var pen0 = new Pen(GridZeroColor, T.Scale);
+            var p = pen0;
+            for (
+                    float x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+                    x1 > m.Left || x2 < m.Right || y1 > m.Top || y2 < m.Bottom;
+                    x1 -= d, x2 += d, y1 -= d, y2 += d
+                ) {
+                if (y1 > m.Top) e.Graphics.DrawLine(p, MapToDisplay(m.Left, y1), MapToDisplay(m.Right, y1));
+                if (y2 != y1 && y2 < m.Bottom) e.Graphics.DrawLine(p, MapToDisplay(m.Left, y2), MapToDisplay(m.Right, y2));
+                if (x1 > m.Left) e.Graphics.DrawLine(p, MapToDisplay(x1, m.Top), MapToDisplay(x1, m.Bottom));
+                if (x2 != x1 && x2 < m.Right) e.Graphics.DrawLine(p, MapToDisplay(x2, m.Top), MapToDisplay(x2, m.Bottom));
+                p = pen;
             }
+            pen0.Dispose();
+            pen.Dispose();
         }
 
+        /// <summary>
+        /// Draws dots marking track ends
+        /// </summary>
+        /// <param name="e"></param>
         private void DrawDots(PaintEventArgs e) {
             var pens = new[] {
                 new Pen(TrackColor),
@@ -257,8 +351,6 @@ namespace ScnEdit {
             var sc = _CurrentScale;
             var xo = b.Left * sc;
             var yo = b.Top * sc;
-            var tr = GetTransformation();
-            float ts = tr[0], tx = tr[1], ty = tr[2];
             TrackSpline[] visible = !f ? Splines.GetSubset(sc, _Viewport) : null;
             var ct = f ? Splines.Count : visible.Length;
             for (int i = 0; i < ct; i++) {
@@ -266,8 +358,8 @@ namespace ScnEdit {
                 var p = pens[s.T];
                 var w = _CurrentScale * s.W * 0.5f;
                 var v = w / 2;
-                var p1 = new PointF(s.A.X * ts + tx, s.A.Y * ts + ty);
-                var p2 = new PointF(s.D.X * ts + tx, s.D.Y * ts + ty);
+                var p1 = MapToDisplay(s.A);
+                var p2 = MapToDisplay(s.D);
                 g.DrawEllipse(p, p1.X - v, p1.Y - v, w, w);
                 g.FillEllipse(dotFill, p1.X - v, p1.Y - v, w, w);
                 g.DrawEllipse(p, p2.X - v, p2.Y - v, w, w);
@@ -277,19 +369,32 @@ namespace ScnEdit {
             dotFill.Dispose();
         }
 
+        /// <summary>
+        /// Draws control's message
+        /// </summary>
+        /// <param name="e"></param>
         private void DrawMessage(PaintEventArgs e) {
             if (!String.IsNullOrEmpty(_Message)) e.Graphics.DrawString(_Message, Font, new SolidBrush(ForeColor), new PointF(10f, 10f));
         }
 
+        /// <summary>
+        /// OnPaint event handler
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e) {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
             e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
             if (Splines != null) {
+                UpdateTransformation();
                 if (ShowGrid) DrawGrid(e);
-                DrawMap(e);
+                DrawTracks(e);
                 if (ShowDots) DrawDots(e);
             } else DrawMessage(e);
         }
+
+        #endregion
+
+        #region Event handling
 
         protected override void OnSizeChanged(EventArgs e) {
             if (Splines != null) {
@@ -356,6 +461,16 @@ namespace ScnEdit {
             var c = new PointF(e.X - _CtlCenter.X, e.Y - _CtlCenter.Y);
             var p = new PointF(c.X / s - _MapOffset.X - _MapCenter.X, c.Y / s - _MapOffset.Y - _MapCenter.Y);
 
+        }
+
+        #endregion
+
+        #region Internal data structures
+
+        struct MapTransformation {
+            public float Scale;
+            public float X;
+            public float Y;
         }
 
         struct MapLayer {
@@ -500,7 +615,8 @@ namespace ScnEdit {
 
         #endregion
 
-    }
+        #endregion
 
+    }
 
 }
