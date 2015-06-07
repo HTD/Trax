@@ -114,8 +114,8 @@ namespace ScnEdit {
                                 } else if (fragment.Equals("none", CI)) { // node null value
                                     values.Add(null);
                                 } else { // node regular value (text or number)
-                                    float n;
-                                    bool isNumeric = Single.TryParse(fragment, NS, FP, out n);
+                                    double n;
+                                    bool isNumeric = Double.TryParse(fragment, NS, FP, out n);
                                     if (isNumeric) values.Add(n);
                                     else values.Add(fragment);
                                 }

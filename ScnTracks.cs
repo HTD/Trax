@@ -96,12 +96,12 @@ namespace ScnEdit {
                     case 0: // common properties
                         switch (i++) {
                             case 0: TrackType = GetLCString(value); break;
-                            case 1: TrackLength = (float)value; break;
-                            case 2: TrackWidth = (float)value; break;
-                            case 3: Friction = (float)value; break;
-                            case 4: SoundDist = (float)value; break;
-                            case 5: Quality = (int)(float)value; break;
-                            case 6: DamageFlag = (int)(float)value; break;
+                            case 1: TrackLength = (double)value; break;
+                            case 2: TrackWidth = (double)value; break;
+                            case 3: Friction = (double)value; break;
+                            case 4: SoundDist = (double)value; break;
+                            case 5: Quality = (int)(double)value; break;
+                            case 6: DamageFlag = (int)(double)value; break;
                             case 7: Environment = GetLCString(value); break;
                             case 8: Visibility = GetLCString(value);
                                 block = Visibility == "vis" ? 1 : 2;
@@ -112,11 +112,11 @@ namespace ScnEdit {
                     case 1: // fields for visible tracks
                         switch (i++) {
                             case 0: Tex1 = GetString(value);  break;
-                            case 1: TexLength = (float?)value; break;
+                            case 1: TexLength = (double?)value; break;
                             case 2: Tex2 = GetString(value); break;
-                            case 3: TexHeight = (float?)value; break;
-                            case 4: TexWidth = (float?)value; break;
-                            case 5: TexSlope = (float?)value;
+                            case 3: TexHeight = (double?)value; break;
+                            case 4: TexWidth = (double?)value; break;
+                            case 5: TexSlope = (double?)value;
                                 block++;
                                 i = 0;
                                 break;
@@ -124,21 +124,21 @@ namespace ScnEdit {
                         break;
                     case 2: // track vectors and parameters
                         switch (i++) {
-                            case 0: Point1 = new V3D { X = (float)value }; break;
-                            case 1: Point1.Y = (float)value; break;
-                            case 2: Point1.Z = (float)value; break;
-                            case 3: Roll1 = (float)value; break;
-                            case 4: CVec1 = new V3D { X = (float)value }; break;
-                            case 5: CVec1.Y = (float)value; break;
-                            case 6: CVec1.Z = (float)value; break;
-                            case 7: CVec2 = new V3D { X = (float)value }; break;
-                            case 8: CVec2.Y = (float)value; break;
-                            case 9: CVec2.Z = (float)value; break;
-                            case 10: Point2 = new V3D { X = (float)value }; break;
-                            case 11: Point2.Y = (float)value; break;
-                            case 12: Point2.Z = (float)value; break;
-                            case 13: Roll2 = (float)value; break;
-                            case 14: Radius1 = (float)value;
+                            case 0: Point1 = new V3D { X = (double)value }; break;
+                            case 1: Point1.Y = (double)value; break;
+                            case 2: Point1.Z = (double)value; break;
+                            case 3: Roll1 = (double)value; break;
+                            case 4: CVec1 = new V3D { X = (double)value }; break;
+                            case 5: CVec1.Y = (double)value; break;
+                            case 6: CVec1.Z = (double)value; break;
+                            case 7: CVec2 = new V3D { X = (double)value }; break;
+                            case 8: CVec2.Y = (double)value; break;
+                            case 9: CVec2.Z = (double)value; break;
+                            case 10: Point2 = new V3D { X = (double)value }; break;
+                            case 11: Point2.Y = (double)value; break;
+                            case 12: Point2.Z = (double)value; break;
+                            case 13: Roll2 = (double)value; break;
+                            case 14: Radius1 = (double)value;
                                 block = (TrackType == "switch" || TrackType == "cross") ? 3 : 4;
                                 i = 0;
                                 break;
@@ -146,21 +146,21 @@ namespace ScnEdit {
                         break;
                     case 3: // switch vectors and parameters
                         switch (i++) {
-                            case 0: Point3 = new V3D { X = (float)value }; break;
-                            case 1: Point3.Y = (float)value; break;
-                            case 2: Point3.Z = (float)value; break;
-                            case 3: Roll3 = (float)value; break;
-                            case 4: CVec3 = new V3D { X = (float)value }; break;
-                            case 5: CVec3.Y = (float)value; break;
-                            case 6: CVec3.Z = (float)value; break;
-                            case 7: CVec4 = new V3D { X = (float)value }; break;
-                            case 8: CVec4.Y = (float)value; break;
-                            case 9: CVec4.Z = (float)value; break;
-                            case 10: Point4 = new V3D { X = (float)value }; break;
-                            case 11: Point4.Y = (float)value; break;
-                            case 12: Point4.Z = (float)value; break;
-                            case 13: Roll4 = (float)value; break;
-                            case 14: Radius2 = (float)value;
+                            case 0: Point3 = new V3D { X = (double)value }; break;
+                            case 1: Point3.Y = (double)value; break;
+                            case 2: Point3.Z = (double)value; break;
+                            case 3: Roll3 = (double)value; break;
+                            case 4: CVec3 = new V3D { X = (double)value }; break;
+                            case 5: CVec3.Y = (double)value; break;
+                            case 6: CVec3.Z = (double)value; break;
+                            case 7: CVec4 = new V3D { X = (double)value }; break;
+                            case 8: CVec4.Y = (double)value; break;
+                            case 9: CVec4.Z = (double)value; break;
+                            case 10: Point4 = new V3D { X = (double)value }; break;
+                            case 11: Point4.Y = (double)value; break;
+                            case 12: Point4.Z = (double)value; break;
+                            case 13: Roll4 = (double)value; break;
+                            case 14: Radius2 = (double)value;
                                 block++;
                                 i = 0;
                                 break;
@@ -170,7 +170,7 @@ namespace ScnEdit {
                         if (i++ % 2 == 0) xname = GetLCString(value);
                         else {
                             switch (xname) {
-                                case "velocity": Velocity = (float)value; break;
+                                case "velocity": Velocity = (double)value; break;
                                 case "event0": Event0 = (string)value; break;
                                 case "event1": Event1 = (string)value; break;
                                 case "event2": Event2 = (string)value; break;
@@ -187,6 +187,7 @@ namespace ScnEdit {
             if (extras.Count > 0) Extras = String.Join(" ", extras);
             ScnType = "track";
             SourcePath = path;
+            Name = node.Name;
             SourceIndex = node.SourceIndex;
             SourceLength = node.SourceLength;
         }
@@ -311,11 +312,11 @@ namespace ScnEdit {
                 );
             text += basePart;
             string visiblePart = null;
-            if (Tex1 != null && Tex2 != null)
+            if (Tex1 != null || Tex2 != null)
                 visiblePart =
                     String.Format(
                         "{0} {1} {2} {3}",
-                        Tex1, ScnNumbers.ToString(TexLength), Tex2, ScnNumbers.ToString(new[] { TexHeight, TexWidth, TexSlope })
+                        Tex1 ?? "none", ScnNumbers.ToString(TexLength), Tex2 ?? "none", ScnNumbers.ToString(new[] { TexHeight, TexWidth, TexSlope })
                     );
             string trackPart =
                 String.Format(
@@ -524,7 +525,7 @@ namespace ScnEdit {
                 bool isSwitch = track.Point3 != null;
                 bool isPrevSwitchEnd = false;
                 bool isLinkedToPrev = track.IsLinkedTo(prev, out isPrevSwitchEnd);
-                bool isNamed = track.Name != "none";
+                bool isNamed = track.Name != null && track.Name != "none";
                 int prevLength = prev != null ? (int)Math.Round(prev.GetLength(isPrevSwitchEnd ? 1 : 0)) : 0;
                 if (!isLinkedToPrev) {
                     if (isSwitch) switchIndex++; else trackIndex++;
