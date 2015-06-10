@@ -190,4 +190,14 @@ do you wish to save it first?</value>
   <data name="TrackMap" xml:space="preserve">
     <value>Track map</value>
   </data>
+  <data name="TrackInfo" xml:space="preserve">
+    <value>Name = {0}
+Path = {1}
+Offset = {2}
+Quality = {3}
+{4}</value>
+  </data>
+  <data name="TrackSelected" xml:space="preserve">
+    <value>Track selected:</value>
+  </data>
 </root>

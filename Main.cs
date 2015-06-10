@@ -226,7 +226,7 @@ namespace ScnEdit {
             if (ed != null && !String.IsNullOrWhiteSpace(ed.Text)) {
                 Status.Text = Messages.ProcessingTracks;
                 Application.DoEvents();
-                var tracks = ScnTracks.Parse(ed.Text, ed.File.Path);
+                var tracks = ScnTrackCollection.Parse(ed.Text, ed.File.Path);
                 if (tracks.Count > 0) {
                     tracks.SortAddNames();
                     ed.BeginAutoUndo();

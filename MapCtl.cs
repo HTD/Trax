@@ -18,8 +18,14 @@ namespace ScnEdit {
 
         #region Properties
 
+        #region Colors
+
         [Category("Appearance")]
         public Color TrackColor { get; set; }
+        [Category("Appearance")]
+        public Color SelectedTrackColor { get; set; }
+        [Category("Appearance")]
+        public Color DetailTextColor { get; set; }
         [Category("Appearance")]
         public Color SwitchColor { get; set; }
         [Category("Appearance")]
@@ -34,47 +40,90 @@ namespace ScnEdit {
         public Color GridZeroColor { get; set; }
         [Category("Appearance")]
         public Color DotColor { get; set; }
+
+        #endregion
+
+        #region Options
+
         [Category("Appearance")]
         public bool ShowGrid { get; set; }
         [Category("Appearance")]
         public bool ShowDots { get; set; }
 
+        #endregion
+
+        #region State
+
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new float Scale {
             get {
-                return _CurrentScale;
+                return CurrentScale;
             }
             set {
-                _CurrentScale = value;
+                CurrentScale = value;
                 Invalidate();
+                if (ScaleChanged != null) ScaleChanged.Invoke(this, EventArgs.Empty);
             }
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public PointF MapOffset {
+        public PointF Position {
             get {
-                return _MapOffset;
+                return new PointF(Offset.X - MapCenter.X, Offset.Y - MapCenter.Y);
             }
-            set {
-                _MapOffset = value;
+            set { 
+                Offset = new PointF(value.X + MapCenter.X, value.Y + MapCenter.Y);
+                Invalidate();
+                if (PositionChanged != null) PositionChanged.Invoke(this, EventArgs.Empty);
             }
         }
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool IsOutFull { get { return CurrentScale == FitScale; } }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public PointF CursorPosition {
             get {
-                return _MapPointed;
+                return MapPointed;
             }
         }
 
+        #endregion
+
+        #region Data
+
         [Browsable(false),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ScnTracks Tracks {
+        public ScnTrackCollection Tracks {
             get { if (Splines == null) return null; return Splines.Tracks; }
-            set { if (value == null) return; Splines = new TrackSplines(value); _FitScale = _CurrentScale = GetFitScale(); Invalidate(); }
+            set { if (value == null) return; Splines = new SplineCollection(value); FitScale = CurrentScale = GetFitScale(); Invalidate(); }
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool OutFull { get { return _CurrentScale == _FitScale; } }
+        public SelectionClass Selection { get; set; }
+
+        #endregion
+
+        #region Private
+
+        private RectangleF VisibleArea {
+            get {
+                if (Overscan == 0) return DisplayToMap(ClientRectangle);
+                else {
+                    var v = ClientRectangle;
+                    v.Inflate(Overscan, Overscan);
+                    return DisplayToMap(v);
+                }
+            }
+        }
+        
+        private List<Spline> VisibleSplines {
+            get {
+                if (IsOutFull) return Splines;
+                return Splines.Where(s => s.HasPointIn(VisibleArea)).ToList();
+            }
+        }
+
+        #endregion
 
         #endregion
 
@@ -82,28 +131,27 @@ namespace ScnEdit {
 
         public event EventHandler Loaded;
         public event EventHandler ScaleChanged;
-        public event EventHandler OffsetChanged;
+        public event EventHandler PositionChanged;
         public event EventHandler CursorPositionChanged;
 
         #endregion
 
         #region Private fields
 
-        string _Message;
-        float _FitScale;
-        float _CurrentScale;
-        float _GridSize = 100f;
-        TrackSplines Splines;
-        TrackSpline[] VisibleSplines;
-        MapTransformation T = new MapTransformation();
-        RectangleF _Bounds;
-        RectangleF _Viewport;
-        PointF _CtlCenter;
-        PointF _MapCenter;
-        PointF _MapOffset;
-        PointF _MapPointed;
-        MapLayer[] _Layers;
-        object LayerLock = new Object();
+        private Transformation T = new Transformation();
+        private SplineCollection Splines;
+        private RectangleF MapArea;
+        private int Overscan = 5;
+        private float GridSize = 100f;
+        private float FitScale;
+        private float CurrentScale;
+        private PointF CtlCenter;
+        private PointF MapCenter;
+        private PointF Offset;
+        private PointF MapPointed;
+        private Layer[] Layers;
+        private object LayerLock = new Object();
+        private string Message;
 
         #endregion
 
@@ -113,10 +161,12 @@ namespace ScnEdit {
         public MapCtl() {
             SuspendLayout();
             Dock = DockStyle.Fill;
-            Font = new Font(Font.FontFamily, 15f);
+            Font = new Font(Font.FontFamily, 9f);
             BackColor = ColorTranslator.FromHtml("#233e3b"); 
             ForeColor = ColorTranslator.FromHtml("#1d3331");
             TrackColor = Color.Black;
+            SelectedTrackColor = ColorTranslator.FromHtml("#ff2200");
+            DetailTextColor = ColorTranslator.FromHtml("#ff0044");
             SwitchColor = Color.Orange;
             RoadColor = ColorTranslator.FromHtml("#1d3331");
             RiverColor = ColorTranslator.FromHtml("#2d536f");
@@ -124,20 +174,23 @@ namespace ScnEdit {
             GridColor = ColorTranslator.FromHtml("#ddeddd");
             GridZeroColor = ColorTranslator.FromHtml("#bbcccc");
             DotColor = ColorTranslator.FromHtml("#ff2200");
-            ShowDots = true;
             ResizeRedraw = true;
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             ResumeLayout();
-            _FitScale = _CurrentScale = 0.01f;
-            _CtlCenter = new PointF(Width / 2, Height / 2);
+            FitScale = CurrentScale = 0.01f;
+            CtlCenter = new PointF(Width / 2, Height / 2);
+            Selection = new SelectionClass(this);
             BeginLoad();
         }
 
         #region Loading
 
+        /// <summary>
+        /// Begins track data loading
+        /// </summary>
         private void BeginLoad() {
             Enabled = false;
-            _Message = "Loading data...";
+            Message = "Loading data...";
             using (var w = new BackgroundWorker()) {
                 w.DoWork += Load;
                 w.RunWorkerCompleted += LoadingDone;
@@ -145,18 +198,28 @@ namespace ScnEdit {
             }
         }
 
+        /// <summary>
+        /// Loads track data in the background
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private new void Load(object sender, DoWorkEventArgs e) {
             try {
                 if (!DesignMode) {
-                    Splines = new TrackSplines(ScnTracks.Load());
-                    _Bounds = Splines.Bounds;
+                    Tracks = ScnTrackCollection.Load();
+                    MapArea = Splines.Bounds;
                 }
-                _Message = null;
+                Message = null;
             } catch (Exception x) {
-                _Message = x.Message;
+                Message = x.Message;
             }
         }
 
+        /// <summary>
+        /// Completes track data loading and initializes control view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadingDone(object sender, RunWorkerCompletedEventArgs e) {
             if (Splines != null) {
                 Enabled = true;
@@ -169,28 +232,34 @@ namespace ScnEdit {
 
         #region Transformations
 
+        /// <summary>
+        /// Resets the map view to default value (zoomed out full, centered)
+        /// </summary>
         public void ResetView() {
             lock (LayerLock) {
-                _Layers = new[] {
-                    new MapLayer(3, RiverColor),
-                    new MapLayer(4, CrossColor),
-                    new MapLayer(2, RoadColor),
-                    new MapLayer(1, SwitchColor),
-                    new MapLayer(0, TrackColor)
+                Layers = new[] {
+                    new Layer(3, RiverColor),
+                    new Layer(4, CrossColor),
+                    new Layer(2, RoadColor),
+                    new Layer(1, SwitchColor),
+                    new Layer(0, TrackColor)
                 };
             }
-            _FitScale = _CurrentScale = GetFitScale();
-            _MapCenter = new PointF(Splines.Bounds.X + Splines.Bounds.Width / 2, Splines.Bounds.Y + Splines.Bounds.Height / 2);
-            _MapOffset = new PointF(0, 0);
+            FitScale = CurrentScale = GetFitScale();
+            MapCenter = new PointF(Splines.Bounds.X + Splines.Bounds.Width / 2, Splines.Bounds.Y + Splines.Bounds.Height / 2);
+            Offset = new PointF(0, 0);
             Invalidate();
             if (ScaleChanged != null) ScaleChanged.Invoke(this, EventArgs.Empty);
-            if (OffsetChanged != null) OffsetChanged.Invoke(this, EventArgs.Empty);
+            if (PositionChanged != null) PositionChanged.Invoke(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Updates visible map transformation data
+        /// </summary>
         private void UpdateTransformation() {
-            T.Scale = _CurrentScale;
-            T.X = _CtlCenter.X + (_MapOffset.X - _MapCenter.X) * _CurrentScale;
-            T.Y = _CtlCenter.Y + (_MapOffset.Y - _MapCenter.Y) * _CurrentScale;
+            T.Scale = CurrentScale;
+            T.X = CtlCenter.X + (Offset.X - MapCenter.X) * CurrentScale;
+            T.Y = CtlCenter.Y + (Offset.Y - MapCenter.Y) * CurrentScale;
         }
 
         /// <summary>
@@ -233,7 +302,6 @@ namespace ScnEdit {
             return new PointF((x - T.X) / T.Scale, (y - T.Y) / T.Scale);
         }
 
-
         /// <summary>
         /// Translates display point to map point
         /// </summary>
@@ -259,8 +327,8 @@ namespace ScnEdit {
         /// </summary>
         /// <returns></returns>
         private float GetFitScale() {
-            var sx = Bounds.Width / _Bounds.Width;
-            var sy = Bounds.Height / _Bounds.Height;
+            var sx = Bounds.Width / MapArea.Width;
+            var sy = Bounds.Height / MapArea.Height;
             return new[] { sx, sy }.Min();
         }
 
@@ -268,42 +336,158 @@ namespace ScnEdit {
 
         #region Drawing
 
+        SizeF CharSize;
+
         /// <summary>
         /// Draws tracks
         /// </summary>
         /// <param name="e"></param>
         private void DrawTracks(PaintEventArgs e) {
-            if (_Layers == null) return;
-            var b = Splines.Bounds;
-            var g = e.Graphics;
-            var f = true;
-            TrackSpline[] visible = !f ? Splines.GetSubset(T.Scale, _Viewport) : null;
-            var ct = f ? Splines.Count : visible.Length;
+            if (Layers == null) return;
             lock (LayerLock) {
-                foreach (var layer in _Layers) {
+                foreach (var layer in Layers) {
                     using (var pen = new Pen(layer.Color)) {
-                        for (int i = 0; i < ct; i++) {
-                            TrackSpline s = f ? Splines[i] : visible[i];
+                        VisibleSplines.ForEach(s => {
                             if (s.T == layer.Type) {
                                 pen.Width = T.Scale * s.W;
-                                if (T.Scale < 0.01 || s.L) {
-                                    var p1 = MapToDisplay(s.A);
-                                    var p2 = MapToDisplay(s.D);
-                                    g.DrawLine(pen, p1, p2);
-                                } else {
+                                if (T.Scale < 0.01 || s.L)
+                                    e.Graphics.DrawLine(pen, MapToDisplay(s.A), MapToDisplay(s.D));
+                                else {
                                     var p1 = MapToDisplay(s.A);
                                     var p2 = MapToDisplay(s.B);
                                     var p3 = MapToDisplay(s.C);
                                     var p4 = MapToDisplay(s.D);
                                     var b1c = Math.Abs(p1.X - p2.X) >= 0.1f || Math.Abs(p1.Y - p2.Y) > 0.1f;
                                     var b2c = Math.Abs(p3.X - p4.X) >= 0.1f || Math.Abs(p3.Y - p4.Y) > 0.1f;
-                                    if (b1c && b2c) g.DrawBezier(pen, p1, p2, p3, p4); else g.DrawLine(pen, p1, p4);
+                                    if (b1c && b2c) e.Graphics.DrawBezier(pen, p1, p2, p3, p4); else e.Graphics.DrawLine(pen, p1, p4);
                                 }
                             }
-                        }
+                        });
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Draws selected spline (active selected or specified explicitly)
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="spline"></param>
+        private void DrawSelectedSpline(PaintEventArgs e, Spline spline) {
+            if (spline != null) {
+                var track = spline.Track;
+                var lineWidth = T.Scale * spline.W;
+                using (var pen = new Pen(SelectedTrackColor) { Width = 1f + lineWidth })
+                    if (T.Scale < 0.01 || spline.L)
+                        e.Graphics.DrawLine(pen, MapToDisplay(spline.A), MapToDisplay(spline.D));
+                    else {
+                        var p1 = MapToDisplay(spline.A);
+                        var p2 = MapToDisplay(spline.B);
+                        var p3 = MapToDisplay(spline.C);
+                        var p4 = MapToDisplay(spline.D);
+                        var b1c = Math.Abs(p1.X - p2.X) >= 0.1f || Math.Abs(p1.Y - p2.Y) > 0.1f;
+                        var b2c = Math.Abs(p3.X - p4.X) >= 0.1f || Math.Abs(p3.Y - p4.Y) > 0.1f;
+                        if (b1c && b2c) e.Graphics.DrawBezier(pen, p1, p2, p3, p4); else e.Graphics.DrawLine(pen, p1, p4);
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Draws selected spline ends as dots (active selected or specified explicitly)
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="spline"></param>
+        private void DrawSelectedSplineEnds(PaintEventArgs e, Spline spline) {
+            if (spline != null) {
+                var track = spline.Track;
+                var lineWidth = T.Scale * spline.W;
+                var a = MapToDisplay(spline.A);
+                var d = MapToDisplay(spline.D);
+                var r = CharSize.Height / 2;
+                if (lineWidth * 0.7f > r) r = lineWidth * 0.7f;
+                
+                using (var brush = new SolidBrush(SelectedTrackColor)) {
+                    e.Graphics.FillEllipse(brush, a.X - r, a.Y - r, 2 * r, 2 * r);
+                    e.Graphics.FillEllipse(brush, d.X - r, d.Y - r, 2 * r, 2 * r);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Draws selected spline info including ends number descriptions (active selected or specified explicitly)
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="spline"></param>
+        private void DrawSelectedTrackInfo(PaintEventArgs e, Spline spline) {
+            if (spline != null) {
+                var track = spline.Track;
+                var lineWidth = T.Scale * spline.W;
+                // Line ends description:
+                var a = MapToDisplay(spline.A);
+                var d = MapToDisplay(spline.D);
+                var indexA = 0;
+                var indexD = 0;
+                if (spline.A == (PointF)track.Point1) indexA = 1;
+                else if (spline.A == (PointF)track.Point2) indexA = 2;
+                else if (track.Point3 != null && spline.A == (PointF)track.Point3) indexA = 3;
+                else if (track.Point4 != null && spline.A == (PointF)track.Point4) indexA = 4;
+                if (spline.D == (PointF)track.Point1) indexD = 1;
+                else if (spline.D == (PointF)track.Point2) indexD = 2;
+                else if (track.Point3 != null && spline.D == (PointF)track.Point3) indexD = 3;
+                else if (track.Point4 != null && spline.D == (PointF)track.Point4) indexD = 4;
+                var a1 = new PointF(a.X - 0.55f * CharSize.Width, a.Y - 0.55f * CharSize.Height);
+                var d1 = new PointF(d.X - 0.55f * CharSize.Width, d.Y - 0.55f * CharSize.Height);
+                using (var brush = new SolidBrush(BackColor)) {
+                    e.Graphics.DrawString(indexA.ToString(), Font, brush, a1);
+                    e.Graphics.DrawString(indexD.ToString(), Font, brush, d1);
+                }
+                // Track info:
+                var infoHeaderPosition = new PointF(Width - CharSize.Width * 60, Height - CharSize.Height * 8);
+                var infoPosition = new PointF(Width - CharSize.Width * 60, Height - CharSize.Height * 7);
+                var events = new StringBuilder();
+                if (track.Event0 != null) { events.Append("Event0 = "); events.AppendLine(track.Event0); }
+                if (track.Event1 != null) { events.Append("Event1 = "); events.AppendLine(track.Event1); }
+                if (track.Event2 != null) { events.Append("Event2 = "); events.AppendLine(track.Event2); }
+                if (track.Eventall0 != null) { events.Append("Eventall0 = "); events.AppendLine(track.Eventall0); }
+                if (track.Eventall1 != null) { events.Append("Eventall1 = "); events.AppendLine(track.Eventall1); }
+                if (track.Eventall2 != null) { events.Append("Eventall2 = "); events.AppendLine(track.Eventall2); }
+                if (track.Velocity != null) { events.Append("Velocity = "); events.AppendLine(track.Velocity.ToString()); }
+                var bold = new Font(Font, FontStyle.Bold);
+                var header = Messages.TrackSelected;
+                var info = String.Format(
+                    Messages.TrackInfo,
+                    track.Name ?? "none", track.SourcePath, track.SourceIndex, track.Quality, events.ToString()
+                );
+                using (var brush = new SolidBrush(DetailTextColor)) {
+                    e.Graphics.DrawString(header, bold, brush, infoHeaderPosition);
+                    e.Graphics.DrawString(info, Font, brush, infoPosition);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Draws selected elements
+        /// </summary>
+        /// <param name="e"></param>
+        private void DrawSelection(PaintEventArgs e) {
+            if (!Selection.Empty)
+                Selection.ForEach(
+                    a => {
+                        if (a is Spline) {
+                            var spline = a as Spline;
+                            DrawSelectedSpline(e, spline);
+                            DrawSelectedSplineEnds(e, spline);
+                        }
+                    },
+                    b => {
+                        if (b is Spline) {
+                            var spline = b as Spline;
+                            DrawSelectedSpline(e, spline);
+                            DrawSelectedSplineEnds(e, spline);
+                            DrawSelectedTrackInfo(e, spline);
+                        }
+                    }
+                );
         }
 
         /// <summary>
@@ -311,9 +495,9 @@ namespace ScnEdit {
         /// </summary>
         /// <param name="e"></param>
         private void DrawGrid(PaintEventArgs e) {
-            var d = _GridSize; // grid division size (in meters)
+            var d = GridSize; // grid division size (in meters)
             var m = Splines.Bounds; // full map rectangle
-            var v = DisplayToMap(Bounds); // visible map rectangle
+            var v = VisibleArea; // visible map rectangle
             var pen = new Pen(GridColor);
             var pen0 = new Pen(GridZeroColor, T.Scale);
             var p = pen0;
@@ -347,16 +531,12 @@ namespace ScnEdit {
             var dotFill = new SolidBrush(DotColor);
             var b = Splines.Bounds;
             var g = e.Graphics;
-            var f = true; // OutFull;
-            var sc = _CurrentScale;
+            var sc = CurrentScale;
             var xo = b.Left * sc;
             var yo = b.Top * sc;
-            TrackSpline[] visible = !f ? Splines.GetSubset(sc, _Viewport) : null;
-            var ct = f ? Splines.Count : visible.Length;
-            for (int i = 0; i < ct; i++) {
-                TrackSpline s = f ? Splines[i] : visible[i];
+            VisibleSplines.ForEach(s => {
                 var p = pens[s.T];
-                var w = _CurrentScale * s.W * 0.5f;
+                var w = CurrentScale * s.W * 0.5f;
                 var v = w / 2;
                 var p1 = MapToDisplay(s.A);
                 var p2 = MapToDisplay(s.D);
@@ -364,7 +544,7 @@ namespace ScnEdit {
                 g.FillEllipse(dotFill, p1.X - v, p1.Y - v, w, w);
                 g.DrawEllipse(p, p2.X - v, p2.Y - v, w, w);
                 g.FillEllipse(dotFill, p2.X - v, p2.Y - v, w, w);
-            }
+            });
             foreach (var p in pens) p.Dispose();
             dotFill.Dispose();
         }
@@ -374,7 +554,7 @@ namespace ScnEdit {
         /// </summary>
         /// <param name="e"></param>
         private void DrawMessage(PaintEventArgs e) {
-            if (!String.IsNullOrEmpty(_Message)) e.Graphics.DrawString(_Message, Font, new SolidBrush(ForeColor), new PointF(10f, 10f));
+            if (!String.IsNullOrEmpty(Message)) e.Graphics.DrawString(Message, Font, new SolidBrush(ForeColor), new PointF(10f, 10f));
         }
 
         /// <summary>
@@ -384,11 +564,14 @@ namespace ScnEdit {
         protected override void OnPaint(PaintEventArgs e) {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
             e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            var cs = e.Graphics.MeasureString("1234", Font);
+            CharSize = new SizeF(cs.Width / 4, cs.Height);
             if (Splines != null) {
                 UpdateTransformation();
                 if (ShowGrid) DrawGrid(e);
                 DrawTracks(e);
                 if (ShowDots) DrawDots(e);
+                DrawSelection(e);
             } else DrawMessage(e);
         }
 
@@ -396,98 +579,328 @@ namespace ScnEdit {
 
         #region Event handling
 
+        /// <summary>
+        /// Handles control's Resize event
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSizeChanged(EventArgs e) {
             if (Splines != null) {
-                var outFull = OutFull;
-                _FitScale = GetFitScale();
-                if (outFull) _CurrentScale = _FitScale;
+                var outFull = IsOutFull;
+                FitScale = GetFitScale();
+                if (outFull) CurrentScale = FitScale;
             }
-            _CtlCenter = new PointF(Width / 2, Height / 2);
+            CtlCenter = new PointF(Width / 2, Height / 2);
             base.OnSizeChanged(e);
         }
 
+        /// <summary>
+        /// Handles control's MouseWheel event
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseWheel(MouseEventArgs e) {
-            var s0 = _CurrentScale;
-            var s1 = _CurrentScale;
-            var sf = _FitScale;
-            var c0 = new PointF(e.X - _CtlCenter.X, e.Y - _CtlCenter.Y); // relative control position of cursor (in pixels)
-            var m0 = new PointF(c0.X / s0 - _MapOffset.X, c0.Y / s0 - _MapOffset.Y); // relative map position of cursor
+            var s0 = CurrentScale;
+            var s1 = CurrentScale;
+            var sf = FitScale;
+            var c0 = new PointF(e.X - CtlCenter.X, e.Y - CtlCenter.Y); // relative control position of cursor (in pixels)
+            var m0 = new PointF(c0.X / s0 - Offset.X, c0.Y / s0 - Offset.Y); // relative map position of cursor
             if (e.Delta > 0 && s0 < 30) s1 *= 1.5f;
             if (e.Delta < 0 && s0 > sf) s1 /= 1.5f;
             if (s1 != s0) {
-                _CurrentScale = s1;
-                _MapOffset = new PointF(c0.X / s1 - m0.X, c0.Y / s1 - m0.Y);
+                CurrentScale = s1;
+                Offset = new PointF(c0.X / s1 - m0.X, c0.Y / s1 - m0.Y);
                 Invalidate();
                 if (ScaleChanged != null) ScaleChanged.Invoke(this, EventArgs.Empty);
             }
         }
-
+        
+        /// <summary>
+        /// Point on the map when the mouse button was pressed
+        /// </summary>
         PointF P0;
-        bool MoveMapMode;
+        /// <summary>
+        /// After the mouse button is pressed and before it's released the map is in the move mode
+        /// </summary>
+        bool MoveMode;
+        /// <summary>
+        /// True, if the map was moved between mouse button was pressed and released
+        /// </summary>
+        bool MapMoved;
+        
+        /// <summary>
+        /// Handles control's MouseDown event
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseDown(MouseEventArgs e) {
-            var s = _CurrentScale;
-            var c = new PointF(e.X - _CtlCenter.X, e.Y - _CtlCenter.Y);
-            P0 = new PointF(c.X / s - _MapOffset.X, c.Y / s - _MapOffset.Y);
+            var s = CurrentScale;
+            var c = new PointF(e.X - CtlCenter.X, e.Y - CtlCenter.Y);
+            P0 = new PointF(c.X / s - Offset.X, c.Y / s - Offset.Y);
             System.Diagnostics.Debug.Print(String.Format("p = ({0} ; {1})", P0.X, P0.Y));
-            
-            MoveMapMode = true;
+            MoveMode = true;
+            MapMoved = false;
             base.OnMouseDown(e);
         }
 
+        /// <summary>
+        /// Handles control's MouseUp event
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseUp(MouseEventArgs e) {
-            MoveMapMode = false;
+            MoveMode = false;
             Cursor = Cursors.Default;
             base.OnMouseUp(e);
         }
 
+        /// <summary>
+        /// Handles control's MouseMove event
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseMove(MouseEventArgs e) {
-            var s = _CurrentScale;
-            var c = new PointF(e.X - _CtlCenter.X, e.Y - _CtlCenter.Y);
-            var p = new PointF(c.X / s - _MapOffset.X, c.Y / s - _MapOffset.Y);
+            var s = CurrentScale;
+            var c = new PointF(e.X - CtlCenter.X, e.Y - CtlCenter.Y);
+            var p = new PointF(c.X / s - Offset.X, c.Y / s - Offset.Y);
             var d = new PointF(p.X - P0.X, p.Y - P0.Y);
-            if (MoveMapMode && d != PointF.Empty) {
+            if (MoveMode && d != PointF.Empty) {
                 Cursor = Cursors.SizeAll;
-                _MapOffset = new PointF(_MapOffset.X + d.X, _MapOffset.Y + d.Y);
-                if (OffsetChanged != null) OffsetChanged.Invoke(this, EventArgs.Empty);
+                Offset = new PointF(Offset.X + d.X, Offset.Y + d.Y);
+                if (PositionChanged != null) PositionChanged.Invoke(this, EventArgs.Empty);
                 Invalidate();
+                MapMoved = true;
             }
-            _MapPointed = new PointF(-p.X - _MapCenter.X, -p.Y - _MapCenter.Y);
+            MapPointed = new PointF(-p.X - MapCenter.X, -p.Y - MapCenter.Y);
             if (CursorPositionChanged != null) CursorPositionChanged.Invoke(this, EventArgs.Empty);
             base.OnMouseMove(e);
         }
 
+        /// <summary>
+        /// Handles control's MouseClick event
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseClick(MouseEventArgs e) {
-            var s = _CurrentScale;
-            var c = new PointF(e.X - _CtlCenter.X, e.Y - _CtlCenter.Y);
-            var p = new PointF(c.X / s - _MapOffset.X - _MapCenter.X, c.Y / s - _MapOffset.Y - _MapCenter.Y);
+            if (!MapMoved) {
+                if (!Control.ModifierKeys.HasFlag(Keys.Shift)) Selection.Clear();
+                if (!Control.ModifierKeys.HasFlag(Keys.Control)) {
+                    // Track clicks:
+                    Selection.Add(Splines.GetNearest(CursorPosition, 0, VisibleArea));
+                } else {
+                    // Signal clicks:
+                }
 
+                base.OnMouseClick(e);
+            }
+
+        }
+
+        /// <summary>
+        /// Handles control's DoubleClick event
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnDoubleClick(EventArgs e) {
+            MoveMode = false;
+            MapMoved = false;
+            if (!Control.ModifierKeys.HasFlag(Keys.Control)) {
+                if (!Selection.Empty) {
+                    if (Selection.Current is Spline) { // Track double clicks:
+                        ProjectFile.FindTrack((Selection.Current as Spline).Track);
+                    } else { // Signal double clicks:
+
+                    }
+                } else base.OnDoubleClick(e);
+            } else {
+                base.OnDoubleClick(e);
+            }
         }
 
         #endregion
 
         #region Internal data structures
 
-        struct MapTransformation {
+        struct Transformation {
             public float Scale;
             public float X;
             public float Y;
         }
 
-        struct MapLayer {
+        struct Layer {
             public int Type;
             public Color Color;
-            public MapLayer(int type, Color color) { Type = type; Color = color; }
+            public Layer(int type, Color color) { Type = type; Color = color; }
         }
 
-        #region Track splines
+        public class SelectionClass {
 
-        class TrackSplines : List<TrackSpline> {
+            private int Index = -1;
+            private List<object> Data = new List<object>();
+            private Control Ctl;
 
+            public bool Empty { get { return Data.Count < 1; } }
+
+            public object Last { get { return Data.Count > 0 ? Data[Data.Count - 1] : null; } }
+
+            public object Current { get { return Data[Index]; } }
+
+            public SelectionClass(Control ctl) { Ctl = ctl; }
+
+            public void Add(object item) {
+                Index = Data.IndexOf(item);
+                if (Index < 0) {
+                    Data.Add(item);
+                    Index = Data.Count - 1;
+                }
+                Ctl.Invalidate();
+            }
+
+            public void Remove(object item) {
+                var current = Current;
+                Data.Remove(item);
+                Index = Data.IndexOf(current);
+                Ctl.Invalidate();
+            }
+
+            public void Clear() { Data.Clear(); Index = -1; Ctl.Invalidate(); }
+
+            public void ForEach(Action<object> action) { Data.ForEach(action); }
+
+            public void ForEach(Action<object> actionForAllButCurrent, Action<object> actionForCurrent) {
+                for (int i = 0; i < Data.Count; i++) if (i != Index) actionForAllButCurrent(Data[i]);
+                actionForCurrent(Data[Index]);
+            }
+
+        }
+
+        #region Splines
+
+        /// <summary>
+        /// A single, 2D, floating point track segment for drawing and on screen manipulation
+        /// ALL COORDINATES ARE REVERSE TERRAIN COORDINATES
+        /// </summary>
+        class Spline {
+
+            #region Fields
+
+            public ScnTrack Track; // track reference
+            public int T; // track type: 0 - normal, 1 - switch, 2 - road, 3 - river, 4 - cross
+            public bool L; // true for straight line
+            public float W; // track width
+            public PointF A; // spline start point
+            public PointF B; // spline control point 1
+            public PointF C; // spline control point 2
+            public PointF D; // spline end point
+            public PointF I1; // interpolated point 1
+            public PointF I2; // interpolated point 2
+            public PointF I3; // interpolated point 3
+
+            #endregion
+
+            /// <summary>
+            /// Returns true if any spline point is contained within specified rectangle
+            /// </summary>
+            /// <param name="r"></param>
+            /// <returns></returns>
+            public bool HasPointIn(RectangleF r) {
+                return r.Contains(A) || r.Contains(I1) || r.Contains(I2) || r.Contains(I3) || r.Contains(D);
+            }
+
+            /// <summary>
+            /// Exact or interpolated distance to specified point (exact if the spline is a straight line)
+            /// </summary>
+            /// <param name="point"></param>
+            /// <returns></returns>
+            public float DistanceToPoint(PointF point) {
+                var a = (V2D)(this.A);
+                var b = (V2D)(this.D);
+                var c = new V2D(point.X, point.Y);
+                if (this.L) return (float)V2D.LineToPointDistance(a, b, c);
+                else {
+                    var d = -1f;
+                    var e = 0f;
+                    var i1 = (V2D)this.I1;
+                    var i2 = (V2D)this.I2;
+                    var i3 = (V2D)this.I3;
+                    d = (float)V2D.LineToPointDistance(a, i1, c);
+                    e = (float)V2D.LineToPointDistance(i1, i2, c); if (e < d) d = e;
+                    e = (float)V2D.LineToPointDistance(i2, i3, c); if (e < d) d = e;
+                    e = (float)V2D.LineToPointDistance(i3, b, c); if (e < d) d = e;
+                    return d;
+                }
+            }
+
+            /// <summary>
+            /// Creates TrackSpline object from ScnTrack
+            /// </summary>
+            /// <param name="track"></param>
+            /// <param name="switchState"></param>
+            /// <returns></returns>
+            public static Spline FromTrack(ScnTrack track, bool switchState = false) {
+                var p1 = !switchState;
+                var spline = new Spline {
+                    A = p1 ? track.Point1 : track.Point3,
+                    B = p1 ? track.Point1 + track.CVec1 : track.Point3 + track.CVec3,
+                    C = p1 ? track.Point2 + track.CVec2 : track.Point4 + track.CVec4,
+                    D = p1 ? track.Point2 : track.Point4,
+                };
+                var type = 0;
+                switch (track.TrackType.ToLowerInvariant()) {
+                    case "normal": type = 0; break;
+                    case "switch": type = 1; break;
+                    case "road": type = 2; break;
+                    case "river": type = 3; break;
+                    case "cross": type = 4; break;
+                    default: type = 0; break;
+                }
+                spline.T = type;
+                spline.W = (float)track.TrackWidth;
+                spline.L = p1 ? track.CVec1.Zero && track.CVec2.Zero : track.CVec3.Zero && track.CVec4.Zero;
+                spline.I1 = spline.Interpolate(0.25f);
+                spline.I2 = spline.Interpolate(0.5f);
+                spline.I3 = spline.Interpolate(0.75f);
+                spline.Track = track;
+                return spline;
+            }
+
+            /// <summary>
+            /// Interpolates a point on spline
+            /// </summary>
+            /// <param name="t">0..1</param>
+            /// <returns></returns>
+            private PointF Interpolate(float t) {
+                return
+                    (A == B && C == D)
+                        ? new PointF( // parametric straight equation
+                                A.X * (1 - t) + D.X * t,
+                                A.Y * (1 - t) + D.Y * t
+                            )
+                        : new PointF( // parametric cubic Bezier equation
+                                A.X + 3 * t * (B.X - A.X) + 3 * t * t * (C.X - 2 * B.X + A.X) + t * t * t * (D.X - 3 * C.X + 3 * B.X - A.X),
+                                A.Y + 3 * t * (B.Y - A.Y) + 3 * t * t * (C.Y - 2 * B.Y + A.Y) + t * t * t * (D.Y - 3 * C.Y + 3 * B.Y - A.Y)
+                            );
+            }
+
+        }
+
+        /// <summary>
+        /// A list of track splines for drawing and on screen manipulation
+        /// </summary>
+        class SplineCollection : List<Spline> {
+            
+            /// <summary>
+            /// Temporary Bounds rectangle
+            /// </summary>
             RectangleF _Bounds;
+            
+            /// <summary>
+            /// True if _Bounds are calculated
+            /// </summary>
             bool _BoundsSet;
 
-            public ScnTracks Tracks;
+            /// <summary>
+            /// Source track list
+            /// </summary>
+            public ScnTrackCollection Tracks;
 
+            /// <summary>
+            /// Gets the smallest rectangle defining the area where all track splines are contained in
+            /// IN REVERSE TERRAIN COORDINATES
+            /// </summary>
             public RectangleF Bounds {
                 get {
                     if (!_BoundsSet) { _Bounds = GetBounds(); _BoundsSet = true; }
@@ -495,75 +908,21 @@ namespace ScnEdit {
                 }
             }
 
-            public TrackSpline[] GetSubset(float scale, RectangleF bounds) {
-                var sc = Count;
-                var subset = new List<TrackSpline>(sc / 4);
-                for (int i = 0; i < sc; i++) {
-                    if (this[i].L) {
-                        if (Belongs(this[i].A, scale, bounds) || Belongs(this[i].D, scale, bounds)) subset.Add(this[i]);
-                    } else {
-                        if (
-                            Belongs(this[i].A, scale, bounds) ||
-                            Belongs(this[i].I1, scale, bounds) ||
-                            Belongs(this[i].I2, scale, bounds) ||
-                            Belongs(this[i].I3, scale, bounds) ||
-                            Belongs(this[i].D, scale, bounds)
-                        ) subset.Add(this[i]);
-                    }
-                }
-                return subset.ToArray();
-            }
-
-            public TrackSplines(ScnTracks tracks) {
-                Tracks = tracks;
-                var tc = Tracks.Count;
+            /// <summary>
+            /// Creates track spline list instance for the track list specified
+            /// </summary>
+            /// <param name="tracks"></param>
+            public SplineCollection(ScnTrackCollection tracks) {
+                var tc = tracks.Count;
                 Capacity = (int)Math.Round(1.1 * tc, 0);
-                for (int i = 0; i < tc; i++) {
-                    var t = Tracks[i];
-                    PointF a, b, c, d;
-                    a = t.Point1; b = t.Point1 + t.CVec1; c = t.Point2 + t.CVec2; d = t.Point2;
-                    if (t.IsSwitch) {
-                        Add(new TrackSpline {
-                            I = i, T = 1, L = t.CVec1.Zero && t.CVec2.Zero, W = (float)t.TrackWidth,
-                            A = a, B = b, C = c, D = d,
-                            I1 = Interpolate(0.25f, a, b, c, d), I2 = Interpolate(0.5f, a, b, c, d), I3 = Interpolate(0.75f, a, b, c, d)
-                        });
-                        a = t.Point3; b = t.Point3 + t.CVec3; c = t.Point4 + t.CVec4; d = t.Point4;
-                        Add(new TrackSpline {
-                            I = i, T = 1, L = t.CVec3.Zero && t.CVec4.Zero, W = (float)t.TrackWidth,
-                            A = a, B = b, C = c, D = d,
-                            I1 = Interpolate(0.25f, a, b, c, d), I2 = Interpolate(0.5f, a, b, c, d), I3 = Interpolate(0.75f, a, b, c, d)
-                        });
-                    } else {
-                        int tt = 0;
-                        switch (t.TrackType.ToLowerInvariant()) {
-                            case "road":  tt = 2; break;
-                            case "river": tt = 3; break;
-                            case "cross": tt = 4; break;
-                            default: tt = 0; break;
-                        }
-                        Add(new TrackSpline {
-                            I = i, T = tt, L = t.CVec1.Zero && t.CVec2.Zero, W = (float)t.TrackWidth,
-                            A = a, B = b, C = c, D = d,
-                            I1 = Interpolate(0.25f, a, b, c, d), I2 = Interpolate(0.5f, a, b, c, d), I3 = Interpolate(0.75f, a, b, c, d)
-                        });
-                    }
-                }
+                tracks.ForEach(t => { Add(Spline.FromTrack(t)); if (t.IsSwitch) Add(Spline.FromTrack(t, true)); });
+                Tracks = tracks;
             }
 
-            private PointF Interpolate(float t, PointF a, PointF b, PointF c, PointF d) {
-                return
-                    (a == b && c == d)
-                        ? new PointF(
-                                a.X * (1 - t) + d.X * t,
-                                a.Y * (1 - t) + d.Y * t
-                            )
-                        : new PointF(
-                                a.X + 3 * t * (b.X - a.X) + 3 * t * t * (c.X - 2 * b.X + a.X) + t * t * t * (d.X - 3 * c.X + 3 * b.X - a.X),
-                                a.Y + 3 * t * (b.Y - a.Y) + 3 * t * t * (c.Y - 2 * b.Y + a.Y) + t * t * t * (d.Y - 3 * c.Y + 3 * b.Y - a.Y)
-                            );
-            }
-
+            /// <summary>
+            /// Returns the smallest rectangle all splines are contained in
+            /// </summary>
+            /// <returns>IN INVERSE TERRAIN COORDINATES</returns>
             private RectangleF GetBounds() {
                 float x = 0, left = 0, top = 0, right = 0, bottom = 0;
                 foreach (var spline in this) {
@@ -591,27 +950,40 @@ namespace ScnEdit {
                 return new RectangleF(left, top, right - left, bottom - top);
             }
 
-            private bool Belongs(PointF point, float scale, RectangleF bounds) {
-                float x = point.X * scale;
-                float y = point.Y * scale;
-                return x >= bounds.Left && x <= bounds.Right && y >= bounds.Top && y <= bounds.Bottom;
+            /// <summary>
+            /// Returns the track nearest to the specified point if the distance is within specified range
+            /// </summary>
+            /// <param name="point"></param>
+            /// <param name="range"></param>
+            /// <returns></returns>
+            public Spline GetNearest(PointF point, float range, RectangleF within) {
+                int count = Count, index = 0;
+                float d;
+                float distance = -1f;
+                for (var i = 0; i < count; i++) {
+                    if (within == RectangleF.Empty || this[i].HasPointIn(within)) {
+                        d = this[i].DistanceToPoint(point);
+                        if (distance < 0f || d < distance) { distance = d; index = i; }
+                    }
+                }
+                var spline = this[index];
+                if (range == 0f) range = spline.W * 2;
+                return range < 0 || distance <= range ? spline : null;
             }
 
+            /// <summary>
+            /// Returns the track nearest to the specified point if the distance is within specified range
+            /// </summary>
+            /// <param name="point"></param>
+            /// <param name="range"></param>
+            /// <returns></returns>
+            public Spline GetNearest(PointF point, float range = 0f) {
+                return GetNearest(point, range, RectangleF.Empty);
+            }
+            
+
         }
 
-        struct TrackSpline {
-            public int I; // track index
-            public int T; // track type: 0 - normal, 1 - switch, 2 - road, 3 - river, 4 - cross
-            public bool L; // true for straight line
-            public float W; // track width
-            public PointF A; // spline start point
-            public PointF B; // spline control point 1
-            public PointF C; // spline control point 2
-            public PointF D; // spline end point
-            public PointF I1; // interpolated point 1
-            public PointF I2; // interpolated point 2
-            public PointF I3; // interpolated point 3
-        }
 
         #endregion
 

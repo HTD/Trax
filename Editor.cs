@@ -122,11 +122,15 @@ namespace ScnEdit {
         private Place Mark(int start, int length, StyleIndex style) {
             var p = PositionToPlace(start);
             var q = PositionToPlace(start + length);
-            Selection = new Range(this, p, p);
+            Selection = new Range(this, p, q);
             DoSelectionVisible();
-            var target = new Range(this, p, q);
-            var timer = new Timer { Interval = 2000 };
-            target.SetStyle(style);
+            var t = Selection.Text;
+            var multiline = t.IndexOf('\n') > 0;
+            if (!multiline) {
+                Selection = new Range(this, p, p);
+                var target = new Range(this, p, q);
+                target.SetStyle(style);
+            }
             return p;
         }
 

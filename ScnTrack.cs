@@ -361,7 +361,7 @@ namespace ScnEdit {
     /// <summary>
     /// Scenery track list
     /// </summary>
-    public class ScnTracks : ScnVectorObjects<ScnTrack> {
+    public class ScnTrackCollection : ScnVectorObjects<ScnTrack> {
 
         #region Private
 
@@ -416,8 +416,8 @@ namespace ScnEdit {
         public string Source;
         public string SourcePath;
 
-        public static ScnTracks Parse(string text, string path = null, ScnTrackIncludes includes = ScnTrackIncludes.Before) {
-            var tracks = new ScnTracks();
+        public static ScnTrackCollection Parse(string text, string path = null, ScnTrackIncludes includes = ScnTrackIncludes.Before) {
+            var tracks = new ScnTrackCollection();
             tracks.Source = text;
             tracks.SourcePath = path;
             tracks.SourceIncludes = includes;
@@ -426,11 +426,11 @@ namespace ScnEdit {
             return tracks;
         }
 
-        public static ScnTracks Load() {
-            var tracks = new ScnTracks();
+        public static ScnTrackCollection Load() {
+            var tracks = new ScnTrackCollection();
             ProjectFile.All.ForEach(f => {
                 if (f.Type == ProjectFile.Types.SceneryPart || f.Type == ProjectFile.Types.SceneryMain) {
-                    var set = ScnTracks.Parse(f.Text, f.Path, ScnTrackIncludes.Ignore);
+                    var set = ScnTrackCollection.Parse(f.Text, f.Path, ScnTrackIncludes.Ignore);
                     if (set.Count > 0) tracks.AddRange(set);
                 }
             });
@@ -472,8 +472,8 @@ namespace ScnEdit {
             return new[] { x, y }.Min();
         }
 
-        public ScnTracks GetVisible(float scale, RectangleF viewport) {
-            var visible = new ScnTracks();
+        public ScnTrackCollection GetVisible(float scale, RectangleF viewport) {
+            var visible = new ScnTrackCollection();
             return visible;
         }
 

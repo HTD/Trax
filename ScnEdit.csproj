@@ -134,6 +134,7 @@
     <Compile Include="ProjectPanel.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ScnSignal.cs" />
     <Compile Include="ScnVectorObjects.cs" />
     <Compile Include="SearchResultsPanel.cs">
       <SubType>Form</SubType>
@@ -147,7 +148,8 @@
       <DependentUpon>Styles_Default.settings</DependentUpon>
     </Compile>
     <Compile Include="EditorSyntax.cs" />
-    <Compile Include="ScnTracks.cs" />
+    <Compile Include="ScnTrack.cs" />
+    <Compile Include="V2D.cs" />
     <Compile Include="V3D.cs" />
     <Compile Include="VS2012ColorTable.cs" />
     <Compile Include="VS2012ToolStripExtender.cs">
@@ -169,8 +171,17 @@
     <EmbeddedResource Include="Main.sq-AL.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Map.pl-PL.resx">
+      <DependentUpon>Map.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Map.pl.resx">
+      <DependentUpon>Map.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Map.resx">
       <DependentUpon>Map.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCtl.resx">
+      <DependentUpon>MapCtl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Messages.pl-PL.resx">
       <Generator>ResXFileCodeGenerator</Generator>

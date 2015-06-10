@@ -19,37 +19,39 @@ namespace ScnEdit {
             Ctl.Focus();
             Ctl.Loaded += Ctl_MapLoaded;
             Ctl.ScaleChanged += Ctl_ScaleChanged;
-            Ctl.OffsetChanged += Ctl_OffsetChanged;
+            Ctl.PositionChanged += Ctl_PositionChanged;
             Ctl.CursorPositionChanged += Ctl_CursorPositionChanged;
+            Ctl.ShowDots = true;
             Ctl.ShowGrid = true;
             ShowGridButton.Checked = true;
+            ShowDotsButton.Checked = true;
             ScaleLabel.Text = String.Empty;
-            XLabel.Text = String.Empty;
-            ZLabel.Text = String.Empty;
-            XOffsetLabel.Text = String.Empty;
-            ZOffsetLabel.Text = String.Empty;
+            CursorXLabel.Text = String.Empty;
+            CursorZLabel.Text = String.Empty;
+            PositionXLabel.Text = String.Empty;
+            PositionZLabel.Text = String.Empty;
         }
 
         void Ctl_MapLoaded(object sender, EventArgs e) {
-            XLabel.Text = String.Format("X = {0}", Ctl.CursorPosition.X.ToString("00000.00m"));
-            ZLabel.Text = String.Format("Z = {0}", Ctl.CursorPosition.Y.ToString("00000.00m"));
+            CursorXLabel.Text = String.Format("X = {0}", Ctl.CursorPosition.X.ToString("00000.00m"));
+            CursorZLabel.Text = String.Format("Z = {0}", Ctl.CursorPosition.Y.ToString("00000.00m"));
         }
 
         void Ctl_ScaleChanged(object sender, EventArgs e) {
             ScaleLabel.Text = String.Format("100m -> {0}px", (Ctl.Scale * 100).ToString("0.00"));
-            XOffsetLabel.Text = String.Format("X = {0}", Ctl.MapOffset.X.ToString("00000.00m"));
-            ZOffsetLabel.Text = String.Format("Z = {0}", Ctl.MapOffset.Y.ToString("00000.00m"));
-            ResetViewButton.Checked = Ctl.OutFull;
+            PositionXLabel.Text = String.Format("X = {0}", Ctl.Position.X.ToString("00000.00m"));
+            PositionZLabel.Text = String.Format("Z = {0}", Ctl.Position.Y.ToString("00000.00m"));
+            ResetViewButton.Checked = Ctl.IsOutFull;
         }
 
-        void Ctl_OffsetChanged(object sender, EventArgs e) {
-            XOffsetLabel.Text = String.Format("X = {0}", Ctl.MapOffset.X.ToString("00000.00m"));
-            ZOffsetLabel.Text = String.Format("Z = {0}", Ctl.MapOffset.Y.ToString("00000.00m"));
+        void Ctl_PositionChanged(object sender, EventArgs e) {
+            PositionXLabel.Text = String.Format("X = {0}", Ctl.Position.X.ToString("00000.00m"));
+            PositionZLabel.Text = String.Format("Z = {0}", Ctl.Position.Y.ToString("00000.00m"));
         }
 
         void Ctl_CursorPositionChanged(object sender, EventArgs e) {
-            XLabel.Text = String.Format("X = {0}", Ctl.CursorPosition.X.ToString("00000.00m"));
-            ZLabel.Text = String.Format("Z = {0}", Ctl.CursorPosition.Y.ToString("00000.00m"));
+            CursorXLabel.Text = String.Format("X = {0}", Ctl.CursorPosition.X.ToString("00000.00m"));
+            CursorZLabel.Text = String.Format("Z = {0}", Ctl.CursorPosition.Y.ToString("00000.00m"));
         }
 
         private void ResetViewButton_Click(object sender, EventArgs e) {

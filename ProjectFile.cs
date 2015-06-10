@@ -191,6 +191,48 @@ namespace ScnEdit {
             Main.Instance.EnableEdit();
         }
 
+        public static void FindTrack(ScnTrack track) {
+            Main.Instance.DisableEdit();
+            Status.Text = Messages.Searching;
+            Application.DoEvents();
+            SearchResultsPanel.Reset();
+            ProcessAll(i => {
+                if (i.Path == track.SourcePath) {
+                    i.Open();
+                    var p = i.Editor.PositionToPlace(track.SourceIndex);
+                    SearchResultsPanel.Add(new SearchResult {
+                        Path = i.Path, File = i.FileName, Fragment = i.Text.Substring(track.SourceIndex, track.SourceLength), Line = p.iLine + 1, Column = 1
+                    });
+                }
+            });
+            SearchResultsPanel.CloseIfEmpty();
+            Status.Text = Messages.Ready;
+            Application.DoEvents();
+            Main.Instance.EnableEdit();
+        }
+
+        public static void FindTracks(IEnumerable<ScnTrack> tracks) {
+            Main.Instance.DisableEdit();
+            Status.Text = Messages.Searching;
+            Application.DoEvents();
+            SearchResultsPanel.Reset();
+            ProcessAll(i => {
+                foreach (var track in tracks) {
+                    if (i.Path == track.SourcePath) {
+                        i.Open();
+                        var p = i.Editor.PositionToPlace(track.SourceIndex);
+                        SearchResultsPanel.Add(new SearchResult {
+                            Path = i.Path, File = i.FileName, Fragment = i.Text.Substring(track.SourceIndex, track.SourceLength), Line = p.iLine + 1, Column = 1
+                        });
+                    }
+                }
+            });
+            SearchResultsPanel.CloseIfEmpty();
+            Status.Text = Messages.Ready;
+            Application.DoEvents();
+            Main.Instance.EnableEdit();
+        }
+
         private static void ReplaceAll(Regex regex, string replaceText) {
             Main.Instance.DisableEdit();
             Status.Text = Messages.Replacing;
