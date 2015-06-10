@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace ScnEdit {
+namespace Trax {
     
     class SearchResultsPanel : DockContent {
 

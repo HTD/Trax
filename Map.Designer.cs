@@ -1,4 +1,4 @@
-﻿namespace ScnEdit {
+﻿namespace Trax {
     partial class Map {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ShowGridButton = new System.Windows.Forms.ToolStripButton();
             this.ShowDotsButton = new System.Windows.Forms.ToolStripButton();
-            this.Ctl = new ScnEdit.MapCtl();
+            this.Ctl = new Trax.MapCtl();
             this.MapToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 

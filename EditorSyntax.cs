@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace ScnEdit {
+namespace Trax {
 
     internal class EditorSyntax : ICustomHighlighter {
 
@@ -199,8 +199,8 @@ namespace ScnEdit {
             else {
                 if (E.FileBindingMode) lock (stylesLock) GetStyles();
                 switch (type) {
-                    case ScnEdit.EditorFile.Types.SceneryMain:
-                    case ScnEdit.EditorFile.Types.SceneryPart:
+                    case Trax.EditorFile.Types.SceneryMain:
+                    case Trax.EditorFile.Types.SceneryPart:
                         range.ClearStyle(
                             StyleIndex.Style2 | StyleIndex.Style3 | StyleIndex.Style4 | StyleIndex.Style5 |
                             StyleIndex.Style6 | StyleIndex.Style7 | StyleIndex.Style8 | StyleIndex.Style9 |
@@ -218,7 +218,7 @@ namespace ScnEdit {
                         range.SetStyle(StyleMap.Path, new ScnSyntax.Path());
                         range.SetStyle(StyleMap.Number, new ScnSyntax.Number());
                         break;
-                    case ScnEdit.EditorFile.Types.Timetable:
+                    case Trax.EditorFile.Types.Timetable:
                         range.ClearStyle(StyleMap.Comment | StyleMap.Time);
                         range.SetStyle(StyleMap.Comment, new ScnSyntax.TimetableFrame());
                         range.SetStyle(StyleMap.Time, new ScnSyntax.TimetableTime());

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScnEdit.StyleSchemes {
+namespace Trax.StyleSchemes {
     
     internal partial class Styles_Default : IStyleScheme { }
 

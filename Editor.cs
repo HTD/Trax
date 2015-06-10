@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace ScnEdit {
+namespace Trax {
     
     class Editor : FastColoredTextBox {
 
@@ -48,7 +48,7 @@ namespace ScnEdit {
             WordWrapMode = WordWrapMode.WordWrapControlWidth;
             HighlightingRangeType = HighlightingRangeType.VisibleRange;
             switch (File.Type) {
-                case ScnEdit.EditorFile.Types.HTML: Language = Language.HTML; break;
+                case Trax.EditorFile.Types.HTML: Language = Language.HTML; break;
                 default: Language = Language.Custom; break;
             }
             Encoding = Encoding.GetEncoding(Properties.Settings.Default.EncodingDefault);

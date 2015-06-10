@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace ScnEdit {
+namespace Trax {
     
     public partial class Main : Form {
 
@@ -67,7 +67,7 @@ namespace ScnEdit {
                 new EditorFile(FileToOpen);
                 if (EditorFile.All.Count > 0) EnableEdit();
                 Status.Visible = true;
-            }
+            } else Credits.Show();
             foreach (TypeInfo t in EditorSyntax.Styles.ConfiguredColorSchemes) {
                 var i = ColorSchemeMenu.DropDownItems.Add(t.Name.Replace("Colors_", "").Replace("_", " "), null, Main_SetColorScheme) as ToolStripMenuItem;
                 if (t.Name == EditorSyntax.Styles.ColorScheme.GetType().Name) i.Checked = true;
@@ -142,6 +142,10 @@ namespace ScnEdit {
 
         private void SaveAllMenuItem_Click(object sender, EventArgs e) {
             EditorFile.All.ForEach(i => i.Save());
+        }
+
+        private void CloseMenuItem_Click(object sender, EventArgs e) {
+            ProjectFile.CloseProject();
         }
 
         private void ExitMenuItem_Click(object sender, EventArgs e) {
@@ -260,8 +264,12 @@ namespace ScnEdit {
         }
 
         #endregion
-        #endregion
 
+        private void CreditsMenuItem_Click(object sender, EventArgs e) {
+            Credits.Show();
+        }
+
+        #endregion
     }
 
 }

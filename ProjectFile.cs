@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace ScnEdit {
+namespace Trax {
     
     internal class ProjectFile {
 
@@ -150,6 +150,25 @@ namespace ScnEdit {
         /// Opens file in editor
         /// </summary>
         internal void Open() { new EditorFile(this); }
+
+        /// <summary>
+        /// Closes the current project
+        /// </summary>
+        internal static void CloseProject() {
+            if (Main.Instance.TrackMap != null) {
+                Main.Instance.TrackMap.Close();
+                Main.Instance.TrackMap.Dispose();
+                Main.Instance.TrackMap = null;
+            }
+            if (Main.Instance.SceneryPanel != null) {
+                Main.Instance.SceneryPanel.Close();
+                Main.Instance.SceneryPanel.Dispose();
+                Main.Instance.SceneryPanel = null;
+            }
+            Main.Instance.Text = Application.ProductName;
+            EditorFile.Reset();
+            Main.Instance.DockPanel.Refresh();           
+        }
 
         internal static void FindText(string text, bool useRegex = false) {
             var pattern = useRegex ? text : Regex.Escape(text);

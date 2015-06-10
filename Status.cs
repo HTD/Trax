@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ScnEdit {
+namespace Trax {
     
     internal static class Status {
 
@@ -21,7 +21,7 @@ namespace ScnEdit {
         }
 
         internal static Main Main;
-        internal static string FileName { set { Main.Text = String.IsNullOrEmpty(value) ? "Scenery Editor" : (value + " :: ScnEdit"); } }
+        internal static string FileName { set { Main.Text = String.IsNullOrEmpty(value) ? Application.ProductName : String.Format("{0} :: {1}", value, Application.ProductName); } }
         internal static int FileSize { set { Main.SizeLabel.Text = DynamicSize(value); } }
         internal static int FileLines { set { Main.LinesLabel.Text = String.Format("{0} {1}", value, Messages.LinesUnit); } }
         internal static EditorFile.Types FileType { set { Main.TypeLabel.Text = value.ToString(); } }

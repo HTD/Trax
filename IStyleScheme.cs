@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScnEdit {
+namespace Trax {
     interface IStyleScheme {
         FontStyle Identifier { get; set; }
         FontStyle Comment { get; set; }

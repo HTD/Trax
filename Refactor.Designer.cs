@@ -1,4 +1,4 @@
-﻿namespace ScnEdit {
+﻿namespace Trax {
     partial class Refactor {
         /// <summary>
         /// Required designer variable.

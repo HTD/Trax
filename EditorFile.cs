@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace ScnEdit {
+namespace Trax {
     
     internal class EditorFile : ProjectFile {
 

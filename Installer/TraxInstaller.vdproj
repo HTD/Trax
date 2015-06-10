@@ -21,44 +21,50 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4405C9E547F45290DE3288E4F716F29F"
+        "MsmKey" = "8:_5011A471A3CE4CC3BB192912853351F4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B488C68BF71DEB39DD8BEE0D7D8D8629"
         "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4D12A9D2D42EF593DB68BC34F6C4C3BF"
+        "MsmKey" = "8:_C18A0376B7BCFB03ED6B85F616021276"
         "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C8BE2E56E776131DE065AABC66735DCC"
-        "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4D12A9D2D42EF593DB68BC34F6C4C3BF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_C2432C57BFBAA3111127EA6E71FE9B23"
         "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4405C9E547F45290DE3288E4F716F29F"
+        "OwnerKey" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C8BE2E56E776131DE065AABC66735DCC"
+        "OwnerKey" = "8:_C18A0376B7BCFB03ED6B85F616021276"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B488C68BF71DEB39DD8BEE0D7D8D8629"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C2432C57BFBAA3111127EA6E71FE9B23"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -101,7 +107,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\ScnEdit.msi"
+        "OutputFilename" = "8:Release\\TraxInstaller.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -156,21 +162,10 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4405C9E547F45290DE3288E4F716F29F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5011A471A3CE4CC3BB192912853351F4"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ScnSyntax, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_4405C9E547F45290DE3288E4F716F29F"
-                    {
-                    "Name" = "8:ScnSyntax.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ScnSyntax.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\Images\\InstallerBG.bmp"
+            "TargetName" = "8:InstallerBG.bmp"
             "Tag" = "8:"
             "Folder" = "8:_A53F7399E8AE42F4BBF46AB07ADDA637"
             "Condition" = "8:"
@@ -184,48 +179,17 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4D12A9D2D42EF593DB68BC34F6C4C3BF"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WeifenLuo.WinFormsUI.Docking, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_4D12A9D2D42EF593DB68BC34F6C4C3BF"
-                    {
-                    "Name" = "8:WeifenLuo.WinFormsUI.Docking.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:WeifenLuo.WinFormsUI.Docking.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_A53F7399E8AE42F4BBF46AB07ADDA637"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C8BE2E56E776131DE065AABC66735DCC"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B488C68BF71DEB39DD8BEE0D7D8D8629"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:FastColoredTextBox, Version=2.16.2.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C8BE2E56E776131DE065AABC66735DCC"
+                    "_B488C68BF71DEB39DD8BEE0D7D8D8629"
                     {
                     "Name" = "8:FastColoredTextBox.dll"
                     "Attributes" = "3:512"
@@ -249,13 +213,75 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C18A0376B7BCFB03ED6B85F616021276"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ScnSyntax, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_C18A0376B7BCFB03ED6B85F616021276"
+                    {
+                    "Name" = "8:ScnSyntax.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ScnSyntax.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A53F7399E8AE42F4BBF46AB07ADDA637"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C2432C57BFBAA3111127EA6E71FE9B23"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:WeifenLuo.WinFormsUI.Docking, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_C2432C57BFBAA3111127EA6E71FE9B23"
+                    {
+                    "Name" = "8:WeifenLuo.WinFormsUI.Docking.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:WeifenLuo.WinFormsUI.Docking.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A53F7399E8AE42F4BBF46AB07ADDA637"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
             "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_613CA482463148AF95772830A2113013"
             {
             "Name" = "8:Scenery"
-            "Description" = "8:Scenery editor"
+            "Description" = "8:Scenery file"
             "Extensions" = "8:.scn"
             "MIME" = "8:"
             "Icon" = "8:_2D1EC04CB9D84D44862FDCAF43396901"
@@ -327,9 +353,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:ScnEdit"
+        "ProductName" = "8:Trax"
         "ProductCode" = "8:{9BFF35EB-9F12-4C91-816A-F66A71B8AEF1}"
-        "PackageCode" = "8:{1EC4CBA0-14AA-4067-BA1C-C88A940BC45C}"
+        "PackageCode" = "8:{50641AED-D27B-4B77-8A87-563F1BBDDB8D}"
         "UpgradeCode" = "8:{DF763464-8332-4689-BCC9-99A2A6ED6C8A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -340,7 +366,7 @@
         "Manufacturer" = "8:HTD"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:ScnEdit"
+        "Title" = "8:Trax"
         "Subject" = "8:"
         "ARPCONTACT" = "8:HTD"
         "Keywords" = "8:"
@@ -451,7 +477,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_52005B97C36E4D8697836388C8C5E4F1"
             {
-            "Name" = "8:ScnEdit"
+            "Name" = "8:Trax"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -465,7 +491,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BDD70670262F4FC298E0DA0199422DC9"
             {
-            "Name" = "8:ScnEdit"
+            "Name" = "8:Trax"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -504,7 +530,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_5011A471A3CE4CC3BB192912853351F4"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "UpdateText"
@@ -548,7 +575,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_5011A471A3CE4CC3BB192912853351F4"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -598,7 +626,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_5011A471A3CE4CC3BB192912853351F4"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -642,7 +671,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_5011A471A3CE4CC3BB192912853351F4"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -664,7 +694,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_5011A471A3CE4CC3BB192912853351F4"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -701,7 +732,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_5011A471A3CE4CC3BB192912853351F4"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -732,7 +764,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_5011A471A3CE4CC3BB192912853351F4"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "InstallAllUsersVisible"
@@ -767,7 +800,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_5011A471A3CE4CC3BB192912853351F4"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -782,7 +816,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2D1EC04CB9D84D44862FDCAF43396901"
             {
-            "SourcePath" = "8:..\\obj\\Release\\ScnEdit.exe"
+            "SourcePath" = "8:..\\obj\\Release\\Trax.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A53F7399E8AE42F4BBF46AB07ADDA637"

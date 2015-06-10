@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ScnEdit {
+namespace Trax {
     
     /// <summary>
     /// Generic scenery vector object

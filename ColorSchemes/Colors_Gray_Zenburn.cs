@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScnEdit.ColorSchemes {
+namespace Trax.ColorSchemes {
     internal partial class Colors_Gray_Zenburn : IColorScheme {
     }
 }

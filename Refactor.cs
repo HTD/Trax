@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
-namespace ScnEdit {
+namespace Trax {
     
     /// <summary>
     /// Global symbol replace form

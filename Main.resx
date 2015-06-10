@@ -149,6 +149,12 @@
   <data name="SaveAllMenuItem.Text" xml:space="preserve">
     <value>Save &amp;All</value>
   </data>
+  <data name="CloseMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="CloseMenuItem.Text" xml:space="preserve">
+    <value>&amp;Close scenery</value>
+  </data>
   <data name="s1.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 6</value>
   </data>
@@ -168,42 +174,6 @@
     <value>&amp;File</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AlignMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="AlignMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+T</value>
-  </data>
-  <data name="AlignMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="AlignMenuItem.Text" xml:space="preserve">
-    <value>&amp;Align</value>
-  </data>
-  <data name="NormalizeMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+N</value>
-  </data>
-  <data name="NormalizeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="NormalizeMenuItem.Text" xml:space="preserve">
-    <value>&amp;Normalize</value>
-  </data>
-  <data name="s2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 6</value>
-  </data>
-  <data name="CommentSelectedMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
-    <value>Ctrl+/</value>
-  </data>
-  <data name="CommentSelectedMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+OemQuestion</value>
-  </data>
-  <data name="CommentSelectedMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="CommentSelectedMenuItem.Text" xml:space="preserve">
-    <value>Toggle &amp;comment</value>
-  </data>
   <data name="EditMenu.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -212,6 +182,99 @@
   </data>
   <data name="EditMenu.Text" xml:space="preserve">
     <value>&amp;Edit</value>
+  </data>
+  <data name="ViewMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="ViewMenu.Text" xml:space="preserve">
+    <value>&amp;View</value>
+  </data>
+  <data name="SceneryMenu.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SceneryMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="SceneryMenu.Text" xml:space="preserve">
+    <value>&amp;Scenery</value>
+  </data>
+  <data name="DebugMenu.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="DebugMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="DebugMenu.Text" xml:space="preserve">
+    <value>&amp;Debug</value>
+  </data>
+  <data name="CreditsMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>F1</value>
+  </data>
+  <data name="CreditsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
+  </data>
+  <data name="CreditsMenuItem.Text" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="MainMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1185, 24</value>
+  </data>
+  <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MainMenu.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Name" xml:space="preserve">
+    <value>MainMenu</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="AlignMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="AlignMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+T</value>
+  </data>
+  <data name="AlignMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="AlignMenuItem.Text" xml:space="preserve">
+    <value>&amp;Align</value>
+  </data>
+  <data name="NormalizeMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+N</value>
+  </data>
+  <data name="NormalizeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="NormalizeMenuItem.Text" xml:space="preserve">
+    <value>&amp;Normalize</value>
+  </data>
+  <data name="s2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 6</value>
+  </data>
+  <data name="CommentSelectedMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Ctrl+/</value>
+  </data>
+  <data name="CommentSelectedMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+OemQuestion</value>
+  </data>
+  <data name="CommentSelectedMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="CommentSelectedMenuItem.Text" xml:space="preserve">
+    <value>Toggle &amp;comment</value>
   </data>
   <data name="WordWrapMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+W</value>
@@ -242,12 +305,6 @@
   </data>
   <data name="ClearMarkersMenuItem.Text" xml:space="preserve">
     <value>Clear markers</value>
-  </data>
-  <data name="ViewMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="ViewMenu.Text" xml:space="preserve">
-    <value>&amp;View</value>
   </data>
   <data name="findToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -354,15 +411,6 @@
   <data name="ShowMapMenuItem.Text" xml:space="preserve">
     <value>Show &amp;map</value>
   </data>
-  <data name="SceneryMenu.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="SceneryMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
-  </data>
-  <data name="SceneryMenu.Text" xml:space="preserve">
-    <value>&amp;Scenery</value>
-  </data>
   <data name="StartDebuggingMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>F5</value>
   </data>
@@ -381,42 +429,33 @@
   <data name="StartWithoutDebuggingMenuItem.Text" xml:space="preserve">
     <value>Start &amp;without debugging</value>
   </data>
-  <data name="DebugMenu.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="DebugMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
-  </data>
-  <data name="DebugMenu.Text" xml:space="preserve">
-    <value>&amp;Debug</value>
-  </data>
-  <data name="MainMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1185, 24</value>
-  </data>
-  <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="MainMenu.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.Name" xml:space="preserve">
-    <value>MainMenu</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <metadata name="MainStatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>127, 17</value>
   </metadata>
+  <data name="MainStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 434</value>
+  </data>
+  <data name="MainStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1185, 22</value>
+  </data>
+  <data name="MainStatusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="MainStatusStrip.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;MainStatusStrip.Name" xml:space="preserve">
+    <value>MainStatusStrip</value>
+  </data>
+  <data name="&gt;&gt;MainStatusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainStatusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainStatusStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="StatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>592, 17</value>
   </data>
@@ -503,30 +542,6 @@
   </data>
   <data name="ReplaceLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
-  </data>
-  <data name="MainStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 434</value>
-  </data>
-  <data name="MainStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1185, 22</value>
-  </data>
-  <data name="MainStatusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="MainStatusStrip.Text" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;MainStatusStrip.Name" xml:space="preserve">
-    <value>MainStatusStrip</value>
-  </data>
-  <data name="&gt;&gt;MainStatusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MainStatusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MainStatusStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <metadata name="OpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>265, 17</value>
@@ -2284,7 +2299,7 @@
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Scenery Editor</value>
+    <value>TRAX</value>
   </data>
   <data name="&gt;&gt;FileMenu.Name" xml:space="preserve">
     <value>FileMenu</value>
@@ -2460,6 +2475,18 @@
   <data name="&gt;&gt;NameTracksMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
+    <value>toolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShowMapMenuItem.Name" xml:space="preserve">
+    <value>ShowMapMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ShowMapMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;DebugMenu.Name" xml:space="preserve">
     <value>DebugMenu</value>
   </data>
@@ -2476,6 +2503,12 @@
     <value>StartWithoutDebuggingMenuItem</value>
   </data>
   <data name="&gt;&gt;StartWithoutDebuggingMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CreditsMenuItem.Name" xml:space="preserve">
+    <value>CreditsMenuItem</value>
+  </data>
+  <data name="&gt;&gt;CreditsMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;StatusLabel.Name" xml:space="preserve">
@@ -2550,16 +2583,10 @@
   <data name="&gt;&gt;BrowseFolder.Type" xml:space="preserve">
     <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
+  <data name="&gt;&gt;CloseMenuItem.Name" xml:space="preserve">
+    <value>CloseMenuItem</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ShowMapMenuItem.Name" xml:space="preserve">
-    <value>ShowMapMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ShowMapMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;CloseMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

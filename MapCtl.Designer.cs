@@ -1,4 +1,4 @@
-﻿namespace ScnEdit {
+﻿namespace Trax {
     partial class MapCtl {
         /// <summary> 
         /// Required designer variable.

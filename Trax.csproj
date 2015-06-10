@@ -7,8 +7,8 @@
     <ProjectGuid>{E1EF129F-D93B-48EF-B0AE-FAAD88AD516E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ScnEdit</RootNamespace>
-    <AssemblyName>ScnEdit</AssemblyName>
+    <RootNamespace>Trax</RootNamespace>
+    <AssemblyName>Trax</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ScnSyntax">
-      <HintPath>ScnEditSyntax\ScnSyntax.dll</HintPath>
+      <HintPath>TraxScnSyntax\ScnSyntax.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -71,6 +71,12 @@
     </Compile>
     <Compile Include="ColorSchemes\Colors_Dark_Original.cs" />
     <Compile Include="ColorSchemes\Colors_Gray_Zenburn.cs" />
+    <Compile Include="Credits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Credits.Designer.cs">
+      <DependentUpon>Credits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -159,6 +165,9 @@
       <DependentUpon>VS2012ToolStripExtender.cs</DependentUpon>
     </Compile>
     <Compile Include="VS2012ToolStripRenderer.cs" />
+    <EmbeddedResource Include="Credits.resx">
+      <DependentUpon>Credits.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditorContainer.resx">
       <DependentUpon>EditorContainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,6 +225,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Colors_Dark_Original.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Images\Credits.pdn" />
+    <None Include="Images\IconBlue16.xcf" />
+    <None Include="Images\IconBlue256.xcf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -235,6 +247,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IconBlue128.ico" />
+    <Content Include="Images\Credits.png" />
+    <Content Include="Images\IconBlue128.ico" />
+    <Content Include="Images\InstallerBG.bmp" />
+    <Content Include="Images\InstallerBG.jpg" />
+    <Content Include="Images\OutFull.png" />
+    <Content Include="Images\Select.png" />
+    <Content Include="Images\ShowDots.png" />
+    <Content Include="Images\ShowGrid.png" />
     <Content Include="license.txt" />
   </ItemGroup>
   <ItemGroup>

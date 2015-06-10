@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 
-namespace ScnEdit {
+namespace Trax {
     
     public static class ScnNumbers {
 

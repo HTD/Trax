@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ScnEdit {
+namespace Trax {
 
     /// <summary>
     /// SCN highly optimized finite state machine lexer (no regular expressions used here!)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScnEdit {
+namespace Trax {
     
     /// <summary>
     /// Bézier curve interpolation class using scn type definitions

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScnEdit {
+namespace Trax {
     interface IColorScheme {
         Color Background { get; set; }
         Color Text { get; set; }

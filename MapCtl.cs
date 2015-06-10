@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
-namespace ScnEdit {
+namespace Trax {
     
     /// <summary>
     /// Control for displaying a map of the scenery

@@ -1,4 +1,4 @@
-﻿namespace ScnEdit {
+﻿namespace Trax {
     partial class Main {
         /// <summary>
         /// Required designer variable.
@@ -54,9 +54,12 @@
             this.s7 = new System.Windows.Forms.ToolStripSeparator();
             this.SceneryNormalizeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NameTracksMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ShowMapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DebugMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.StartDebuggingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StartWithoutDebuggingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CreditsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.TypeLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -71,8 +74,7 @@
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.BrowseFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.DockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ShowMapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CloseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.MainStatusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +86,8 @@
             this.EditMenu,
             this.ViewMenu,
             this.SceneryMenu,
-            this.DebugMenu});
+            this.DebugMenu,
+            this.CreditsMenuItem});
             resources.ApplyResources(this.MainMenu, "MainMenu");
             this.MainMenu.Name = "MainMenu";
             // 
@@ -94,6 +97,7 @@
             this.OpenMenuItem,
             this.SaveMenuItem,
             this.SaveAllMenuItem,
+            this.CloseMenuItem,
             this.s1,
             this.ExitMenuItem});
             this.FileMenu.Name = "FileMenu";
@@ -278,6 +282,17 @@
             resources.ApplyResources(this.NameTracksMenuItem, "NameTracksMenuItem");
             this.NameTracksMenuItem.Click += new System.EventHandler(this.NameTracksMenuItem_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            // 
+            // ShowMapMenuItem
+            // 
+            this.ShowMapMenuItem.Name = "ShowMapMenuItem";
+            resources.ApplyResources(this.ShowMapMenuItem, "ShowMapMenuItem");
+            this.ShowMapMenuItem.Click += new System.EventHandler(this.ShowMapMenuItem_Click);
+            // 
             // DebugMenu
             // 
             this.DebugMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -296,6 +311,13 @@
             // 
             this.StartWithoutDebuggingMenuItem.Name = "StartWithoutDebuggingMenuItem";
             resources.ApplyResources(this.StartWithoutDebuggingMenuItem, "StartWithoutDebuggingMenuItem");
+            // 
+            // CreditsMenuItem
+            // 
+            this.CreditsMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.CreditsMenuItem.Name = "CreditsMenuItem";
+            resources.ApplyResources(this.CreditsMenuItem, "CreditsMenuItem");
+            this.CreditsMenuItem.Click += new System.EventHandler(this.CreditsMenuItem_Click);
             // 
             // MainStatusStrip
             // 
@@ -380,16 +402,11 @@
             this.DockPanel.Name = "DockPanel";
             this.DockPanel.ActiveDocumentChanged += new System.EventHandler(this.DockPanel_ActiveDocumentChanged);
             // 
-            // toolStripMenuItem1
+            // CloseMenuItem
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            // 
-            // ShowMapMenuItem
-            // 
-            this.ShowMapMenuItem.Name = "ShowMapMenuItem";
-            resources.ApplyResources(this.ShowMapMenuItem, "ShowMapMenuItem");
-            this.ShowMapMenuItem.Click += new System.EventHandler(this.ShowMapMenuItem_Click);
+            this.CloseMenuItem.Name = "CloseMenuItem";
+            resources.ApplyResources(this.CloseMenuItem, "CloseMenuItem");
+            this.CloseMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
             // Main
             // 
@@ -464,6 +481,8 @@
         private System.Windows.Forms.ToolStripMenuItem ClearMarkersMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ShowMapMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CreditsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CloseMenuItem;
     }
 }
 

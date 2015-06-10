@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace ScnEdit {
+namespace Trax {
     
     class ProjectPanel : DockContent {
 
