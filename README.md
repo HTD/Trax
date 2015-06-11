@@ -28,19 +28,18 @@ Check the simulator project site:
 
 ## Features list and code coverage:
 
-| Done:                       | In development:     | To be done:            |
-|---                          |---                  |---                     |
-| [x] Project tree            | [x] Refactoring     | [ ] Autocomplete       |
-| [x] Track map               | [x] Advanced hints  | [ ] Syntax validation  |
-| [x] Track sorting           | [x] Debug session   | [ ] Log file analysis  |
-| [x] Track automatic naming  |                     | [ ] Timetable helpers  |
-| [x] Syntax highlighting     |                     |                        |
-| [x] Color schemes           |                     |                        |
-| [x] Normalization           |                     |                        |
-| [x] Text search             |                     |                        |
-| [x] Symbol search           |                     |                        |
-| [x] Object search           |                     |                        |
-
+| Done:                   | In development:     | To be done:            |
+|-------------------------|---------------------|------------------------|
+| Project tree            | Refactoring         | Autocomplete           |
+| Track map               | Advanced hints      | Syntax validation      |
+| Track sorting           | Debug session       | Log file analysis      |
+| Track automatic naming  |                     | Timetable helpers      |
+| Syntax highlighting     |                     |                        |
+| Color schemes           |                     |                        |
+| Normalization           |                     |                        |
+| Text search             |                     |                        |
+| Symbol search           |                     |                        |
+| Object search           |                     |                        |
 
 ## Road map:
 
