@@ -118,38 +118,74 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="OpenMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 22</value>
-  </data>
-  <data name="OpenMenuItem.Text" xml:space="preserve">
-    <value>&amp;Otwórz...</value>
-  </data>
-  <data name="SaveMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 22</value>
-  </data>
-  <data name="SaveMenuItem.Text" xml:space="preserve">
-    <value>&amp;Zapisz</value>
-  </data>
-  <data name="SaveAllMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 22</value>
-  </data>
-  <data name="SaveAllMenuItem.Text" xml:space="preserve">
-    <value>Zapisz &amp;wszystkie</value>
-  </data>
-  <data name="s1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 6</value>
-  </data>
-  <data name="ExitMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 22</value>
-  </data>
-  <data name="ExitMenuItem.Text" xml:space="preserve">
-    <value>&amp;Wyjdź</value>
-  </data>
   <data name="FileMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 20</value>
   </data>
   <data name="FileMenu.Text" xml:space="preserve">
     <value>&amp;Plik</value>
+  </data>
+  <data name="EditMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="EditMenu.Text" xml:space="preserve">
+    <value>&amp;Edycja</value>
+  </data>
+  <data name="ViewMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="ViewMenu.Text" xml:space="preserve">
+    <value>&amp;Widok</value>
+  </data>
+  <data name="SceneryMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 20</value>
+  </data>
+  <data name="SceneryMenu.Text" xml:space="preserve">
+    <value>&amp;Sceneria</value>
+  </data>
+  <data name="DebugMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
+  <data name="DebugMenu.Text" xml:space="preserve">
+    <value>&amp;Test</value>
+  </data>
+  <data name="CreditsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 20</value>
+  </data>
+  <data name="CreditsMenuItem.Text" xml:space="preserve">
+    <value>O programie</value>
+  </data>
+  <data name="OpenMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="OpenMenuItem.Text" xml:space="preserve">
+    <value>&amp;Otwórz...</value>
+  </data>
+  <data name="SaveMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="SaveMenuItem.Text" xml:space="preserve">
+    <value>&amp;Zapisz</value>
+  </data>
+  <data name="SaveAllMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="SaveAllMenuItem.Text" xml:space="preserve">
+    <value>Zapisz &amp;wszystkie</value>
+  </data>
+  <data name="CloseMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="CloseMenuItem.Text" xml:space="preserve">
+    <value>Z&amp;amknij scenerię</value>
+  </data>
+  <data name="s1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 6</value>
+  </data>
+  <data name="ExitMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="ExitMenuItem.Text" xml:space="preserve">
+    <value>&amp;Wyjdź</value>
   </data>
   <data name="AlignMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 22</value>
@@ -171,12 +207,6 @@
   </data>
   <data name="CommentSelectedMenuItem.Text" xml:space="preserve">
     <value>Przełącz &amp;komentarz</value>
-  </data>
-  <data name="EditMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="EditMenu.Text" xml:space="preserve">
-    <value>&amp;Edycja</value>
   </data>
   <data name="WordWrapMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 22</value>
@@ -201,12 +231,6 @@
   </data>
   <data name="ClearMarkersMenuItem.Text" xml:space="preserve">
     <value>&amp;Wyczyść znaczniki</value>
-  </data>
-  <data name="ViewMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="ViewMenu.Text" xml:space="preserve">
-    <value>&amp;Widok</value>
   </data>
   <data name="findToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 22</value>
@@ -265,11 +289,14 @@
   <data name="NameTracksMenuItem.Text" xml:space="preserve">
     <value>Nazywanie &amp;torów</value>
   </data>
-  <data name="SceneryMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 20</value>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 6</value>
   </data>
-  <data name="SceneryMenu.Text" xml:space="preserve">
-    <value>&amp;Sceneria</value>
+  <data name="ShowMapMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 22</value>
+  </data>
+  <data name="ShowMapMenuItem.Text" xml:space="preserve">
+    <value>Pokaż &amp;mapę</value>
   </data>
   <data name="StartDebuggingMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 22</value>
@@ -282,12 +309,6 @@
   </data>
   <data name="StartWithoutDebuggingMenuItem.Text" xml:space="preserve">
     <value>Uruchom &amp;bez debuggowania</value>
-  </data>
-  <data name="DebugMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 20</value>
-  </data>
-  <data name="DebugMenu.Text" xml:space="preserve">
-    <value>&amp;Test</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

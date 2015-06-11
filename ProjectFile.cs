@@ -165,7 +165,8 @@ namespace Trax {
                 Main.Instance.SceneryPanel.Dispose();
                 Main.Instance.SceneryPanel = null;
             }
-            Main.Instance.Text = Application.ProductName;
+            Status.FileName = null;
+            Status.Visible = false;
             EditorFile.Reset();
             Main.Instance.DockPanel.Refresh();           
         }

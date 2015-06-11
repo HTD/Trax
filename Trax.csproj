@@ -174,6 +174,9 @@
     <EmbeddedResource Include="Main.pl-PL.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main.pl.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +240,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="README.md" />
     <None Include="StyleSchemes\Styles_Default.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Styles_Default.Designer.cs</LastGenOutput>

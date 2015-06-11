@@ -43,11 +43,12 @@ namespace Trax {
         }
 
         protected override void OnClosed(EventArgs e) {
+            DTimer.Dispose();
             Instance = null;
         }
 
         private void Credits_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-            if (e.KeyCode == Keys.Escape) Close();
+            Close();
         }
 
         private void Credits_JustClose(object sender, EventArgs e) {
