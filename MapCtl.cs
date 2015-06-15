@@ -699,15 +699,31 @@ namespace Trax {
             MapMoved = false;
             if (!Control.ModifierKeys.HasFlag(Keys.Control)) {
                 if (!Selection.Empty) {
-                    if (Selection.Current is Spline) { // Track double clicks:
-                        ProjectFile.FindTrack((Selection.Current as Spline).Track);
-                    } else { // Signal double clicks:
-
-                    }
+                    FindCurrentSelectionInFiles();
                 } else base.OnDoubleClick(e);
             } else {
                 base.OnDoubleClick(e);
             }
+        }
+
+        #endregion
+
+        #region Code interaction
+
+        /// <summary>
+        /// Finds current selection in scenery files
+        /// </summary>
+        private void FindCurrentSelectionInFiles() {
+            if (Selection.Current is Spline) { // Track double clicks:
+                ProjectFile.FindTrack((Selection.Current as Spline).Track);
+            } else { // Signal double clicks:
+
+            }
+        }
+
+        internal void FindCodeFragmentOnMap(EditorFile file) {
+            var text = file.Text;
+            var offset = file.Editor.SelectionStart;
         }
 
         #endregion

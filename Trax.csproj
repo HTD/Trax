@@ -228,6 +228,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Colors_Dark_Original.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Documentation.md" />
     <None Include="Images\Credits.pdn" />
     <None Include="Images\IconBlue16.xcf" />
     <None Include="Images\IconBlue256.xcf" />

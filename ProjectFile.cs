@@ -253,6 +253,11 @@ namespace Trax {
             Main.Instance.EnableEdit();
         }
 
+        /// <summary>
+        /// Replaces all regex matches in all project files with replaceText
+        /// </summary>
+        /// <param name="regex"></param>
+        /// <param name="replaceText"></param>
         private static void ReplaceAll(Regex regex, string replaceText) {
             Main.Instance.DisableEdit();
             Status.Text = Messages.Replacing;
@@ -260,16 +265,21 @@ namespace Trax {
             SearchResultsPanel.Reset();
             ProcessAll(i => {
                 string t;
-                foreach (Match m in regex.Matches(t = i.Text)) {
-                    var p = i.Editor.PositionToPlace(m.Index);
-                    t = t.Substring(0, m.Index) + replaceText + t.Substring(m.Index + m.Length);
-                    i.Editor.BeginAutoUndo();
-                    i.Editor.Text = t;
-                    i.Editor.EndAutoUndo();
-                    SearchResultsPanel.Add(new SearchResult {
-                        Path = i.Path, File = i.FileName, Fragment = m.Value, Replacement = replaceText, Line = p.iLine + 1, Column = p.iChar + 1
-                    });
-                }
+                Match m;
+                Place p;
+                do {
+                    m = regex.Match(t = i.Text);
+                    if (m.Success) {
+                        p = i.Editor.PositionToPlace(m.Index);
+                        t = t.Substring(0, m.Index) + replaceText + t.Substring(m.Index + m.Length);
+                        i.Editor.BeginAutoUndo();
+                        i.Editor.Text = t;
+                        i.Editor.EndAutoUndo();
+                        SearchResultsPanel.Add(new SearchResult {
+                            Path = i.Path, File = i.FileName, Fragment = m.Value, Replacement = replaceText, Line = p.iLine + 1, Column = p.iChar + 1
+                        });
+                    }
+                } while (m.Success);
             });
             SearchResultsPanel.CloseIfEmpty();
             Status.Text = Messages.Ready;
