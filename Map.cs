@@ -21,10 +21,8 @@ namespace Trax {
             Ctl.ScaleChanged += Ctl_ScaleChanged;
             Ctl.PositionChanged += Ctl_PositionChanged;
             Ctl.CursorPositionChanged += Ctl_CursorPositionChanged;
-            Ctl.ShowDots = true;
-            Ctl.ShowGrid = true;
-            ShowGridButton.Checked = true;
-            ShowDotsButton.Checked = true;
+            ShowGridButton.Checked = Ctl.ShowGrid;
+            ShowDotsButton.Checked = Ctl.ShowDots;
             ScaleLabel.Text = String.Empty;
             CursorXLabel.Text = String.Empty;
             CursorZLabel.Text = String.Empty;
@@ -69,6 +67,14 @@ namespace Trax {
             var c = !s.Checked;
             Ctl.ShowDots = s.Checked = c;
             Ctl.Invalidate();
+        }
+
+        private void FindButton_Click(object sender, EventArgs e) {
+            Ctl.FindName(FindBox.Text);
+        }
+
+        private void FindBox_KeyUp(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) FindButton_Click(sender, EventArgs.Empty);
         }
 
     }

@@ -255,6 +255,7 @@ namespace Trax {
 
         /// <summary>
         /// Replaces all regex matches in all project files with replaceText
+        /// Results are added to results panel and highlighted
         /// </summary>
         /// <param name="regex"></param>
         /// <param name="replaceText"></param>

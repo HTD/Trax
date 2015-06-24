@@ -603,7 +603,7 @@ namespace Trax {
             var sf = FitScale;
             var c0 = new PointF(e.X - CtlCenter.X, e.Y - CtlCenter.Y); // relative control position of cursor (in pixels)
             var m0 = new PointF(c0.X / s0 - Offset.X, c0.Y / s0 - Offset.Y); // relative map position of cursor
-            if (e.Delta > 0 && s0 < 30) s1 *= 1.5f;
+            if (e.Delta > 0 && s0 < 100) s1 *= 1.5f;
             if (e.Delta < 0 && s0 > sf) s1 /= 1.5f;
             if (s1 != s0) {
                 CurrentScale = s1;
@@ -721,6 +721,29 @@ namespace Trax {
             }
         }
 
+        /// <summary>
+        /// Finds object by its name or event name
+        /// </summary>
+        /// <param name="name"></param>
+        internal void FindName(string name) {
+            foreach (var spline in Splines) {
+                var track = spline.Track;
+                if (track.Name == name || track.Event0 == name || track.Event1 == name || track.Event2 == name ||
+                    track.Eventall0 == name || track.Eventall1 == name || track.Eventall2 == name) {
+                    Position = -V3D.Interpolate(track.Point1, track.Point2, 0.5d);
+                    if (Scale < 1f) Scale = 1f;
+                    Selection.Current = spline;
+                    return;
+                }
+            }
+            Selection.Clear();
+        }
+
+        /// <summary>
+        /// Finds selected code fragment on map
+        /// TODO: write code! :)
+        /// </summary>
+        /// <param name="file"></param>
         internal void FindCodeFragmentOnMap(EditorFile file) {
             var text = file.Text;
             var offset = file.Editor.SelectionStart;
@@ -752,7 +775,10 @@ namespace Trax {
 
             public object Last { get { return Data.Count > 0 ? Data[Data.Count - 1] : null; } }
 
-            public object Current { get { return Data[Index]; } }
+            public object Current {
+                get { return Data[Index]; }
+                set { Clear(); Add(value); }
+            }
 
             public SelectionClass(Control ctl) { Ctl = ctl; }
 
@@ -778,7 +804,7 @@ namespace Trax {
 
             public void ForEach(Action<object> actionForAllButCurrent, Action<object> actionForCurrent) {
                 for (int i = 0; i < Data.Count; i++) if (i != Index) actionForAllButCurrent(Data[i]);
-                actionForCurrent(Data[Index]);
+                if (Index >= 0) actionForCurrent(Data[Index]);
             }
 
         }

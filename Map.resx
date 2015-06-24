@@ -274,11 +274,34 @@
   <data name="ShowDotsButton.Text" xml:space="preserve">
     <value>Show dots</value>
   </data>
+  <data name="FindButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB8SURBVDhP3VGxDcAgDOM2vmDPSmd4gJ0fi8QXVEYyYiiU
+        tlNrKQomsROB+im01oUBHmNsHAFeG1eAZu9cSWmvIuTN2rFJP4mcYgKc9UuMGqcGKLIB+dUGIrL+BpxM
+        9xBCPRtj2j1i6RcoxgY557mgdwe/JT4DDB6LvwalDq4NimNo/GkSAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="FindButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FindButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FindButton.Text" xml:space="preserve">
+    <value>toolStripButton1</value>
+  </data>
+  <data name="FindBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="FindBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 25</value>
+  </data>
   <data name="MapToolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="MapToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>957, 25</value>
+    <value>1134, 25</value>
   </data>
   <data name="MapToolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -312,7 +335,7 @@
     <value>0, 25</value>
   </data>
   <data name="Ctl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>957, 450</value>
+    <value>1134, 450</value>
   </data>
   <data name="Ctl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -321,7 +344,7 @@
     <value>Ctl</value>
   </data>
   <data name="&gt;&gt;Ctl.Type" xml:space="preserve">
-    <value>ScnEdit.MapCtl, ScnEdit, Version=0.8.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Trax.MapCtl, Trax, Version=0.8.7.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Ctl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -336,7 +359,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>957, 475</value>
+    <value>1134, 475</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -420,6 +443,18 @@
     <value>ShowDotsButton</value>
   </data>
   <data name="&gt;&gt;ShowDotsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FindBox.Name" xml:space="preserve">
+    <value>FindBox</value>
+  </data>
+  <data name="&gt;&gt;FindBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FindButton.Name" xml:space="preserve">
+    <value>FindButton</value>
+  </data>
+  <data name="&gt;&gt;FindButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
